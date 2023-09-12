@@ -2,7 +2,30 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {}
+		extend: {
+			backgroundImage: {
+				hero1:
+					"url('https://res.cloudinary.com/hothra/image/upload/v1692980732/drake_cfvohd.jpg')",
+				hero2:
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365899/pop_culture_pxrlfs.jpg')",
+				hero3:
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365898/urban_culture_mbgxha.png')",
+				hero4:
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365897/rock_culture_fzqvdm.jpg')"
+			},
+			fontFamily: {
+				bebas: ['var(--font-bebas-neue)']
+			},
+			colors: {
+				primary: '#5c6ac4',
+				secondary: '#ecc94b',
+				darkGray: '#161616',
+				lightGray: '#D5D5D5',
+				mediumGray: '#363636',
+				darkModeText: '#5e5e5e'
+				// ...
+			}
+		}
 	},
 	plugins: []
 }

@@ -1,0 +1,36 @@
+---
+type Props = {
+    id: string,
+    name: string,
+    img: any,
+    price: number,
+    likes: number
+    description: string
+}
+
+import { Image } from "astro:assets";
+import LikeIcon from "../icons/LikeIcon.astro";
+
+const {id, name, img, price, likes, description} = Astro.props
+---
+
+<a href={`/tienda/${id}`} class="flex flex-col gap-y-4 hover:scale-105 transition-all" >
+    <Image
+      src={img}
+      alt={`Franela-${name}`}
+      class="aspect-[384/576] h-full w-full rounded-lg" 
+      width="384" 
+      height="576"
+      style={`view-transition-name: book-${id}`}
+      />
+    <div class='flex justify-between font-medium' >
+        <div>
+            <p class='text-[#5e5e5e] text-xl font-bold' >{name}</p>
+            <span class='text-xl' >${price}.00</span>
+        </div>
+        <div class="flex gap-x-1 items-start" >
+            <LikeIcon />
+            {likes}
+        </div>
+    </div>
+</a>

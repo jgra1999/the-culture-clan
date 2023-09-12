@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import {items} from "../../services/items"
+import LikeIcon from "../../components/icons/LikeIcon.astro";
+import DisLikeIcon from "../../components/icons/DisLikeIcon.astro";
+import WhatsappIcon from "../../components/icons/WhatsappIcon.astro";
+import LeftArrowIcon from "../../components/icons/LeftArrowIcon.astro";
+
+export async function getStaticPaths() {
+  return [
+    { params: { id: 'ferxxo-si-tu-supieras' } },
+    { params: { id: 'the-weekend-after-hours' } },
+    { params: { id: 'lana-del-rey' } }
+  ];
+}
+
+const { id } = Astro.params;
+
+const item = items.find(i => i.id === id)
+
+if(!item){
+    return Astro.redirect('/404')
+}
+---
+
+<Layout title={item.name}>
+    <main class="pt-28 lg:pt-52 px-10 md:px-20 mb-20">
+        <div class="mb-5 md:mb-10">
+            <a href="/tienda">
+                <LeftArrowIcon />
+            </a>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-y-4 md:gap-x-10" >
+            <Image 
+            src={item.img}
+            alt={`Franela-${item.name}`}
+            class="aspect-[384/576] h-full w-full rounded-lg" 
+            width="384" 
+            height="576" 
+            style={`view-transition-name: book-${id}`} />
+            
+            <!-- Info del producto -->
+            <div class="flex flex-col gap-y-8 md:gap-y-10" >
+                <div class="space-y-2" >
+                    <h2 class="text-2xl md:text-5xl font-medium" >{item.name}</h2>
+                    <p class="text-xl md:text-5xl md:font-light" >${item.price}</p>
+                </div>
+
+                <p class="dark:text-darkModeText text-sm sm:text-base font-medium" >{item.description}</p>
+
+                <!-- tallas -->
+                <div class="space-y-2" >
+                    <p class="text-lg">Tallas</p>
+                    <div class="flex gap-x-5" >
+                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >XS</button>
+                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >S</button>
+                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >M</button>
+                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >L</button>
+                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >XL</button>
+                    </div>
+                </div>
+
+                <!-- Boton y Likes -->
+                <div class="flex" >
+                   <a
+                      href="#"
+                      class="flex items-center justify-center gap-x-1 border-2 border-darkGray dark:border-white py-3 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100 min-w-[65%] md:min-w-[50%]">
+                        <WhatsappIcon styles="w-6 h-6" />
+                        Consultar Disponibilidad
+                    </a>
+                
+                    <div class="flex items-center gap-x-2 divide-x-2 divide-mediumGray py-2 px-4" >
+                        <div class="flex gap-x-1 items-center">
+                            <LikeIcon />
+                            {item.likes}
+                        </div>
+                        <div class="pl-2" >
+                            <DisLikeIcon />
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="text-lg">Fabricación</p>
+                    <ul class="list-disc dark:text-darkModeText text-sm sm:text-base font-medium pl-4 mt-2 space-y-1" >
+                        <li>Producción en Colombia</li>
+                        <li>100% Algodon</li>
+                        <li>Diseños impresos con DTF</li>
+                        <li>Hecho con amor</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <p class="text-lg">Cuidado</p>
+                    <ul class="list-disc dark:text-darkModeText text-sm sm:text-base font-medium pl-4 mt-2 space-y-1" >
+                        <li>Utiliza un detergente suave</li>
+                        <li>Lava las franelas del revés</li>
+                        <li>Opta por el secado al aire</li>
+                        <li>Lavalo con amor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

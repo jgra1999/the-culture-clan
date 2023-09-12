@@ -1,0 +1,58 @@
+---
+import Logo from '../icons/Logo.astro'
+import MenuIcon from '../icons/MenuIcon.astro'
+import ShoppingBagIcon from '../icons/ShoppingBagIcon.astro'
+import TCCIcon from '../icons/TCCIcon.astro';
+---
+
+<header class='absolute top-0 w-full'>
+    {/* mobile navbar */}
+    <div class='p-4 flex justify-between items-center lg:hidden'>
+        <MenuIcon />
+        <a href="/">
+            <TCCIcon />
+        </a>
+        <ShoppingBagIcon />
+    </div>
+
+    <!-- Desktop navbar -->
+    <div class='hidden lg:flex flex-col px-5 p-3'>
+        <!-- top bar -->
+        <div class='bg-transparent flex gap-x-8 justify-end items-end'>
+            <button class='text-xs font-normal opacity-50 hover:opacity-100 '>Iniciar Sesión</button>
+            <ShoppingBagIcon />
+        </div>
+        <!-- bottom bar -->
+        <nav class='bg-transparent flex justify-between items-center'>
+            <a href="/">
+                <Logo />
+            </a >
+
+            <ul class='flex gap-x-[70px] font-medium'>
+                <li>
+                    <a href="/tienda">RAP</a>
+                </li>
+                <li>
+                    <a href="/tienda">POP</a>
+                </li>
+                <li>
+                    <a href="/tienda">URBAN</a>
+                </li>
+                <li>
+                    <a href="/tienda">ROCK</a>
+                </li>
+                <li>
+                    <a href="/tienda">CONTACTO</a>
+                </li>
+            </ul>
+
+            <form>
+                <input
+                    type='text'
+                    placeholder='Buscar'
+                    class='bg-transparent border border-white py-2 px-3 text-xs w-72 opacity-50 focus:opacity-100 outline-none'
+                />
+            </form>
+        </nav>
+    </div>
+</header>

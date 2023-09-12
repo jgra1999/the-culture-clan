@@ -1,0 +1,28 @@
+
+<!-- Desktop -->
+<div class='hidden md:flex flex-col items-center gap-y-3'>
+    <h2>
+        <slot />
+    </h2>
+    <button class='border-2 border-darkGray dark:border-white py-2 w-36 uppercase opacity-70 hover:opacity-100'>Ver más</button>
+</div>
+
+<!-- Responsive -->
+<div class="md:hidden">
+    <div class='flex flex-col items-center py-20 gap-y-3'>
+        <h2>
+            <slot />
+        </h2>
+        <button class='border-2 border-darkGray dark:border-white py-2 w-36 uppercase text-lg opacity-70 active:opacity-100'>
+            Ver más
+        </button>
+    </div>
+</div>
+
+
+<style>
+    h2{
+        font-family: 'Bebas Neue', sans-serif;
+        @apply dark:text-lightGray tracking-[1px] text-7xl;
+    }
+</style>
