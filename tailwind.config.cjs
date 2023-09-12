@@ -5,13 +5,13 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				hero1:
-					"url('https://res.cloudinary.com/hothra/image/upload/v1692980732/drake_cfvohd.jpg')",
+					"url('https://res.cloudinary.com/hothra/image/upload/v1692980732/the%20culture%20clan/drake_cfvohd.jpg')",
 				hero2:
-					"url('https://res.cloudinary.com/hothra/image/upload/v1693365899/pop_culture_pxrlfs.jpg')",
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365899/the%20culture%20clan/pop_culture_pxrlfs.jpg')",
 				hero3:
-					"url('https://res.cloudinary.com/hothra/image/upload/v1693365898/urban_culture_mbgxha.png')",
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365898/the%20culture%20clan/urban_culture_mbgxha.png')",
 				hero4:
-					"url('https://res.cloudinary.com/hothra/image/upload/v1693365897/rock_culture_fzqvdm.jpg')"
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365897/the%20culture%20clan/rock_culture_fzqvdm.jpg')"
 			},
 			fontFamily: {
 				bebas: ['var(--font-bebas-neue)']
