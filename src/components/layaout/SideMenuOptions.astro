@@ -1,0 +1,13 @@
+---
+type Props = {
+    link: string,
+    name: string
+}
+
+const {link, name} = Astro.props
+---
+
+<a href={link} class="flex items-start p-2 text-mediumGray dark:text-white">
+    <slot />
+    <span class="ml-3">{name}</span>
+ </a>

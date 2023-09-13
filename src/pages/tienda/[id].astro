@@ -1,11 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "../../layouts/Layout.astro";
 import {items} from "../../services/items"
+import Layout from "../../layouts/Layout.astro";
+
+/* Icons */
 import LikeIcon from "../../components/icons/LikeIcon.astro";
 import DisLikeIcon from "../../components/icons/DisLikeIcon.astro";
-import WhatsappIcon from "../../components/icons/WhatsappIcon.astro";
+import WhatsAppIcon from "../../components/icons/WhatsAppIcon.astro";
 import LeftArrowIcon from "../../components/icons/LeftArrowIcon.astro";
+import QRModal from "../../components/shop/QRModal";
+import SizeOption from "../../components/shop/SizeOption.astro";
 
 export async function getStaticPaths() {
   return [
@@ -25,19 +29,18 @@ if(!item){
 ---
 
 <Layout title={item.name}>
-    <main class="pt-28 lg:pt-52 px-10 md:px-20 mb-20">
+    <main class="pt-28 lg:pt-52 px-10 md:px-20 mb-20 relative container mx-auto">
+        <!-- <QRModal /> -->
         <div class="mb-5 md:mb-10">
             <a href="/tienda">
                 <LeftArrowIcon />
             </a>
         </div>
         <div class="grid lg:grid-cols-2 gap-y-4 md:gap-x-10" >
-            <Image 
+            <img
             src={item.img}
             alt={`Franela-${item.name}`}
-            class="aspect-[384/576] h-full w-full rounded-lg" 
-            width="384" 
-            height="576" 
+            class="aspect-[445/668] w-full rounded-lg" 
             style={`view-transition-name: book-${id}`} />
             
             <!-- Info del producto -->
@@ -53,20 +56,22 @@ if(!item){
                 <div class="space-y-2" >
                     <p class="text-lg">Tallas</p>
                     <div class="flex gap-x-5" >
-                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >XS</button>
-                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >S</button>
-                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >M</button>
-                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >L</button>
-                        <button class="border-2 border-darkGray dark:border-white py-2 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100" >XL</button>
+                        <SizeOption size="XS" />
+                        <SizeOption size="S" />
+                        <SizeOption size="M" />
+                        <SizeOption size="L" />
+                        <SizeOption size="XL" />
                     </div>
                 </div>
 
                 <!-- Boton y Likes -->
                 <div class="flex" >
-                   <a
-                      href="#"
-                      class="flex items-center justify-center gap-x-1 border-2 border-darkGray dark:border-white py-3 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100 min-w-[65%] md:min-w-[50%]">
-                        <WhatsappIcon styles="w-6 h-6" />
+                    <QRModal client:visible>
+                        <WhatsAppIcon styles='w-6 h-6' />
+                     </QRModal>
+
+                     <a href="https://wa.link/phwrwn" class="flex items-center justify-center gap-x-1 border-2 border-darkGray dark:border-white py-3 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100 min-w-[70%] lg:hidden" >
+                        <WhatsAppIcon styles='w-6 h-6' />
                         Consultar Disponibilidad
                     </a>
                 
@@ -104,3 +109,4 @@ if(!item){
         </div>
     </main>
 </Layout>
+
