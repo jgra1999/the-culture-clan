@@ -1,61 +1,14 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import HomeHeader from '../components/home/HomeHeader.astro';
-import HomeSection from '../components/HomeSection.astro';
-import Footer from '../components/layaout/Footer.astro';
+import HomeSection from "../components/HomeSection.astro";
+import Layout from "../layouts/Layout.astro";
 
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/icon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<ViewTransitions />
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-	<title>The Culture Clan - Home</title>
-</head>
-<body class="home">
-	<HomeHeader />
+<Layout title="Home">
 	<main>
 		<HomeSection imageBackground='bg-hero1' title='rap' />
 		<HomeSection imageBackground='bg-hero2' title='pop' />
 		<HomeSection imageBackground='bg-hero3' title='urban' />
 		<HomeSection imageBackground='bg-hero4' title='rock' />
 	</main>
-	<Footer />
-	<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-</body>
-</html>
-
-<style is:global>
-	html {
-		height: 100%;
-	}
-	
-	.home {
-		@apply 
-		bg-[#F5F5F5] 
-		text-[#232323]
-		dark:bg-[#141414] 
-		dark:text-[#F6F6F6];
-
-		font-family: 'Roboto', sans-serif;
-	}
-    .social-icon{
-		@apply stroke-[1.5] opacity-50 hover:opacity-100 w-9 h-9
-	}
-	::-webkit-scrollbar {
-		@apply w-2 bg-black;
-	}
-
-	::-webkit-scrollbar-thumb {
-		@apply bg-zinc-800 rounded;
-	}
-</style>
+</Layout>
