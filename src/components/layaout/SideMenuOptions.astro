@@ -7,7 +7,7 @@ type Props = {
 const {link, name} = Astro.props
 ---
 
-<a href={link} class="flex items-start p-2 text-mediumGray dark:text-white">
+<a href={link} class="flex items-center p-2 text-lg">
     <slot />
     <span class="ml-3">{name}</span>
  </a>

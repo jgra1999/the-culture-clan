@@ -19,7 +19,7 @@ module.exports = {
 			colors: {
 				primary: '#5c6ac4',
 				secondary: '#ecc94b',
-				darkGray: '#161616',
+				darkGray: '#181818',
 				lightGray: '#D5D5D5',
 				mediumGray: '#363636',
 				darkModeText: '#5e5e5e'

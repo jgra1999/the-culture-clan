@@ -28,29 +28,27 @@ import SideMenu from './SideMenu.astro';
                 <Logo />
             </a >
 
-            <ul class='flex gap-x-[70px] font-medium'>
+            <ul class='flex gap-x-[70px] font-medium uppercase'>
                 <li>
-                    <a href="/tienda">RAP</a>
+                    <a href="/" class="opacity-70 hover:opacity-100">Home</a>
                 </li>
                 <li>
-                    <a href="/tienda">POP</a>
+                    <a href="/tienda" class="opacity-75 hover:opacity-100">Colecciones</a>
                 </li>
                 <li>
-                    <a href="/tienda">URBAN</a>
+                    <a href="/" class="opacity-70 hover:opacity-100">Sobre Nosotros</a>
                 </li>
                 <li>
-                    <a href="/tienda">ROCK</a>
+                    <a href="/contacto" class="opacity-70 hover:opacity-100">Contacto</a>
                 </li>
-                <li>
-                    <a href="/tienda">CONTACTO</a>
-                </li>
+                
             </ul>
 
             <form>
                 <input
                     type='text'
                     placeholder='Buscar'
-                    class='bg-transparent border border-white py-2 px-3 text-xs w-72 opacity-50 focus:opacity-100 outline-none'
+                    class='bg-transparent border border-white py-2 px-3 text-xs w-72 opacity-50 focus:opacity-100 outline-none rounded-lg'
                 />
             </form>
         </nav>

@@ -11,7 +11,7 @@ export default function QRModal({ children }: Props) {
 		<>
 			<button
 				onClick={() => setIsVisible(true)}
-				className='hidden lg:flex items-center justify-center gap-x-1 border-2 border-darkGray dark:border-white py-3 px-4 rounded text-sm md:text-base opacity-70 hover:opacity-100 min-w-[50%]'
+				className='hidden lg:flex items-center justify-center gap-x-1 border-2 border-white py-3 px-4 rounded text-sm md:text-base opacity-50 hover:opacity-100 min-w-[50%]'
 			>
 				{children}
 				Consultar Disponibilidad
@@ -48,7 +48,7 @@ export default function QRModal({ children }: Props) {
 				</button>
 				<img
 					src='https://res.cloudinary.com/hothra/image/upload/v1694557254/the%20culture%20clan/ws-qr_ijv7zx.png'
-					alt=''
+					alt='WhatsApp QR imagen'
 					className='h-96'
 				/>
 			</div>

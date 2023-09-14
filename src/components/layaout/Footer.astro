@@ -11,35 +11,31 @@ import WhatsAppIcon from '../icons/WhatsAppIcon.astro'
     <div class='hidden lg:grid lg:grid-cols-4 mt-auto'>
         <WhiteLogo />
         <div>
-            <h3 class='font-bold mb-2'>COLECCIONES</h3>
+            <h3 class='font-bold mb-2'>MENU</h3>
             <ul class='space-y-2 text-sm'>
                 <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Rap
+                    <a href='/' class='opacity-60 hover:opacity-100'>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href='/tienda' class='opacity-60 hover:opacity-100'>
+                        Colecciones
                     </a>
                 </li>
                 <li>
                     <a href='#' class='opacity-60 hover:opacity-100'>
-                        Pop
+                        Sobre Nosotros
                     </a>
                 </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Urban
-                    </a>
-                </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Rock
-                    </a>
-                </li>
+                
             </ul>
         </div>
         <div>
             <h3 class='font-bold mb-2'>SOCIAL</h3>
             <ul class='space-y-2 text-sm'>
                 <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
+                    <a href='https://instagram.com/th3cultureclan?igshid=NGVhN2U2NjQ0Yg==' class='opacity-60 hover:opacity-100'>
                         Instagram
                     </a>
                 </li>
@@ -82,22 +78,24 @@ import WhatsAppIcon from '../icons/WhatsAppIcon.astro'
         </div>
     </div>
 
-    {/* Footer screen <= lg */}
+    {/* Footer screen <a= lg */}
     <div class='grid grid-cols-1 lg:hidden gap-y-10'>
         <WhiteLogo />
         <div class='flex flex-col divide-y-[1px] divide-mediumGray text-lg font-bold text-white'>
-            <h3 class='py-2'>COLECCIONES</h3>
+            <a href="/tienda" class='py-2'>COLECCIONES</a>
             <h3 class='py-2'>SOCIAL</h3>
             <h3 class='py-2'>AYUDA</h3>
-            <h3 class='py-2'>MANTENTE EN CONTACTO</h3>
+            <a href="/contacto" class='py-2'>MANTENTE EN CONTACTO</a>
         </div>
         <div class='flex justify-center items-center gap-x-3'>
-            <InstagramIcon  />
+            <a href="https://instagram.com/th3cultureclan?igshid=NGVhN2U2NjQ0Yg==">
+                <InstagramIcon styles='social-icon' />
+            </a>
             <a href="https://wa.link/phwrwn">
                 <WhatsAppIcon styles='social-icon' />
             </a>
             <TiktokIcon  />
-            <MailIcon  />
+            <MailIcon styles='social-icon' />
         </div>
     </div>
 
