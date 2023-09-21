@@ -10,3 +10,6 @@ export default defineConfig({
 		remotePatterns: [{ protocol: 'https' }]
 	}
 })
+
+//TODO: Ver paquete sharp para optimizar imagenes
+//TODO: Si no lo utilizare, ver documentacion para desactivar error de produccion causado por sharp

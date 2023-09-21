@@ -11,7 +11,9 @@ module.exports = {
 				hero3:
 					"url('https://res.cloudinary.com/hothra/image/upload/v1693365898/the%20culture%20clan/urban_culture_mbgxha.png')",
 				hero4:
-					"url('https://res.cloudinary.com/hothra/image/upload/v1693365897/the%20culture%20clan/rock_culture_fzqvdm.jpg')"
+					"url('https://res.cloudinary.com/hothra/image/upload/v1693365897/the%20culture%20clan/rock_culture_fzqvdm.jpg')",
+				space404:
+					"url('https://res.cloudinary.com/hothra/image/upload/v1695154549/the%20culture%20clan/404-bg_utmkeu.jpg')"
 			},
 			fontFamily: {
 				bebas: ['var(--font-bebas-neue)']
@@ -22,10 +24,10 @@ module.exports = {
 				darkGray: '#181818',
 				lightGray: '#D5D5D5',
 				mediumGray: '#363636',
-				darkModeText: '#5e5e5e'
+				grayText: '#5e5e5e'
 				// ...
 			}
 		}
 	},
-	plugins: []
+	plugins: [require('tailwindcss-animated')]
 }

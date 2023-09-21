@@ -1,87 +1,47 @@
 ---
-import WhiteLogo from '../icons/WhiteLogo.astro'
+import Logo from '../icons/Logo.astro'
 import MailIcon from '../icons/MailIcon.astro'
 import InstagramIcon from '../icons/InstagramIcon.astro'
 import TiktokIcon from '../icons/TiktokIcon.astro'
 import WhatsAppIcon from '../icons/WhatsAppIcon.astro'
+import FooterLink from './FooterLink.astro'
 ---
 
 <footer class='flex flex-col gap-y-10 lg:gap-y-20 bg-darkGray py-20 px-5 xl:px-40'>
     {/* Footer screen >= lg */}
     <div class='hidden lg:grid lg:grid-cols-4 mt-auto'>
-        <WhiteLogo />
+        <Logo />
         <div>
             <h3 class='font-bold mb-2'>MENU</h3>
             <ul class='space-y-2 text-sm'>
-                <li>
-                    <a href='/' class='opacity-60 hover:opacity-100'>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href='/tienda' class='opacity-60 hover:opacity-100'>
-                        Colecciones
-                    </a>
-                </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Sobre Nosotros
-                    </a>
-                </li>
-                
+                <FooterLink url='/' text="Home" />
+                <FooterLink url='/tienda' text="Colecciones" />
+                <FooterLink url='#' text="Sobre Nosotros" />
             </ul>
         </div>
         <div>
             <h3 class='font-bold mb-2'>SOCIAL</h3>
             <ul class='space-y-2 text-sm'>
-                <li>
-                    <a href='https://instagram.com/th3cultureclan?igshid=NGVhN2U2NjQ0Yg==' class='opacity-60 hover:opacity-100'>
-                        Instagram
-                    </a>
-                </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        TikTok
-                    </a>
-                </li>
-                <li>
-                    <a href='https://wa.link/phwrwn' class='opacity-60 hover:opacity-100'>
-                        WhatsApp
-                    </a>
-                </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Email
-                    </a>
-                </li>
+                <FooterLink url='https://instagram.com/th3cultureclan?igshid=NGVhN2U2NjQ0Yg==' text="Instagram" />
+                <FooterLink url='#' text="TikTok" />
+                <FooterLink url='https://wa.link/phwrwn' text="WhatsApp" />
+                <FooterLink url='#' text="Email" />
             </ul>
         </div>
         <div>
             <h3 class='font-bold mb-2'>AYUDA</h3>
             <ul class='space-y-2 text-sm'>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Contáctenos
-                    </a>
-                </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Política de Privacidad
-                    </a>
-                </li>
-                <li>
-                    <a href='#' class='opacity-60 hover:opacity-100'>
-                        Términos y condiciones
-                    </a>
-                </li>
+                <FooterLink url='/contacto' text="Contáctenos" />
+                <FooterLink url='politica-de-privacidad' text="Política de Privacidad" />
+                <FooterLink url='terminos-y-condiciones' text="Términos y condiciones" />
             </ul>
         </div>
     </div>
 
     {/* Footer screen <a= lg */}
     <div class='grid grid-cols-1 lg:hidden gap-y-10'>
-        <WhiteLogo />
-        <div class='flex flex-col divide-y-[1px] divide-mediumGray text-lg font-bold text-white'>
+        <Logo />
+        <div class='flex flex-col divide-y-[1px] divide-mediumGray text-lg font-bold text-'>
             <a href="/tienda" class='py-2'>COLECCIONES</a>
             <h3 class='py-2'>SOCIAL</h3>
             <h3 class='py-2'>AYUDA</h3>

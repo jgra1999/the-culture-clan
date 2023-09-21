@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import InputForm from '../components/form/InputForm.astro'
+import InputPassword from "../components/form/InputPassword";
 ---
 
 <Layout title="Crear Cuenta" >
@@ -16,14 +17,13 @@ import InputForm from '../components/form/InputForm.astro'
                     <InputForm label="País" type='text' />
                     <InputForm label="Ciudad" type='text' />
                     <InputForm label="Correo Electrónico" type='email' />
-                    <InputForm label="Contraseña" type='password' />
+                    <InputPassword label="Contraseña" client:visible />
                 </div>
                 <button class="border-2 border-mediumGray py-3 px-4 text-center rounded-lg w-full opacity-50 hover:opacity-100" >Registrarse</button>
             </form>
         </div>
         <div class="px-3">
-            <p class="text-darkModeText text-sm" >Al crear una cuenta estas aceptando nuestros términos y condiciones, puedes revisarlos <a href="/terminos-y-condiciones" class="text-white" >aqui</a></p>
+            <p class="text-grayText text-sm" >Al crear una cuenta estas aceptando nuestros términos y condiciones, puedes revisarlos <a href="/terminos-y-condiciones" class="text-white" >aqui</a></p>
         </div>
     </main>
-    
 </Layout>

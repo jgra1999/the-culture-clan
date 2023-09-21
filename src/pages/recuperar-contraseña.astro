@@ -1,0 +1,25 @@
+---
+import InputForm from "../components/form/InputForm.astro";
+import Layout from "../layouts/Layout.astro";
+
+//TODO: Tengo que confirmar que el email ingresado esta registrado en la base de datos
+---
+
+<Layout title="Recuperar Contraseña" >
+    <main class="flex flex-col gap-y-4 items-center justify-center pt-24 text-center h-screen" >
+        <!-- <Logo /> -->
+        <div class="space-y-2">
+            <h2 class="text-3xl md:text-5xl font-bold" >Recuperar Contraseña</h2>
+            <p class="text-grayText text-sm">Ten enviaremos un email para que puedas actualizar tu contraseña</p>
+        </div>
+
+        <div class="flex flex-col gap-y-8 justify-center w-3/4 mt-5 divide-y-2 divide-mediumGray min-w-[90%] sm:min-w-0 max-w-[600px] bg-darkGray rounded-lg py-6 px-8" >
+            <form class="flex flex-col gap-y-4" >
+                <div class="grid grid-cols-1 gap-y-5 gap-x-8">
+                    <InputForm label="Correo Electrónico" type='email' />
+                </div>
+                <button class="border-2 border-mediumGray py-3 px-4 text-center rounded-lg w-full opacity-50 hover:opacity-100" >Enviar Email</button>
+            </form>
+        </div>
+    </main>
+</Layout>

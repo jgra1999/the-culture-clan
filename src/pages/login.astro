@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import InputForm from "../components/form/InputForm.astro";
 import GmailIcon from "../components/icons/GmailIcon.astro";
+import InputPassword from "../components/form/InputPassword";
 
 ---
 
@@ -11,15 +12,15 @@ import GmailIcon from "../components/icons/GmailIcon.astro";
         <h2 class="text-3xl md:text-5xl font-bold" >Iniciar Sesión</h2>
 
         <div class="flex flex-col gap-y-8 justify-center w-3/4 mt-5 divide-y-2 divide-mediumGray min-w-[90%] sm:min-w-0 max-w-[550px] bg-darkGray rounded-lg py-6 px-8" >
-            <form class="flex flex-col gap-y-4 justify-center" >
+            <form class="flex flex-col gap-y-4" >
                 <InputForm label="Correo Electrónico" type='email' />
-                <InputForm label="Contraseña" type='password' />
+                <InputPassword label="Contraseña" client:visible />
                 <div class="flex justify-between mt-8" >
                     <a href="/sign-up" class="text-sm opacity-50 hover:opacity-100">
                         Crear Cuenta
                     </a>
 
-                    <a href="/reset-password" class="text-sm opacity-50 hover:opacity-100">
+                    <a href="/recuperar-contraseña" class="text-sm opacity-50 hover:opacity-100">
                         ¿Olvidaste tu Contraseña?
                     </a>
                 </div>
@@ -34,7 +35,7 @@ import GmailIcon from "../components/icons/GmailIcon.astro";
             </div>
         </div>
         <div class="px-3">
-            <p class="text-darkModeText text-sm" >Al crear una cuenta estas aceptando nuestros términos y condiciones, puedes revisarlos <a href="/terminos-y-condiciones" class="text-white" >aqui</a></p>
+            <p class="text-grayText text-sm" >Al crear una cuenta estas aceptando nuestros términos y condiciones, puedes revisarlos <a href="/terminos-y-condiciones" class="text-white" >aqui</a></p>
         </div>
     </main>
 </Layout>
