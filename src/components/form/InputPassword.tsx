@@ -24,7 +24,6 @@ export default function InputPassword({ label }: Props) {
 					type={type}
 					name=''
 					className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg w-full'
-					required
 				/>
 
 				<div className='absolute right-3 text-grayText' onClick={handleShowPassword}>

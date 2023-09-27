@@ -1,9 +1,9 @@
 ---
-/* TODO: Revisar el tipado de la prop type, coloque any pero no deberia de ser any */
+
 type Props = {
-    label: string,
+   label: string,
     type: any,
-}
+} 
 
 const {label, type} = Astro.props
 ---
@@ -12,3 +12,5 @@ const {label, type} = Astro.props
     {label}
     <input class="bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg" type={type} required>
 </label>
+
+<!-- TODO: Eliminar componente luego de sustituilor en todos los lugares donde esta en uso -->

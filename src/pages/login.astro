@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import InputForm from "../components/form/InputForm.astro";
 import GmailIcon from "../components/icons/GmailIcon.astro";
 import InputPassword from "../components/form/InputPassword";
+import LoginForm from "../components/form/LoginForm";
+import GmailAuthButton from "../components/form/GmailAuthButton";
 
 ---
 
@@ -12,26 +14,10 @@ import InputPassword from "../components/form/InputPassword";
         <h2 class="text-3xl md:text-5xl font-bold" >Iniciar Sesión</h2>
 
         <div class="flex flex-col gap-y-8 justify-center w-3/4 mt-5 divide-y-2 divide-mediumGray min-w-[90%] sm:min-w-0 max-w-[550px] bg-darkGray rounded-lg py-6 px-8" >
-            <form class="flex flex-col gap-y-4" >
-                <InputForm label="Correo Electrónico" type='email' />
-                <InputPassword label="Contraseña" client:visible />
-                <div class="flex justify-between mt-8" >
-                    <a href="/sign-up" class="text-sm opacity-50 hover:opacity-100">
-                        Crear Cuenta
-                    </a>
-
-                    <a href="/recuperar-contraseña" class="text-sm opacity-50 hover:opacity-100">
-                        ¿Olvidaste tu Contraseña?
-                    </a>
-                </div>
-                <button class="border-2 border-mediumGray py-3 px-4 text-center rounded-lg w-full opacity-50 hover:opacity-100" >Iniciar Sesión</button>
-            </form>
+            <LoginForm client:visible />
             
             <div>
-                <button class="flex items-start justify-center gap-x-1 border-2 border-mediumGray py-3 px-4 text-center rounded-lg mt-8 w-full opacity-50 hover:opacity-100" >
-                    <GmailIcon />
-                    <span>Gmail</span>
-                </button>
+                <GmailAuthButton client:visible />
             </div>
         </div>
         <div class="px-3">

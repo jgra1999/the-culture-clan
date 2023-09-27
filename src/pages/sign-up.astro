@@ -1,19 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import AuthForm from "../components/form/AuthForm";
+import SignUpForm from "../components/form/SignUpForm";
 import Titleh2 from "../components/layaout/Titleh2.astro";
 ---
 
 <Layout title="Crear Cuenta" >
-    <main class="flex flex-col gap-y-4 items-center justify-center pt-24 text-center h-screen" >
-        <!-- <Logo /> -->
-        <Titleh2 title="Crear Cuenta" />
+    <main class="flex flex-col gap-y-4 items-center justify-center pt-32 mb-10 text-center h-screen" >
+        <div>
+            <Titleh2 title="Crear Cuenta" />
+        </div>
 
         <div class="w-3/4 mt-5 min-w-[90%] sm:min-w-0 max-w-[600px] bg-darkGray rounded-lg py-6 px-8" >
-            <AuthForm client:visible />
+            <SignUpForm client:visible />
         </div>
         <div class="px-3">
             <p class="text-grayText text-sm" >Al crear una cuenta estas aceptando nuestros términos y condiciones, puedes revisarlos <a href="/terminos-y-condiciones" class="text-white" >aqui</a></p>
         </div>
     </main>
-</Layout>
+</Layout>../components/form/SignUpForm
