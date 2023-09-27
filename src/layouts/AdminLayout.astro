@@ -1,0 +1,57 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Navigation from '../components/admin/Navigation.astro';
+
+interface Props {
+	title: string | undefined;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<ViewTransitions />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+		<title>The Culture Clan Admin - {title}</title>
+	</head>
+	<body>
+		<Navigation title={title} />
+		<main class="container mx-auto w-3/4 grid grid-cols-1 mt-20">
+			<slot />
+		</main>
+		<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+	</body>
+</html>
+<style is:global>
+	html {
+		height: 100%;
+	}
+	
+	body {
+        background-color: #141414;
+        color: #fff;
+		font-family: 'Roboto', sans-serif;
+	}
+
+    .social-icon{
+		@apply stroke-[1.5] opacity-50 hover:opacity-100 w-9 h-9
+	}
+
+	::-webkit-scrollbar {
+		@apply w-2 bg-black;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-zinc-800 rounded;
+	}
+</style> 

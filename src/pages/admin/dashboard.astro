@@ -1,0 +1,20 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import AdminSideMenu from '../../components/admin/AdminSideMenu.astro'
+import StatsCard from "../../components/admin/StatsCard.astro";
+
+---
+
+<AdminLayout title="Dashboard" >
+    <div>
+        <p class="font-medium">Ultimos 7 dias</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10" >
+        <StatsCard name="Fondos" growth={20.18} stats={`$${245988.54}`} tableUrl="#" />
+        <StatsCard name="Ventas" growth={4.18} stats={`$${988.33}`} tableUrl="#" />
+        <StatsCard name="Gastos" growth={-4.18} stats={`$${87.74}`} tableUrl="#" />
+        <StatsCard name="Usuarios" stats={`${127}`} tableUrl="#" />
+        <StatsCard name="Productos" stats={`${24}`} tableUrl="#" />
+    </div>
+</AdminLayout>

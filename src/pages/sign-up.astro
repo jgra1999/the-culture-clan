@@ -1,26 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import InputForm from '../components/form/InputForm.astro'
-import InputPassword from "../components/form/InputPassword";
+import AuthForm from "../components/form/AuthForm";
+import Titleh2 from "../components/layaout/Titleh2.astro";
 ---
 
 <Layout title="Crear Cuenta" >
     <main class="flex flex-col gap-y-4 items-center justify-center pt-24 text-center h-screen" >
         <!-- <Logo /> -->
-        <h2 class="text-3xl md:text-5xl font-bold" >Crear Cuenta</h2>
+        <Titleh2 title="Crear Cuenta" />
 
-        <div class="flex flex-col gap-y-8 justify-center w-3/4 mt-5 divide-y-2 divide-mediumGray min-w-[90%] sm:min-w-0 max-w-[600px] bg-darkGray rounded-lg py-6 px-8" >
-            <form class="flex flex-col gap-y-4" >
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-8">
-                    <InputForm label="Nombre" type='text' />
-                    <InputForm label="Apellido" type='text' />
-                    <InputForm label="País" type='text' />
-                    <InputForm label="Ciudad" type='text' />
-                    <InputForm label="Correo Electrónico" type='email' />
-                    <InputPassword label="Contraseña" client:visible />
-                </div>
-                <button class="border-2 border-mediumGray py-3 px-4 text-center rounded-lg w-full opacity-50 hover:opacity-100" >Registrarse</button>
-            </form>
+        <div class="w-3/4 mt-5 min-w-[90%] sm:min-w-0 max-w-[600px] bg-darkGray rounded-lg py-6 px-8" >
+            <AuthForm client:visible />
         </div>
         <div class="px-3">
             <p class="text-grayText text-sm" >Al crear una cuenta estas aceptando nuestros términos y condiciones, puedes revisarlos <a href="/terminos-y-condiciones" class="text-white" >aqui</a></p>

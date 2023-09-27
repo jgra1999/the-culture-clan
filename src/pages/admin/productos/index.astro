@@ -1,0 +1,106 @@
+---
+import OpenEyeIcon from "../../../components/icons/OpenEyeIcon.astro";
+import PencilIcon from "../../../components/icons/PencilIcon.astro";
+import TrashIcon from "../../../components/icons/TrashIcon.astro";
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+---
+
+<AdminLayout title="Productos" >
+
+<div class="grid grid-cols-2 items-center mb-8">
+    <a href="/admin/productos/formulario" class="border border-white py-2 w-36 opacity-50 active:opacity-100 text-sm lg:hover:opacity-100 text-center rounded-lg">
+            Nuevo Producto
+    </a>
+
+    <div>
+        <input type="text" placeholder="Buscar" class="bg-transparent w-full border border-white py-2 px-3 text-sm opacity-50 focus:opacity-100 outline-none rounded-lg">
+    </div>
+</div>
+    
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-grayText uppercase bg-darkGray">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Producto
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tela
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Likes
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Precio
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Edit</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b border-mediumGray bg-[#131313]">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Apple MacBook Pro 17"
+                </th>
+                <td class="px-6 py-4">
+                    Silver
+                </td>
+                <td class="px-6 py-4">
+                    Laptop
+                </td>
+                <td class="px-6 py-4">
+                    $2999
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+            <tr class="border-b border-mediumGray bg-[#131313]">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Microsoft Surface Pro
+                </th>
+                <td class="px-6 py-4">
+                    White
+                </td>
+                <td class="px-6 py-4">
+                    Laptop PC
+                </td>
+                <td class="px-6 py-4">
+                    $1999
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+            <tr class="border-b border-mediumGray bg-[#131313]">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Magic Mouse 2
+                </th>
+                <td class="px-6 py-4">
+                    Black
+                </td>
+                <td class="px-6 py-4">
+                    Accessories
+                </td>
+                <td class="px-6 py-4">
+                    $99
+                </td>
+                <td class="px-6 py-4 flex gap-x-1 justify-end">
+                   <a href="#">
+                     <OpenEyeIcon />
+                   </a>
+                    <a href="#">
+                        <PencilIcon />
+                    </a>
+                    <a href="#">
+                        <TrashIcon />
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</AdminLayout>

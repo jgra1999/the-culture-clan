@@ -1,0 +1,28 @@
+---
+import InputForm from "../../../components/form/InputForm.astro";
+import InputPassword from "../../../components/form/InputPassword";
+import Titleh2 from "../../../components/layaout/Titleh2.astro";
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+---
+
+<AdminLayout title="Nuevo Producto" >
+    <main class="flex flex-col items-center">
+        <Titleh2 title="Crear Nuevo Producto" />
+        <div class="flex flex-col gap-y-8 justify-center mt-5 divide-y-2 divide-mediumGray w-[90%] sm:min-w-0 bg-darkGray rounded-lg py-6 px-8" >
+            <form class="flex flex-col gap-y-4" >
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-5 gap-x-8">
+                    <InputForm label="Nombre" type='text' />
+                    <InputForm label="Colección" type='text' />
+                    <InputForm label="Precio" type='number' />
+                    <InputForm label="slug" type='text' />
+                    <label class="flex flex-col text-left gap-y-2 text-grayText col-span-2">
+                        Descripcion
+                        <textarea rows="5" class="bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg resize-none" ></textarea>
+                    </label>
+                </div>
+                <button class="border-2 border-mediumGray py-3 px-4 text-center rounded-lg w-full opacity-50 hover:opacity-100 " >Agregar</button>
+            </form>
+        </div>
+    </main>
+</AdminLayout>
