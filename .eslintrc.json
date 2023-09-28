@@ -4,7 +4,7 @@
 		"browser": true,
 		"es2021": true
 	},
-	"extends": ["plugin:astro/recommended", "prettier"],
+	"extends": ["plugin:astro/recommended", "plugin:react/recommended", "prettier"],
 	"parserOptions": {
 		"sourceType": "module"
 	},
@@ -20,7 +20,7 @@
 			// Allows Astro components to be parsed.
 			"parser": "astro-eslint-parser",
 			// Enable this plugin
-			"plugins": ["astro"],
+			"plugins": ["astro", "react"],
 			"env": {
 				// Enables global variables available in Astro components.
 				"node": true,
