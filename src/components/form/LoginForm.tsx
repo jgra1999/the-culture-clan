@@ -4,8 +4,17 @@ import InputForm from './InputForm'
 import InputPassword from './InputPassword'
 
 export default function LoginForm() {
+	const handleSignInUser = async (e: React.FormEvent<HTMLFormElement>) => {
+		const { data, error } = await supabase.auth.signInWithPassword({
+			email: 'jgra11.2010@gmail.com',
+			password: '123456'
+		})
+	}
 	return (
-		<form className='flex flex-col justify-center gap-y-4'>
+		<form
+			onSubmit={(e) => handleSignInUser(e)}
+			className='flex flex-col justify-center gap-y-4'
+		>
 			<InputForm label='Correo Electrónico' type='email' />
 			<InputPassword label='Contraseña' />
 			<div className='flex justify-between mt-8'>

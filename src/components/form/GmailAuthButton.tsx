@@ -1,4 +1,11 @@
+import { supabase } from '../../supabase/client'
+
 export default function GmailAuthButton() {
+	const handleAuthButton = async () => {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+			provider: 'google'
+		})
+	}
 	return (
 		<>
 			<button className='flex items-start justify-center gap-x-1 border-2 border-mediumGray py-3 px-4 text-center rounded-lg mt-8 w-full opacity-50 hover:opacity-100'>
