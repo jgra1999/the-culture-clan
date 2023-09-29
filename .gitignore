@@ -13,8 +13,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# TODO: necesito enviar el .env al repositiorio de git por que ahi estan contenidas las claves de supabase
 # environment variables
-.env
+#.env
 .env.production
 
 # macOS-specific files
