@@ -5,6 +5,7 @@ import InputPassword from './InputPassword'
 
 export default function LoginForm() {
 	const handleSignInUser = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
 		const { data, error } = await supabase.auth.signInWithPassword({
 			email: 'jgra11.2010@gmail.com',
 			password: '123456'
