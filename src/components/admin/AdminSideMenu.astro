@@ -7,10 +7,10 @@ import MenuIcon from "../icons/MenuIcon.astro";
 import ShirtIcon from "../icons/ShirtIcon.astro";
 import SalesIcon from "../icons/SalesIcon.astro";
 import BillIcon from "../icons/BillIcon.astro";
-import LogoutIcon from "../icons/LogoutIcon.astro";
 import TCCIcon from "../icons/TCCIcon.astro";
 import UsersIcon from "../icons/UsersIcon.astro";
 import WalletIcon from "../icons/WalletIcon.astro";
+import SignOutButton from "./SignOutButton";
 
 
 ---
@@ -62,9 +62,6 @@ import WalletIcon from "../icons/WalletIcon.astro";
          </li>
       </ul>
       
-      <button class="flex gap-x-3 items-center absolute left-4 bottom-10">
-        <LogoutIcon />
-        Cerrar Sesión
-      </button>
+      <SignOutButton client:visible />
    </div>
 </div>
