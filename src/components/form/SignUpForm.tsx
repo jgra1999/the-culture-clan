@@ -4,28 +4,26 @@ import InputForm from './InputForm'
 import InputPassword from './InputPassword'
 
 export default function signUpForm() {
-	const handleSignUpUser = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
+	// const handleSignUpUser = async (e: React.FormEvent<HTMLFormElement>) => {
+	// 	e.preventDefault()
 
-		const { data, error } = await supabase.auth.signUp({
-			email: 'jgra11.2010@gmail.com',
-			password: '123456',
-			options: {
-				data: {
-					name: 'Jose',
-					last_name: 'Rojas',
-					country: 'Colombia',
-					ciudad: 'Bogotá'
-				}
-			}
-		})
-	}
+	// 	const { data, error } = await supabase.auth.signUp({
+	// 		email: 'jgra11.2010@gmail.com',
+	// 		password: '123456',
+	// 		options: {
+	// 			data: {
+	// 				full_name: 'Jose Rojas',
+	// 				email: 'jgra11.2010@gmail.com',
+	// 				city: 'Bogotá',
+	// 				country: 'Colombia'
+	// 			}
+	// 		}
+	// 	})
+
+	// }
 
 	return (
-		<form
-			className='flex flex-col justify-center gap-y-4'
-			onSubmit={(e) => handleSignUpUser(e)}
-		>
+		<form className='flex flex-col justify-center gap-y-4'>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-8'>
 				<InputForm label='Nombre' type='text' />
 				<InputForm label='Apellido' type='text' />
