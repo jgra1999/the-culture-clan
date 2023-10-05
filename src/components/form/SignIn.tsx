@@ -1,9 +1,21 @@
+import { useEffect } from 'react'
 import { supabase } from '../../supabase/client'
 import ButtonForm from './ButtonForm'
 import InputForm from './InputForm'
 import InputPassword from './InputPassword'
 
-export default function LoginForm() {
+export default function SignInForm() {
+	const handleUserSession = async () => {
+		const {
+			data: { session }
+		} = await supabase.auth.getSession()
+		console.log('🚀 ~ file: login.astro:9 ~ data:', session)
+	}
+
+	useEffect(() => {
+		handleUserSession()
+	}, [])
+
 	const handleSignInUser = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const { data, error } = await supabase.auth.signInWithPassword({

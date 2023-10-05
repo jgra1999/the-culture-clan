@@ -2,9 +2,21 @@ import { IconLogout } from '../icons/ReactIcons'
 import { supabase } from '../../supabase/client'
 
 export default function SignOutButton() {
+	const deleteAdminCookie = () => {
+		document.cookie = 'admin=true; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+	}
+
 	const handleSignOutUser = async () => {
 		const { error } = await supabase.auth.signOut()
-		console.log('🚀 ~ file: SignOutButton.tsx:7 ~ handleSignOutUser ~ error:', error)
+		if (error) {
+			console.log(
+				'🚀 ~ file: SignOutButton.tsx:8 ~ handleSignOutUser ~ error:',
+				error
+			)
+		} else {
+			deleteAdminCookie()
+			location.reload()
+		}
 	}
 	return (
 		<button
