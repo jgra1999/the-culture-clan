@@ -2,6 +2,12 @@
 import AdminLayout from "../../../layouts/AdminLayout.astro";
 import DataTable from "../../../components/admin/DataTable";
 
+const cookie = Astro.request.headers.get('cookie');
+
+if (cookie !== 'admin=true') {
+  return Astro.redirect('/admin/login');
+}
+
 const headers = ['Productos', 'Tela', 'Likes', 'Precio']
 ---
 

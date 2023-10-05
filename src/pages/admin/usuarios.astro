@@ -1,6 +1,11 @@
 ---
 import AdminLayout from "../../layouts/AdminLayout.astro";
 
+const cookie = Astro.request.headers.get('cookie');
+
+if (cookie !== 'admin=true') {
+  return Astro.redirect('/admin/login');
+}
 ---
 
 <AdminLayout title="Usuarios" >

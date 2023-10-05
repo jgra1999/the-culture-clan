@@ -1,0 +1,38 @@
+---
+import LoginForm from "../../components/admin/LoginForm";
+
+const cookie = Astro.request.headers.get('cookie');
+console.log("🚀 ~ file: dashboard.astro:6 ~ cookie:", cookie)
+
+if (cookie === 'admin=true') {
+  return Astro.redirect('/admin/dashboard');
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <title>The Culture Clan Admin - Login</title>
+</head>
+<body>
+    <div class="flex flex-col gap-y-4 items-center justify-center pt-20 text-center h-screen mb-10" >
+        <img src="/favicon.png" class="w-32">
+        <LoginForm client:visible />
+    </div>
+</body>
+</html>
+
+<style>
+    html {
+		height: 100%;
+	}
+
+    body {
+        background-color: #141414;
+        color: #fff;
+		font-family: 'Roboto', sans-serif;
+	}
+</style>
