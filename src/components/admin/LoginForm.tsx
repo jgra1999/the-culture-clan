@@ -3,7 +3,7 @@ import { simpleLoginSchema } from '../../utils/schemas'
 /* react hook form */
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
+import { z } from 'zod'
 
 /* components */
 import ButtonForm from '../form/ButtonForm'

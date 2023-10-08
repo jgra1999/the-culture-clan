@@ -3,7 +3,8 @@ import { SignUpSchema } from '../../utils/schemas'
 /* react hook forms */
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
+import { z } from 'zod'
+
 /* components  */
 import ButtonForm from './ButtonForm'
 import InputForm from './InputForm'
@@ -105,14 +106,20 @@ export default function signUpForm() {
 						/>
 					)}
 				</InputForm>
-				<InputPassword register={register} required>
+				<InputForm
+					label='Contraseña'
+					type='password'
+					register={register}
+					name='password'
+					required
+				>
 					{errors.password && (
 						<InputErrorMessage
 							message={errors.password?.message}
 							styles='truncate overflow-hidden text-ellipsis w-64'
 						/>
 					)}
-				</InputPassword>
+				</InputForm>
 			</div>
 			<ButtonForm text='Registrarse' />
 		</form>
