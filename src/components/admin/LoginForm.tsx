@@ -1,9 +1,29 @@
 import { supabase } from '../../supabase/client'
+import { simpleLoginSchema } from '../../utils/schemas'
+/* react hook form */
+import { useForm, type SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+
+/* components */
 import ButtonForm from '../form/ButtonForm'
-import InputForm from '../form/InputForm'
+import InputEmail from '../form/InputEmail'
 import InputPassword from '../form/InputPassword'
+import InputErrorMessage from '../form/InputErrorMessage'
+import { Toaster, toast } from 'sonner'
+import { IconCircleX } from '../icons/ReactIcons'
+
+type Schema = z.infer<typeof simpleLoginSchema>
 
 export default function LoginForm() {
+	const {
+		handleSubmit,
+		register,
+		formState: { errors }
+	} = useForm<Schema>({
+		resolver: zodResolver(simpleLoginSchema)
+	})
+
 	const setAdminCookie = () => {
 		var now = new Date()
 		var time = now.getTime()
@@ -12,29 +32,49 @@ export default function LoginForm() {
 		document.cookie = 'admin=true; expires=' + now.toUTCString() + '; path=/'
 	}
 
-	const handleLoginAdmin = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		const { data, error } = await supabase.auth.signInWithPassword({
-			email: 'jgra11.2010@gmail.com',
-			password: '123456'
-		})
+	const handleLoginAdmin: SubmitHandler<Schema> = async ({ email, password }) => {
+		if (email === 'jgra11.2010@gmail.com') {
+			const { data, error } = await supabase.auth.signInWithPassword({
+				email,
+				password
+			})
 
-		if (error) {
-			console.log(error.message)
+			if (error) {
+				toast.error('La contraseña es incorrecta')
+			} else {
+				setAdminCookie()
+				toast.success('Sesión iniciada correctamente')
+
+				setTimeout(() => {
+					location.reload()
+				}, 2000)
+			}
 		} else {
-			setAdminCookie()
-			location.reload()
+			toast('No eres administrador, chismoso', {
+				icon: <IconCircleX />
+			})
 		}
 	}
 
 	return (
-		<form
-			onSubmit={(e) => handleLoginAdmin(e)}
-			className='w-3/4 sm:min-w-0 max-w-[500px] bg-darkGray rounded-lg py-6 px-8 space-y-4'
-		>
-			<InputForm label='Email' type='email' />
-			<InputPassword label='Contraseña' />
-			<ButtonForm text='Iniciar Sesión' />
-		</form>
+		<>
+			<form
+				onSubmit={handleSubmit(handleLoginAdmin)}
+				className='min-w-[350px] w-3/4 sm:min-w-0 max-w-[500px] bg-darkGray rounded-lg py-6 px-8 space-y-8'
+			>
+				<InputEmail register={register} required>
+					{errors.email && <InputErrorMessage message={errors.email?.message} />}
+				</InputEmail>
+
+				<InputPassword register={register} required>
+					{errors.password && (
+						<InputErrorMessage message={errors.password?.message} />
+					)}
+				</InputPassword>
+
+				<ButtonForm text='Iniciar Sesión' />
+			</form>
+			<Toaster theme='dark' position='top-right' richColors />
+		</>
 	)
 }

@@ -1,0 +1,25 @@
+import * as z from 'zod'
+
+export const simpleLoginSchema = z.object({
+	email: z
+		.string()
+		.min(1, { message: 'El email es requerido' })
+		.email({ message: 'Ingresa un correo electrónico serio (ponte@serio.com)' }),
+	password: z
+		.string()
+		.min(6, { message: 'La contraseña debe contener al menos 6 caracteres' })
+})
+
+export const SignUpSchema = z.object({
+	name: z.string().min(2, { message: 'El nombre es requerido' }),
+	last_name: z.string().min(2, { message: 'El apellido es requerido' }),
+	country: z.string().min(2, { message: 'El país es requerido' }),
+	city: z.string().min(2, { message: 'La ciudad es requerida' }),
+	email: z
+		.string()
+		.min(1, { message: 'El email es requerido' })
+		.email({ message: 'Ingresa un correo electrónico serio (ponte@serio.com)' }),
+	password: z
+		.string()
+		.min(6, { message: 'La contraseña debe contener al menos 6 caracteres' })
+})
