@@ -1,6 +1,7 @@
 ---
 import LoginForm from "../../components/admin/LoginForm";
 
+
 const cookie = Astro.request.headers.get('cookie');
 
 if (cookie === 'admin=true') {
@@ -9,7 +10,7 @@ if (cookie === 'admin=true') {
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

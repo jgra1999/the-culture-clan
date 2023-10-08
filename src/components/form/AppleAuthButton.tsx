@@ -1,7 +1,7 @@
 import { supabase } from '../../supabase/client'
-import { IconBrandGoogle } from '../icons/ReactIcons'
+import { IconBrandApple } from '../icons/ReactIcons'
 
-export default function GmailAuthButton() {
+export default function AppleAuthButton() {
 	const handleAuthButton = async () => {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'google',
@@ -19,8 +19,8 @@ export default function GmailAuthButton() {
 				onClick={handleAuthButton}
 				className='flex items-start justify-center gap-x-1 border-2 border-mediumGray py-3 px-4 text-center rounded-lg mt-8 w-full opacity-50 hover:opacity-100'
 			>
-				<IconBrandGoogle />
-				<span>Gmail</span>
+				<IconBrandApple />
+				<span>Apple</span>
 			</button>
 		</>
 	)
