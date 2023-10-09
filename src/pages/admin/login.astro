@@ -1,6 +1,7 @@
 ---
-import LoginForm from "../../components/admin/LoginForm";
+export const prerender = false;
 
+import LoginForm from "../../components/admin/LoginForm";
 
 const cookie = Astro.request.headers.get('cookie');
 
