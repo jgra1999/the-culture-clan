@@ -4,11 +4,11 @@ import SignInForm from "../components/form/SignIn";
 import GmailAuthButton from "../components/form/GmailAuthButton";
 import AppleAuthButton from "../components/form/AppleAuthButton";
 
-const cookie = Astro.request.headers.get('cookie')
+// const cookie = Astro.request.headers.get('cookie')
 
-if (cookie) {
-  return Astro.redirect('/');
-}
+// if (cookie) {
+//   return Astro.redirect('/');
+// }
 ---
 
 <Layout title="Iniciar Sesión" >
