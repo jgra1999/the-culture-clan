@@ -33,7 +33,7 @@ export default function LoginForm() {
 	}
 
 	const handleLoginAdmin: SubmitHandler<Schema> = async ({ email, password }) => {
-		if (email === 'jgra11.2010@gmail.com') {
+		if (email === 'jgra11.2010@gmail.com' || email === 'jeremyruanliang@gmail.com') {
 			const { data, error } = await supabase.auth.signInWithPassword({
 				email,
 				password
@@ -50,7 +50,7 @@ export default function LoginForm() {
 				}, 2000)
 			}
 		} else {
-			toast('No eres administrador, chismoso', {
+			toast('No tienes permisos para acceder', {
 				icon: <IconCircleX />
 			})
 		}
