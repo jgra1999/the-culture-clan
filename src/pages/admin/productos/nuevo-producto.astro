@@ -1,4 +1,5 @@
 ---
+import GoBackButton from "../../../components/GoBackButton.astro";
 import ProductsForm from "../../../components/admin/forms/ProductsForm";
 import LeftArrowIcon from "../../../components/icons/LeftArrowIcon.astro";
 import Titleh2 from "../../../components/layaout/Titleh2.astro";
@@ -7,15 +8,11 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 ---
 
 <AdminLayout title="Nuevo Producto" >
-    <div class="absolute left-[-50px]">
-        <a href="/admin/productos">
-            <LeftArrowIcon />
-        </a>
-    </div>
+    <GoBackButton />
     <div class="flex flex-col items-center">
-        <Titleh2 title="Crear Nuevo Producto" />
+        <Titleh2 title='Crear Nuevo Producto'/>
         <div class="flex flex-col gap-y-8 justify-center my-5 divide-mediumGray w-[90%] sm:min-w-0 max-w-[600px] bg-darkGray rounded-lg py-6 px-8" >
-            <ProductsForm client:visible />
+            <ProductsForm client:visible edit={false}/>
         </div>
     </div>
 </AdminLayout>

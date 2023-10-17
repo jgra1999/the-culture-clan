@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+
+import GoBackButton from "../../../../components/GoBackButton.astro";
+import ProductsForm from "../../../../components/admin/forms/ProductsForm";
+import Titleh2 from "../../../../components/layaout/Titleh2.astro";
+import AdminLayout from "../../../../layouts/AdminLayout.astro";
+
+const {id} = Astro.params
+
+if(!id){
+     return Astro.redirect('/404')
+}
+
+---
+
+<AdminLayout title="Nuevo Producto" >
+    <GoBackButton />
+    <div class="flex flex-col items-center">
+        <Titleh2 title='Editar Producto'/>
+        <div class="flex flex-col gap-y-8 justify-center my-5 divide-mediumGray w-[90%] sm:min-w-0 max-w-[600px] bg-darkGray rounded-lg py-6 px-8" >
+            <ProductsForm client:visible edit={true} id={id}/>
+        </div>
+    </div>
+</AdminLayout>

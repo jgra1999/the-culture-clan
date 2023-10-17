@@ -1,26 +1,14 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../supabase/client'
 import { OpenEyeIcon, PencilIcon, TrashIcon } from '../icons/ReactIcons'
-
-interface Row {
-	collection: string
-	created_at: string
-	description: string
-	dislikes: number
-	id: string
-	image_url_1: string
-	image_url_2: string
-	likes: number
-	name: string
-	price: number
-	slug: string
-}
+import type { Database } from '../../types/supabase'
 
 export default function DataTable({ headers }: { headers: string[] }) {
 	const [products, setProducts] = useState<any>([])
 	const getData = async () => {
-		const { data, error } = await supabase.from('products').select('*')
-		console.log('🚀 ~ file: DataTable.tsx:9 ~ getData ~ data:', data)
+		const { data, error } = await supabase
+			.from('products')
+			.select('id, name, collection, image_url_1, price, likes, slug')
 
 		setProducts(data)
 	}
@@ -30,7 +18,7 @@ export default function DataTable({ headers }: { headers: string[] }) {
 	}, [])
 
 	return (
-		<table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+		<table className='w-full text-sm text-left text-gray-500'>
 			<thead className='text-xs text-grayText uppercase bg-darkGray'>
 				<tr>
 					{headers.map((header, index) => (
@@ -44,7 +32,7 @@ export default function DataTable({ headers }: { headers: string[] }) {
 				</tr>
 			</thead>
 			<tbody>
-				{products.map((product: Row) => (
+				{products.map((product: Database['public']['Tables']['products']['Row']) => (
 					<tr key={product.id} className='border-b border-mediumGray bg-[#131313]'>
 						<th
 							scope='row'
@@ -58,10 +46,10 @@ export default function DataTable({ headers }: { headers: string[] }) {
 						<td className='px-6 py-4'>${product.price}</td>
 						<td className='px-6 py-4'>
 							<div className='flex gap-x-1 justify-end'>
-								<a href='#'>
+								<a href={`/admin/productos/ver-producto/${product.id}`}>
 									<OpenEyeIcon />
 								</a>
-								<a href='#'>
+								<a href={`/admin/productos/editar-producto/${product.id}`}>
 									<PencilIcon />
 								</a>
 								<a href='#'>

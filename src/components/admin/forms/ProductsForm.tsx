@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { supabase } from '../../../supabase/client'
 import { ProductsSchema } from '../../../utils/schemas'
+import { slugify } from '../../../utils/slugify'
 /* react hook forms */
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,30 +9,48 @@ import { z } from 'zod'
 import ButtonForm from '../../form/ButtonForm'
 import InputErrorMessage from '../../form/InputErrorMessage'
 import { Toaster, toast } from 'sonner'
-import { IconCircleX } from '../../icons/ReactIcons'
+import { useEffect, useState } from 'react'
+import type { Database } from '../../../types/supabase'
+import ErrorToast from '../../toasts/ErrorToast'
+import SuccessToast from '../../toasts/SuccessToast'
 
 type Schema = z.infer<typeof ProductsSchema>
 
-export default function ProductsForm() {
-	// const [slug, setSlug] = useState('')
+type Props = {
+	edit: boolean
+	id?: string
+}
+
+export default function ProductsForm({ edit, id }: Props) {
+	const [product, setProduct] =
+		useState<Database['public']['Tables']['products']['Row']>()
 
 	const {
 		handleSubmit,
 		register,
 		reset,
+		setValue,
 		watch,
 		formState: { errors }
 	} = useForm<Schema>({
 		resolver: zodResolver(ProductsSchema)
 	})
 
-	const slugify = (text: string) => {
-		return text
-			.toString()
-			.toLowerCase()
-			.trim()
-			.replace(/\s+/g, '-')
-			.replace(/[^\w-]+/g, '')
+	if (edit) {
+		const getProductData = async () => {
+			const { data, error } = await supabase
+				.from('products')
+				.select('*')
+				.eq('id', id)
+
+			if (error) console.log(error)
+
+			if (data) setProduct(data[0])
+		}
+
+		useEffect(() => {
+			getProductData()
+		}, [])
 	}
 
 	const handleFormSubmit: SubmitHandler<Schema> = async ({
@@ -43,23 +61,43 @@ export default function ProductsForm() {
 		image_url_2,
 		description
 	}) => {
-		const { data, error } = await supabase.from('products').insert({
-			collection,
-			name,
-			price: +price,
-			image_url_1,
-			image_url_2,
-			description,
-			slug: slugify(name)
-		})
+		if (edit) {
+			const { data, error } = await supabase
+				.from('products')
+				.update({
+					collection,
+					name,
+					price: +price,
+					image_url_1,
+					image_url_2,
+					description,
+					slug: slugify(name)
+				})
+				.eq('id', id)
 
-		if (error) {
-			toast(`${error.message}`, {
-				icon: <IconCircleX />
-			})
+			console.log(data)
+
+			if (error) {
+				toast(<ErrorToast message={error.message} />)
+			} else {
+				toast(<SuccessToast message='Producto editado' />)
+			}
 		} else {
-			toast.success('Producto agregado exitosamente')
-			reset()
+			const { data, error } = await supabase.from('products').insert({
+				collection,
+				name,
+				price: +price,
+				image_url_1,
+				image_url_2,
+				description,
+				slug: slugify(name)
+			})
+			if (error) {
+				toast(<ErrorToast message={error.message} />)
+			} else {
+				toast(<SuccessToast message='Producto agregado' />)
+				reset()
+			}
 		}
 	}
 
@@ -81,8 +119,9 @@ export default function ProductsForm() {
 						</label>
 						<input
 							type='text'
+							placeholder={product ? product.image_url_1 : ''}
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
-							{...register('image_url_1', { required: true })}
+							{...register('image_url_1')}
 						/>
 						{errors.image_url_1 && (
 							<InputErrorMessage message={errors.image_url_1?.message} />
@@ -99,8 +138,9 @@ export default function ProductsForm() {
 						</label>
 						<input
 							type='text'
+							placeholder={product ? product.image_url_2 : ''}
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
-							{...register('image_url_2', { required: true })}
+							{...register('image_url_2')}
 						/>
 						{errors.image_url_2 && (
 							<InputErrorMessage message={errors.image_url_2?.message} />
@@ -112,8 +152,9 @@ export default function ProductsForm() {
 						</label>
 						<input
 							type='text'
+							placeholder={product ? product.name : ''}
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
-							{...register('name', { required: true })}
+							{...register('name')}
 						/>
 						{errors.name && <InputErrorMessage message={errors.name?.message} />}
 					</div>
@@ -124,7 +165,7 @@ export default function ProductsForm() {
 						<select
 							id='collection'
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2.5 px-3 rounded-lg'
-							{...register('collection', { required: true })}
+							{...register('collection')}
 						>
 							<option value=''>Seleccionar</option>
 							<option value='New Culture'>New Culture</option>
@@ -141,9 +182,10 @@ export default function ProductsForm() {
 							Precio
 						</label>
 						<input
-							type='number'
+							type='text'
+							placeholder={product ? product.price.toString() : ''}
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
-							{...register('price', { required: true })}
+							{...register('price')}
 						/>
 						{errors.price && <InputErrorMessage message={errors.price?.message} />}
 					</div>
@@ -153,6 +195,7 @@ export default function ProductsForm() {
 						</label>
 						<input
 							type='text'
+							placeholder={product ? product.slug : ''}
 							value={watch('name') ? slugify(watch('name')) : ''}
 							readOnly
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
@@ -164,17 +207,33 @@ export default function ProductsForm() {
 						</label>
 						<textarea
 							rows={5}
+							placeholder={product ? product.description : ''}
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg resize-none'
-							{...register('description', { required: true })}
+							{...register('description')}
 						></textarea>
 						{errors.description && (
 							<InputErrorMessage message={errors.description?.message} />
 						)}
 					</div>
 				</div>
-				<ButtonForm text='Agregar Producto' />
+				<ButtonForm text={edit ? 'Editar Producto' : 'Agregar Producto'} />
+				<Toaster theme='dark' position='top-right' />
 			</form>
-			<Toaster theme='dark' position='top-right' richColors />
+			{edit && (
+				<button
+					className='text-grayText hover:text-white'
+					onClick={() => {
+						setValue('image_url_1', product?.image_url_1)
+						setValue('image_url_2', product?.image_url_2)
+						setValue('name', product?.name)
+						setValue('collection', product?.collection)
+						setValue('price', product?.price)
+						setValue('description', product?.description)
+					}}
+				>
+					Insertar valores actuales
+				</button>
+			)}
 		</>
 	)
 }

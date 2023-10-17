@@ -1,0 +1,20 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../../layouts/AdminLayout.astro";
+import ProductDesc from "../../../../components/admin/desc/ProductDesc"
+import GoBackButton from "../../../../components/GoBackButton.astro";
+
+const {id} = Astro.params
+
+if(!id){
+     return Astro.redirect('/404')
+}
+
+---
+
+<AdminLayout title="Ver producto" >
+     <GoBackButton />
+     <div class="mx-auto my-5 w-[90%] sm:min-w-0 max-w-[800px] bg-darkGray rounded-lg py-6 px-8">
+          <ProductDesc id={id} client:visible />
+     </div>
+</AdminLayout>
