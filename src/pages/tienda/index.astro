@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro"
 
 import FiltersBar from "../../components/FiltersBar.astro";
-import ItemsList from '../../components/shop/ItemsList.astro'
+import ItemsList from "../../components/shop/ItemsList";
 
 ---
 
@@ -15,6 +15,6 @@ import ItemsList from '../../components/shop/ItemsList.astro'
             <FiltersBar />
         </div>
         
-        <ItemsList />
+        <ItemsList client:visible />
     </main>
 </Layout>
