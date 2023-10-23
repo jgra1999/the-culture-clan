@@ -2,7 +2,7 @@ import { IconThumbUp } from '../icons/ReactIcons'
 
 type Props = {
 	id: string
-	image_url_1: string
+	image_url_2: string
 	name: string
 	price: number
 	likes: number
@@ -11,7 +11,7 @@ type Props = {
 
 export default function ItemCard({
 	id,
-	image_url_1,
+	image_url_2,
 	name,
 	price,
 	likes,
@@ -23,7 +23,7 @@ export default function ItemCard({
 			className='flex flex-col gap-y-4 hover:scale-105 transition-all'
 		>
 			<img
-				src={image_url_1}
+				src={image_url_2}
 				alt={`Franela - ${name}`}
 				className='aspect-[384/576] h-full w-full rounded-lg'
 				style={{ viewTransitionName: `book-${id}` }}
@@ -34,7 +34,7 @@ export default function ItemCard({
 					<span className='text-xl'>${price}.00</span>
 				</div>
 				<div className='flex gap-x-1 items-start'>
-					<IconThumbUp />
+					<IconThumbUp fill='none' />
 					{likes}
 				</div>
 			</div>

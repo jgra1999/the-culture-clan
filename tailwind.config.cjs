@@ -11,7 +11,7 @@ module.exports = {
 				hero3:
 					"url('https://res.cloudinary.com/hothra/image/upload/v1693365898/the%20culture%20clan/urban_culture_mbgxha.png')",
 				hero4:
-					"url('https://res.cloudinary.com/hothra/image/upload/v1693365897/the%20culture%20clan/rock_culture_fzqvdm.jpg')",
+					"url('https://res.cloudinary.com/df8nnzf8t/image/upload/v1698070843/Coleccion%20imagen/new-culture_roxoyu.png')",
 				space404:
 					"url('https://res.cloudinary.com/hothra/image/upload/v1695154549/the%20culture%20clan/404-bg_utmkeu.jpg')"
 			},

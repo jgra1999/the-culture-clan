@@ -1,6 +1,6 @@
 import { IconCircleX } from '../icons/ReactIcons'
 
-export default function ErrorToast({ message }: { message: string }) {
+export default function ErrorToast({ message }: { message: string | undefined }) {
 	return (
 		<div className='flex items-center gap-1'>
 			<IconCircleX />

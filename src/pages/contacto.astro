@@ -1,11 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+/* components */
 import LocationIcon from "../components/icons/LocationIcon.astro";
+import InstagramIcon from "../components/icons/InstagramIcon.astro";
 import MailIcon from "../components/icons/MailIcon.astro";
 import PhoneIcon from "../components/icons/PhoneIcon.astro";
-import Layout from "../layouts/Layout.astro";
-import InstagramIcon from "../components/icons/InstagramIcon.astro";
 
+import QrInstagram from '../assets/Qr-Instagram.png'
+import QrWhatsapp from '../assets/Qr-whatsapp.png'
 ---
 
 <Layout title="Contacto" >
@@ -38,13 +41,15 @@ import InstagramIcon from "../components/icons/InstagramIcon.astro";
             </ul>
         </div>
             <div class="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-5 lg:gap-10 bg-darkGray w-full h-screen lg:pt-20" >
-            <!-- <Image
-              src='https://res.cloudinary.com/hothra/image/upload/v1694557254/the%20culture%20clan/ws-qr_ijv7zx.png'
-              alt='WhatsApp QR imagen'
+            <Image
+              src={QrInstagram}
+              alt='Instagram QR imagen'
               width={294}
-              height={350} /> -->
-            <img src="https://res.cloudinary.com/hothra/image/upload/v1694557254/the%20culture%20clan/ws-qr_ijv7zx.png" alt="" class="h-[300px] md:h-[350px] aspect-[252/300] md:aspect-[294/350]">
-            <img src="https://res.cloudinary.com/hothra/image/upload/v1694557254/the%20culture%20clan/ws-qr_ijv7zx.png" alt="" class="h-[300px] md:h-[350px] aspect-[252/300] md:aspect-[294/350]">
+              height={350}
+            quality={100}
+              />
+            <Image src={QrWhatsapp} width={294} alt='WhatsApp QR imagen'
+            height={350} />
         </div>
     </main>
 </Layout>

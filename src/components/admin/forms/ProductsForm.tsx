@@ -1,3 +1,5 @@
+import type { Database } from '../../../types/supabase'
+import { useEffect, useState } from 'react'
 import { supabase } from '../../../supabase/client'
 import { ProductsSchema } from '../../../utils/schemas'
 import { slugify } from '../../../utils/slugify'
@@ -9,8 +11,6 @@ import { z } from 'zod'
 import ButtonForm from '../../form/ButtonForm'
 import InputErrorMessage from '../../form/InputErrorMessage'
 import { Toaster, toast } from 'sonner'
-import { useEffect, useState } from 'react'
-import type { Database } from '../../../types/supabase'
 import ErrorToast from '../../toasts/ErrorToast'
 import SuccessToast from '../../toasts/SuccessToast'
 
@@ -62,24 +62,23 @@ export default function ProductsForm({ edit, id }: Props) {
 		description
 	}) => {
 		if (edit) {
-			const { data, error } = await supabase
-				.from('products')
-				.update({
-					collection,
-					name,
-					price: +price,
-					image_url_1,
-					image_url_2,
-					description,
-					slug: slugify(name)
-				})
-				.eq('id', id)
+			try {
+				const { data, error } = await supabase
+					.from('products')
+					.update({
+						collection,
+						name,
+						price: +price,
+						image_url_1,
+						image_url_2,
+						description,
+						slug: slugify(name)
+					})
+					.eq('id', id)
 
-			console.log(data)
-
-			if (error) {
-				toast(<ErrorToast message={error.message} />)
-			} else {
+				toast(<ErrorToast message={error?.message} />)
+			} catch (error) {
+			} finally {
 				toast(<SuccessToast message='Producto editado' />)
 			}
 		} else {
@@ -217,7 +216,6 @@ export default function ProductsForm({ edit, id }: Props) {
 					</div>
 				</div>
 				<ButtonForm text={edit ? 'Editar Producto' : 'Agregar Producto'} />
-				<Toaster theme='dark' position='top-right' />
 			</form>
 			{edit && (
 				<button
@@ -227,13 +225,14 @@ export default function ProductsForm({ edit, id }: Props) {
 						setValue('image_url_2', product?.image_url_2)
 						setValue('name', product?.name)
 						setValue('collection', product?.collection)
-						setValue('price', product?.price)
+						setValue('price', product?.price.toString())
 						setValue('description', product?.description)
 					}}
 				>
 					Insertar valores actuales
 				</button>
 			)}
+			<Toaster theme='dark' position='top-right' />
 		</>
 	)
 }

@@ -27,12 +27,13 @@ export default function LoginForm() {
 	const setAdminCookie = () => {
 		var now = new Date()
 		var time = now.getTime()
-		var expireTime = time + 5 * 24 * 60 * 60 * 1000
+		var expireTime = time + 19 * 24 * 60 * 60 * 1000
 		now.setTime(expireTime)
 		document.cookie = 'admin=true; expires=' + now.toUTCString() + '; path=/'
 	}
 
 	const handleLoginAdmin: SubmitHandler<Schema> = async ({ email, password }) => {
+		/* TODO: adaptar esto para colocar el resto de los correos de los admins */
 		if (email === 'jgra11.2010@gmail.com' || email === 'jeremyruanliang@gmail.com') {
 			const { data, error } = await supabase.auth.signInWithPassword({
 				email,
