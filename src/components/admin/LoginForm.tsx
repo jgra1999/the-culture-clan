@@ -11,7 +11,8 @@ import InputEmail from '../form/InputEmail'
 import InputPassword from '../form/InputPassword'
 import InputErrorMessage from '../form/InputErrorMessage'
 import { Toaster, toast } from 'sonner'
-import { IconCircleX } from '../icons/ReactIcons'
+import ErrorToast from '../toasts/ErrorToast'
+import SuccessToast from '../toasts/SuccessToast'
 
 type Schema = z.infer<typeof simpleLoginSchema>
 
@@ -41,19 +42,17 @@ export default function LoginForm() {
 			})
 
 			if (error) {
-				toast.error('La contraseña es incorrecta')
+				toast.error(<ErrorToast message='Contraseña incorrecta' />)
 			} else {
 				setAdminCookie()
-				toast.success('Sesión iniciada correctamente')
+				toast.success(<SuccessToast message='Sesión iniciada con éxito ' />)
 
 				setTimeout(() => {
 					location.reload()
 				}, 2000)
 			}
 		} else {
-			toast('No tienes permisos para acceder', {
-				icon: <IconCircleX />
-			})
+			toast(<ErrorToast message='No tienes permisos para ingresar' />)
 		}
 	}
 
@@ -75,7 +74,7 @@ export default function LoginForm() {
 
 				<ButtonForm text='Iniciar Sesión' />
 			</form>
-			<Toaster theme='dark' position='top-right' richColors />
+			<Toaster theme='dark' position='top-right' />
 		</>
 	)
 }
