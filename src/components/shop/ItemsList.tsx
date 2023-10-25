@@ -108,7 +108,7 @@ export default function ItemsList() {
 								<button
 									onClick={handleCollectionFilter}
 									className='block px-4 py-2 opacity-50 hover:opacity-100'
-									value='Pop Urban'
+									value='Urban Culture'
 								>
 									Urban Culture
 								</button>
@@ -118,7 +118,7 @@ export default function ItemsList() {
 				</div>
 			</div>
 			<section className='mt-10 md:mt-20 mb-10 relative'>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10'>
 					{items?.map((item: Database['public']['Tables']['products']['Row']) => (
 						<ItemCard
 							key={item.id}

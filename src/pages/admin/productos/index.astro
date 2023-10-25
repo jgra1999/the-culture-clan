@@ -15,18 +15,18 @@ const headers = ['Productos', 'Colección', 'Likes', 'Precio']
 
 <AdminLayout title="Productos" >
 
-<div class="grid grid-cols-2 items-center mb-8">
-    <a href="/admin/productos/nuevo-producto" class="border border-white py-2 w-36 opacity-50 active:opacity-100 text-sm lg:hover:opacity-100 text-center rounded-lg">
-            Nuevo Producto
-    </a>
+    <div class="grid grid-cols-2 items-center">
+        <a href="/admin/productos/nuevo-producto" class="border border-white py-2 w-36 opacity-50 active:opacity-100 text-sm lg:hover:opacity-100 text-center rounded-lg">
+                Nuevo Producto
+        </a>
 
-    <div>
-        <input type="text" placeholder="Buscar" class="bg-transparent w-full border border-white py-2 px-3 text-sm opacity-50 focus:opacity-100 outline-none rounded-lg">
+        <div>
+            <input type="text" placeholder="Buscar" class="bg-transparent w-full border border-white py-2 px-3 text-sm opacity-50 focus:opacity-100 outline-none rounded-lg">
+        </div>
     </div>
-</div>
-    
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <DataTable headers={headers} client:visible />
-</div>
+        
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-8">
+        <DataTable headers={headers} client:load />
+    </div>
 
 </AdminLayout>

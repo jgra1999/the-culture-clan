@@ -3,6 +3,7 @@ import SideMenuOptions from "../layaout/SideMenuOptions.astro";
 
 /* Icons */
 import HomeIcon from "../icons/HomeIcon.astro";
+import IconArrowBackUp from "../icons/IconArrowBackUp.astro";
 import MenuIcon from "../icons/MenuIcon.astro";
 import ShirtIcon from "../icons/ShirtIcon.astro";
 import SalesIcon from "../icons/SalesIcon.astro";
@@ -62,6 +63,13 @@ import SignOutButton from "./SignOutButton";
          </li>
       </ul>
       
-      <SignOutButton client:visible />
+     <div class='flex flex-col gap-y-4 absolute left-4 bottom-14'>
+        <a href="/" class='flex gap-x-3 items-center'>
+            <IconArrowBackUp />
+            Home
+         </a>
+
+         <SignOutButton client:visible />
+     </div>
    </div>
 </div>

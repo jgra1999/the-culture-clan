@@ -19,10 +19,7 @@ export default function SignOutButton() {
 		}
 	}
 	return (
-		<button
-			onClick={handleSignOutUser}
-			className='flex gap-x-3 items-center absolute left-4 bottom-10'
-		>
+		<button onClick={handleSignOutUser} className='flex gap-x-3 items-center'>
 			<IconLogout />
 			Cerrar Sesión
 		</button>

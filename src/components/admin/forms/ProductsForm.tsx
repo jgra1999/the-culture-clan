@@ -18,7 +18,7 @@ type Schema = z.infer<typeof ProductsSchema>
 
 type Props = {
 	edit: boolean
-	id?: string
+	id: string
 }
 
 export default function ProductsForm({ edit, id }: Props) {
@@ -62,25 +62,21 @@ export default function ProductsForm({ edit, id }: Props) {
 		description
 	}) => {
 		if (edit) {
-			try {
-				const { data, error } = await supabase
-					.from('products')
-					.update({
-						collection,
-						name,
-						price: +price,
-						image_url_1,
-						image_url_2,
-						description,
-						slug: slugify(name)
-					})
-					.eq('id', id)
+			const { data, error } = await supabase
+				.from('products')
+				.update({
+					collection,
+					name,
+					price: +price,
+					image_url_1,
+					image_url_2,
+					description,
+					slug: slugify(name)
+				})
+				.eq('id', id)
 
-				toast(<ErrorToast message={error?.message} />)
-			} catch (error) {
-			} finally {
-				toast(<SuccessToast message='Producto editado' />)
-			}
+			if (error) toast(<ErrorToast message={error?.message} />)
+			toast(<SuccessToast message='Producto editado' />)
 		} else {
 			const { data, error } = await supabase.from('products').insert({
 				collection,
@@ -102,6 +98,21 @@ export default function ProductsForm({ edit, id }: Props) {
 
 	return (
 		<>
+			{edit && (
+				<button
+					className='text-grayText hover:text-white'
+					onClick={() => {
+						setValue('image_url_1', product?.image_url_1)
+						setValue('image_url_2', product?.image_url_2)
+						setValue('name', product?.name)
+						setValue('collection', product?.collection)
+						setValue('price', product?.price.toString())
+						setValue('description', product?.description)
+					}}
+				>
+					Insertar valores actuales
+				</button>
+			)}
 			<form
 				onSubmit={handleSubmit(handleFormSubmit)}
 				className='flex flex-col gap-y-8'
@@ -217,21 +228,6 @@ export default function ProductsForm({ edit, id }: Props) {
 				</div>
 				<ButtonForm text={edit ? 'Editar Producto' : 'Agregar Producto'} />
 			</form>
-			{edit && (
-				<button
-					className='text-grayText hover:text-white'
-					onClick={() => {
-						setValue('image_url_1', product?.image_url_1)
-						setValue('image_url_2', product?.image_url_2)
-						setValue('name', product?.name)
-						setValue('collection', product?.collection)
-						setValue('price', product?.price.toString())
-						setValue('description', product?.description)
-					}}
-				>
-					Insertar valores actuales
-				</button>
-			)}
 			<Toaster theme='dark' position='top-right' />
 		</>
 	)
