@@ -219,10 +219,10 @@ export const IconChevronDown = () => (
 	</svg>
 )
 
-export const IconChevronRight = () => (
+export const IconChevronRight = ({ styles = 'w-6 h-6' }) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
-		className='w-6 h-6'
+		className={styles}
 		viewBox='0 0 24 24'
 		strokeWidth={2}
 		stroke='currentColor'
@@ -235,10 +235,10 @@ export const IconChevronRight = () => (
 	</svg>
 )
 
-export const IconChevronLeft = () => (
+export const IconChevronLeft = ({ styles = 'w-6 h-6' }) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
-		className='w-6 h-6'
+		className={styles}
 		viewBox='0 0 24 24'
 		strokeWidth={2}
 		stroke='currentColor'
