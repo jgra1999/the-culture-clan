@@ -1,18 +1,33 @@
 import { useState } from 'react'
 import { IconThumbDown } from '../icons/ReactIcons'
+import { supabase } from '../../supabase/client'
 
-export default function DisLikeButton() {
+type Props = {
+	currentDislikes: number | undefined
+	id: string
+}
+
+export default function DisLikeButton({ currentDislikes, id }: Props) {
 	const [disabledDisLikeButton, setDisabledDisLikeButton] = useState(false)
 
-	const handleDisLikesButton = () => {
-		setDisabledDisLikeButton(true)
+	const handleDisLikesButton = async () => {
+		if (currentDislikes) {
+			const { data, error } = await supabase
+				.from('products')
+				.update({ dislikes: currentDislikes + 1 })
+				.eq('id', id)
+
+			if (error) console.log(error)
+
+			setDisabledDisLikeButton(true)
+		}
 	}
 
 	return (
 		<button
 			onClick={handleDisLikesButton}
 			disabled={disabledDisLikeButton}
-			className={`pl-2 hover:opacity-100 ${
+			className={`hover:opacity-100 ${
 				disabledDisLikeButton
 					? 'cursor-default opacity-100'
 					: 'cursor-pointer opacity-50'

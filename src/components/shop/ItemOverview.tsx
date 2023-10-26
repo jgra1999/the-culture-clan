@@ -10,6 +10,7 @@ import SizeOption from './SizeOption'
 import Loader from '../Loader'
 import LikeButton from './LikeButton'
 import DisLikeButton from './DisLikeButton'
+import AddWishListButton from './AddWishListButton'
 
 export default function ItemOverview({ slug }: { slug: string }) {
 	const [item, setItem] = useState<Database['public']['Tables']['products']['Row']>()
@@ -70,7 +71,7 @@ export default function ItemOverview({ slug }: { slug: string }) {
 				{loading ? (
 					''
 				) : (
-					<div className='flex flex-col gap-y-4 md:gap-y-10 '>
+					<div className='flex flex-col gap-y-10 md:gap-y-10 '>
 						<div className='space-y-4'>
 							<h2 className='text-2xl lg:text-4xl xl:text-5xl font-medium'>
 								{item?.name}
@@ -94,23 +95,27 @@ export default function ItemOverview({ slug }: { slug: string }) {
 							</div>
 						</div>
 
-						{/* Boton y Likes */}
-						<div className='flex'>
+						{/* Botón y Likes */}
+						<div className='flex flex-col sm:flex-row sm:items-center gap-5'>
 							<QRModal>
 								<IconBrandWhatsapp />
 							</QRModal>
 
 							<a
 								href='https://wa.link/phwrwn'
-								className='flex items-center justify-center gap-x-1 border-2 border-white py-3 px-4 rounded text-sm md:text-base opacity-50 hover:opacity-100 min-w-[70%] lg:hidden'
+								className='flex items-center justify-center gap-x-1 border-2 border-white py-3 px-4 rounded text-sm md:text-base opacity-50 hover:opacity-100 max-w-[300px] lg:hidden'
 							>
 								<IconBrandWhatsapp />
 								Consultar Disponibilidad
 							</a>
 
-							<div className='flex items-center gap-x-2 divide-x-2 divide-mediumGray py-2 px-4'>
+							<div className='flex items-end gap-x-4 divide-mediumGray'>
+								<AddWishListButton />
 								<LikeButton currentLikes={item?.likes} id={item ? item?.id : ''} />
-								<DisLikeButton />
+								<DisLikeButton
+									currentDislikes={item?.dislikes}
+									id={item ? item?.id : ''}
+								/>
 							</div>
 						</div>
 
