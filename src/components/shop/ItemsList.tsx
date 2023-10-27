@@ -14,7 +14,10 @@ export default function ItemsList() {
 		Database['public']['Tables']['products']['Row'][] | null
 	>()
 	const [loading, setLoading] = useState(false)
+
+	/* filters */
 	const [collection, setCollection] = useState('')
+	const [orderBy, setOrderBy] = useState('created_at')
 	/* pagination */
 	const [page, setPage] = useState(1)
 	const [from, setFrom] = useState(0)
@@ -29,7 +32,7 @@ export default function ItemsList() {
 
 			if (collection) query = query.eq('collection', collection)
 
-			const { data, error } = await query
+			const { data, error } = await query.order(orderBy, { ascending: false })
 			setItems(data)
 		} catch (error) {
 			console.log(error)
@@ -82,40 +85,40 @@ export default function ItemsList() {
 
 	useEffect(() => {
 		fetchItems()
-	}, [collection, from])
+	}, [collection, from, orderBy])
 
 	return (
 		<>
 			<div className='flex justify-between items-center mt-5 '>
 				<div className='text-lightGray flex justify-between sm:justify-normal items-center w-full text-sm font-medium gap-x-4'>
-					<select name='' id='' className='bg-transparent'>
-						<option className='bg-darkGray hover:bg-mediumGray' value=''>
-							Más Recientes
-						</option>
-						<option className='bg-darkGray outline-none' value=''>
-							Más Populares
-						</option>
-						<option className='bg-darkGray outline-none' value=''>
-							Más Vendidas
-						</option>
-					</select>
-					<select name='' id='' className='bg-transparent'>
-						<option value=''>Precio</option>
-					</select>
+					<button
+						onClick={() => setOrderBy('created_at')}
+						className={orderBy === 'created_at' ? 'opacity-100' : 'opacity-50'}
+					>
+						Más Recientes
+					</button>
+					<button
+						onClick={() => setOrderBy('likes')}
+						className={orderBy === 'likes' ? 'opacity-100' : 'opacity-50'}
+					>
+						Más Populares
+					</button>
+					{/* Este componente presenta fallas, hacerlo desde cero y ver video de midudev sobre la animacion del hidden en css */}
 					<div>
 						<button
-							id='dropdownNavbarLink'
-							data-dropdown-toggle='dropdownNavbar'
+							id='dropdownToggleButton'
+							data-dropdown-toggle='dropdownToggle'
+							type='button'
 							className='flex items-center justify-between w-full py-2 pl-3 pr-4 opacity-60 hover:opacity-100'
 						>
 							Colección
 							<IconChevronDown />
 						</button>
 						<div
-							id='dropdownNavbar'
+							id='dropdownToggle'
 							className='z-10 hidden bg-darkGray divide-lightGray rounded-lg shadow w-44'
 						>
-							<ul className='py-2 text-sm' aria-labelledby='dropdownLargeButton'>
+							<ul className='py-2 text-sm' aria-labelledby='dropdownToggleButton'>
 								<li>
 									<button
 										onClick={handleCollectionFilter}
