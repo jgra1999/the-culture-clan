@@ -1,7 +1,8 @@
 ---
+import LoginIcon from '../icons/LoginIcon.astro';
 import Logo from '../icons/Logo.astro'
-import ShoppingBagIcon from '../icons/ShoppingBagIcon.astro'
 import TCCIcon from '../icons/TCCIcon.astro';
+import Wishlist from '../shop/Wishlist';
 import SideMenu from './SideMenu.astro';
 ---
 
@@ -12,18 +13,23 @@ import SideMenu from './SideMenu.astro';
         <a href="/">
             <TCCIcon />
         </a>
-        <ShoppingBagIcon />
+        <Wishlist client:idle />
     </div>
 
     <!-- Desktop navbar -->
-    <div class='hidden lg:flex flex-col px-5 p-3'>
+    <div class='hidden lg:flex flex-col relative'>
         <!-- top bar -->
-        <div class='bg-transparent flex gap-x-8 justify-end items-end'>
-            <a href="/sign-in" class='text-xs opacity-50 hover:opacity-100 text-white'>Iniciar Sesión</a>
-            <ShoppingBagIcon />
+        <div class='bg-black opacity-30 py-5'>
+        </div>
+        <div class="flex gap-x-8 justify-end items-end absolute top-2.5 right-5">
+            <a href="/sign-in" class='flex items-center gap-x-1 opacity-75 hover:opacity-100'>
+                <LoginIcon styles="w-5 h-5" />
+                <span class="text-sm" >Iniciar Sesión</span>
+            </a>
+            <Wishlist client:idle />
         </div>
         <!-- bottom bar -->
-        <nav class='bg-transparent flex justify-between items-center'>
+        <nav class='bg-transparent flex justify-between items-center px-5'>
             <a href="/">
                 <Logo />
             </a >
@@ -53,4 +59,4 @@ import SideMenu from './SideMenu.astro';
             </form>
         </nav>
     </div>
-</header>
+</header>../shop/Wishlist

@@ -251,18 +251,33 @@ export const IconChevronLeft = ({ styles = 'w-6 h-6' }) => (
 	</svg>
 )
 
-export const IconHeart = () => (
+export const IconHeart = ({ styles }: { styles: string }) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
-		className='w-7 h-7'
+		className={styles}
 		viewBox='0 0 24 24'
-		strokeWidth={1.25}
+		strokeWidth={2}
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572'></path>
+	</svg>
+)
+
+export const IconX = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='w-6 h-6'
+		viewBox='0 0 24 24'
+		strokeWidth={1.5}
 		stroke='currentColor'
 		fill='none'
 		strokeLinecap='round'
 		strokeLinejoin='round'
 	>
 		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-		<path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572'></path>
+		<path d='M18 6l-12 12'></path>
+		<path d='M6 6l12 12'></path>
 	</svg>
 )
