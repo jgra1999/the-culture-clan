@@ -41,7 +41,6 @@ export default function Wishlist() {
 
 	const getItemsOnWishlist = async () => {
 		const wishlist = JSON.parse(localStorage.getItem('wishlist') || '')
-
 		let items: Database['public']['Tables']['products']['Row'][] = []
 
 		wishlist.forEach(async (id: string) => {
@@ -64,14 +63,28 @@ export default function Wishlist() {
 
 	return (
 		<>
-			<button type='button' onClick={() => setOpen(true)} className='lg:hidden'>
+			<button
+				type='button'
+				onClick={() => setOpen(true)}
+				className='lg:hidden relative'
+			>
+				{currentWishlist.length > 0 && (
+					<span className='absolute inline-flex items-center rounded-full bg-red-600 px-1.5 py-[2px] text-xs font-medium text-white ring-1 ring-inset ring-gray-500/10 '>
+						{currentWishlist.length}
+					</span>
+				)}
 				<IconHeart styles='w-7 h-7 stroke-white fill-none' />
 			</button>
 			<button
 				type='button'
 				onClick={() => setOpen(true)}
-				className='hidden lg:flex items-center gap-x-1 opacity-75 hover:opacity-100'
+				className='hidden lg:flex items-center gap-x-1 opacity-75 hover:opacity-100 relative'
 			>
+				{currentWishlist.length > 0 && (
+					<span className='absolute inline-flex items-center rounded-full bg-red-600 px-1.5 py-[2px] text-[10px] font-medium text-white ring-1 ring-inset ring-gray-500/10 -right-5 -top-1'>
+						{currentWishlist.length}
+					</span>
+				)}
 				<IconHeart styles='w-5 h-5 stroke-white fill-none' />
 				<span className='text-sm'>lista de deseos</span>
 			</button>
