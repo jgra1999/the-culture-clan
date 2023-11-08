@@ -93,13 +93,17 @@ export default function ItemsList() {
 				<div className='text-lightGray flex justify-between sm:justify-normal items-center w-full text-sm font-medium gap-x-4'>
 					<button
 						onClick={() => setOrderBy('created_at')}
-						className={orderBy === 'created_at' ? 'opacity-100' : 'opacity-50'}
+						className={`text-xs md:text-base ${
+							orderBy === 'created_at' ? 'opacity-100' : 'opacity-50'
+						}`}
 					>
 						Más Recientes
 					</button>
 					<button
 						onClick={() => setOrderBy('likes')}
-						className={orderBy === 'likes' ? 'opacity-100' : 'opacity-50'}
+						className={`text-xs md:text-base ${
+							orderBy === 'created_at' ? 'opacity-100' : 'opacity-50'
+						}`}
 					>
 						Más Populares
 					</button>
@@ -212,13 +216,17 @@ export default function ItemsList() {
 					>
 						<IconChevronLeft styles='w-8 h-8' />
 					</button>
-					<button
-						onClick={handleNextButton}
-						className='px-2 py-[7px] flex items-center justify-center border-2 border-white rounded opacity-50 active:opacity-100'
-						disabled={items ? items.length <= 7 : false}
-					>
-						<IconChevronRight styles='w-8 h-8' />
-					</button>
+					{items && items.length > 7 ? (
+						<button
+							onClick={handleNextButton}
+							className='px-2 py-[7px] flex items-center justify-center border-2 border-white rounded opacity-50 active:opacity-100'
+							disabled={items ? items.length <= 7 : false}
+						>
+							<IconChevronRight styles='w-8 h-8' />
+						</button>
+					) : (
+						''
+					)}
 				</div>
 
 				{loading && <Loader />}
