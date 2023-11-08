@@ -4,34 +4,6 @@ import { IconHeart, IconX } from '../icons/ReactIcons'
 import { supabase } from '../../supabase/client'
 import type { Database } from '../../types/supabase'
 
-const products = [
-	{
-		id: 1,
-		name: 'Throwback Hip Bag',
-		href: '#',
-		color: 'Salmon',
-		price: '$90.00',
-		quantity: 1,
-		imageSrc:
-			'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-		imageAlt:
-			'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.'
-	},
-	{
-		id: 2,
-		name: 'Medium Stuff Satchel',
-		href: '#',
-		color: 'Blue',
-		price: '$32.00',
-		quantity: 1,
-		imageSrc:
-			'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-		imageAlt:
-			'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.'
-	}
-	// More products...
-]
-
 export default function Wishlist() {
 	const [open, setOpen] = useState(false)
 
@@ -39,8 +11,14 @@ export default function Wishlist() {
 		Database['public']['Tables']['products']['Row'][]
 	>([])
 
+	const [Subtotal, setSubtotal] = useState(0)
+
 	const getItemsOnWishlist = async () => {
-		const wishlist = JSON.parse(localStorage.getItem('wishlist') || '')
+		let wishlist = []
+		if (localStorage.getItem('wishlist')) {
+			wishlist = JSON.parse(localStorage.getItem('wishlist'))
+		}
+
 		let items: Database['public']['Tables']['products']['Row'][] = []
 
 		wishlist.forEach(async (id: string) => {
@@ -52,14 +30,31 @@ export default function Wishlist() {
 			if (data) items.push(data[0])
 		})
 
-		setTimeout(() => {
+		if (currentWishlist.length > 0) {
 			setCurrentWishlist(items)
-		}, 1000)
+			const sub = currentWishlist.reduce(
+				(acumulado, item) => acumulado + item.price,
+				0
+			)
+			console.log('🚀 ~ file: Wishlist.tsx:39 ~ getItemsOnWishlist ~ sub:', sub)
+			setSubtotal(sub)
+		} else {
+			setTimeout(() => {
+				setCurrentWishlist(items)
+			}, 1000)
+		}
 	}
 
 	useEffect(() => {
 		getItemsOnWishlist()
 	}, [])
+
+	const handleDeleteItem = (id: string) => {
+		// const draft = currentWishlist.filter((items) => items.id !== id)
+		// console.log('🚀 ~ file: Wishlist.tsx:38 ~ handleDeleteItem ~ draft:', draft)
+		// localStorage.setItem('wishlist', JSON.stringify(draft))
+		// getItemsOnWishlist()
+	}
 
 	return (
 		<>
@@ -140,6 +135,15 @@ export default function Wishlist() {
 															role='list'
 															className='-my-6 divide-y divide-mediumGray'
 														>
+															{currentWishlist.length === 0 && (
+																<div className='text-center text-lg text-grayText mt-10'>
+																	No hay productos en la lista de deseos,{' '}
+																	<a href='/tienda' className='text-white'>
+																		revisa nuestra tienda
+																	</a>
+																</div>
+															)}
+
 															{currentWishlist?.map((item) => (
 																<li key={item.id} className='flex py-6'>
 																	<div className='h-24 w-20 flex-shrink-0 overflow-hidden rounded-md'>
@@ -164,13 +168,14 @@ export default function Wishlist() {
 																		</div>
 																		<div className='flex flex-1 items-end justify-between text-sm'>
 																			{/* <p className='text-gray-500'>
-																				Qty {product.quantity}
-																			</p> */}
+																					Qty {product.quantity}
+																				</p> */}
 
 																			<div className='flex'>
 																				<button
 																					type='button'
 																					className='font-medium text-red-600 hover:text-red-500'
+																					onClick={() => handleDeleteItem(item.id)}
 																				>
 																					Eliminar
 																				</button>
@@ -187,7 +192,7 @@ export default function Wishlist() {
 											<div className='border-t border-mediumGray px-4 py-6 sm:px-6'>
 												<div className='flex justify-between text-base font-medium'>
 													<p>Subtotal</p>
-													<p>$262.00</p>
+													<p>${Subtotal}</p>
 												</div>
 												<p className='mt-0.5 text-sm text-grayText'>
 													Seras enviado al Whatsapp con los productos en tu lista de

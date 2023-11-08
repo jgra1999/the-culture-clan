@@ -281,3 +281,110 @@ export const IconX = () => (
 		<path d='M6 6l12 12'></path>
 	</svg>
 )
+
+export const IconMenu = () => (
+	<svg
+		className='w-8 h-8'
+		viewBox='0 0 24 24'
+		strokeWidth='2'
+		stroke='currentColor'
+		fill='none'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M4 6l16 0'></path>
+		<path d='M4 12l16 0'></path>
+		<path d='M4 18l16 0'></path>
+	</svg>
+)
+
+export const IconHome = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='flex-shrink-0 w-6 h-6'
+		viewBox='0 0 24 24'
+		strokeWidth={1.5}
+		stroke='currentColor'
+		fill='none'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M5 12l-2 0l9 -9l9 9l-2 0'></path>
+		<path d='M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7'></path>
+		<path d='M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6'></path>
+	</svg>
+)
+
+export const IconShirt = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='flex-shrink-0 w-6 h-6'
+		width={24}
+		height={24}
+		viewBox='0 0 24 24'
+		strokeWidth={1.5}
+		stroke='currentColor'
+		fill='none'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0'></path>
+	</svg>
+)
+
+export const IconHelpHexagon = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='flex-shrink-0 w-6 h-6'
+		viewBox='0 0 24 24'
+		strokeWidth={1.5}
+		stroke='currentColor'
+		fill='none'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z'></path>
+		<path d='M12 16v.01'></path>
+		<path d='M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483'></path>
+	</svg>
+)
+
+export const IconDeviceMobile = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='flex-shrink-0 w-6 h-6'
+		viewBox='0 0 24 24'
+		strokeWidth={1.5}
+		stroke='currentColor'
+		fill='none'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z'></path>
+		<path d='M11 4h2'></path>
+		<path d='M12 17v.01'></path>
+	</svg>
+)
+
+export const IconLogin2 = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='flex-shrink-0 w-6 h-6'
+		viewBox='0 0 24 24'
+		strokeWidth={1.5}
+		stroke='currentColor'
+		fill='none'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path d='M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2'></path>
+		<path d='M3 12h13l-3 -3'></path>
+		<path d='M13 15l3 -3'></path>
+	</svg>
+)
