@@ -1,25 +1,21 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { IconHeart, IconX } from '../icons/ReactIcons'
+import { IconHeart, IconX, OpenEyeIcon } from '../icons/ReactIcons'
 import { supabase } from '../../supabase/client'
 import type { Database } from '../../types/supabase'
+import { useWishlistStore } from '../../store/wishlist'
+
+type Item = Database['public']['Tables']['products']['Row']
 
 export default function Wishlist() {
 	const [open, setOpen] = useState(false)
 
-	const [currentWishlist, setCurrentWishlist] = useState<
-		Database['public']['Tables']['products']['Row'][]
-	>([])
+	const [currentWishlist, setCurrentWishlist] = useState<Item[]>([])
 
-	const [Subtotal, setSubtotal] = useState(0)
+	const { wishlist, removeToWishList } = useWishlistStore()
 
 	const getItemsOnWishlist = async () => {
-		let wishlist = []
-		if (localStorage.getItem('wishlist')) {
-			wishlist = JSON.parse(localStorage.getItem('wishlist'))
-		}
-
-		let items: Database['public']['Tables']['products']['Row'][] = []
+		let items: Item[] = []
 
 		wishlist.forEach(async (id: string) => {
 			const { data, error } = await supabase
@@ -30,31 +26,12 @@ export default function Wishlist() {
 			if (data) items.push(data[0])
 		})
 
-		if (currentWishlist.length > 0) {
-			setCurrentWishlist(items)
-			const sub = currentWishlist.reduce(
-				(acumulado, item) => acumulado + item.price,
-				0
-			)
-			console.log('🚀 ~ file: Wishlist.tsx:39 ~ getItemsOnWishlist ~ sub:', sub)
-			setSubtotal(sub)
-		} else {
-			setTimeout(() => {
-				setCurrentWishlist(items)
-			}, 1000)
-		}
+		setCurrentWishlist(items)
 	}
 
 	useEffect(() => {
 		getItemsOnWishlist()
 	}, [])
-
-	const handleDeleteItem = (id: string) => {
-		// const draft = currentWishlist.filter((items) => items.id !== id)
-		// console.log('🚀 ~ file: Wishlist.tsx:38 ~ handleDeleteItem ~ draft:', draft)
-		// localStorage.setItem('wishlist', JSON.stringify(draft))
-		// getItemsOnWishlist()
-	}
 
 	return (
 		<>
@@ -144,7 +121,7 @@ export default function Wishlist() {
 																</div>
 															)}
 
-															{currentWishlist?.map((item) => (
+															{currentWishlist?.map((item, index) => (
 																<li key={item.id} className='flex py-6'>
 																	<div className='h-24 w-20 flex-shrink-0 overflow-hidden rounded-md'>
 																		<img
@@ -172,13 +149,12 @@ export default function Wishlist() {
 																				</p> */}
 
 																			<div className='flex'>
-																				<button
-																					type='button'
-																					className='font-medium text-red-600 hover:text-red-500'
-																					onClick={() => handleDeleteItem(item.id)}
+																				<a
+																					href={`/tienda/${item.slug}`}
+																					className='flex items-center gap-x-1 opacity-70 hover:opacity-100'
 																				>
-																					Eliminar
-																				</button>
+																					overview <OpenEyeIcon />
+																				</a>
 																			</div>
 																		</div>
 																	</div>
@@ -192,7 +168,13 @@ export default function Wishlist() {
 											<div className='border-t border-mediumGray px-4 py-6 sm:px-6'>
 												<div className='flex justify-between text-base font-medium'>
 													<p>Subtotal</p>
-													<p>${Subtotal}</p>
+													<p>
+														$
+														{currentWishlist.reduce(
+															(acumulado, item) => acumulado + item.price,
+															0
+														)}
+													</p>
 												</div>
 												<p className='mt-0.5 text-sm text-grayText'>
 													Seras enviado al Whatsapp con los productos en tu lista de

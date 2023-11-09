@@ -1,29 +1,20 @@
-import { useEffect, useState } from 'react'
 import { IconHeart } from '../icons/ReactIcons'
-import { toast } from 'sonner'
+// import { toast } from 'sonner'
+import toast, { Toaster } from 'react-hot-toast'
+import { useWishlistStore } from '../../store/wishlist'
 
 export default function AddWishListButton({ id }: { id: string }) {
-	const [addedToWishlist, setAddedToWishlist] = useState(false)
-	const [wishlist, setWishlist] = useState<string[]>([])
+	const { wishlist, addToWishList, removeToWishList } = useWishlistStore()
 
-	const handleWishList = (item: string) => {
-		const draft = wishlist.includes(item)
-			? wishlist.filter((i) => i !== item)
-			: [...wishlist, item]
-
-		setWishlist(draft)
-		localStorage.setItem('wishlist', JSON.stringify(draft))
-
-		if (wishlist.includes(item)) {
-			toast.success('Removed to wishlist')
+	const handleWishList = (item: any) => {
+		if (!wishlist.includes(id)) {
+			addToWishList(item)
+			toast.success('Agregado a la lista de deseos')
 		} else {
-			toast.success('Added to wishlist')
+			removeToWishList(item)
+			toast.success('Eliminado de la lista de deseos')
 		}
 	}
-
-	useEffect(() => {
-		setWishlist(JSON.parse(localStorage.getItem('wishlist') ?? '[]'))
-	}, [])
 
 	return (
 		<>
@@ -36,6 +27,16 @@ export default function AddWishListButton({ id }: { id: string }) {
 					}`}
 				/>
 			</button>
+			<Toaster
+				position='top-right'
+				reverseOrder={false}
+				toastOptions={{
+					style: {
+						background: '#181818',
+						color: '#fff'
+					}
+				}}
+			/>
 		</>
 	)
 }

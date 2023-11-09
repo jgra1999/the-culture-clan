@@ -1,6 +1,6 @@
-export const OpenEyeIcon = () => (
+export const OpenEyeIcon = ({ styles }: { styles?: string }) => (
 	<svg
-		className='opacity-70 hover:opacity-100 w-6 h-6'
+		className={`w-6 h-6 ${styles}`}
 		viewBox='0 0 24 24'
 		strokeWidth='2'
 		stroke='currentColor'

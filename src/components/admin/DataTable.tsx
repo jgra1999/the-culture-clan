@@ -106,7 +106,7 @@ export default function DataTable({ headers }: { headers: string[] }) {
 								<td className='px-6 py-4'>
 									<div className='flex gap-x-1 justify-end'>
 										<a href={`/admin/productos/ver-producto/${product.id}`}>
-											<OpenEyeIcon />
+											<OpenEyeIcon styles='opacity-70 hover:opacity-100' />
 										</a>
 										<a href={`/admin/productos/editar-producto/${product.id}`}>
 											<PencilIcon />

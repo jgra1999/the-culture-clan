@@ -11,6 +11,7 @@ import Loader from '../Loader'
 import LikeButton from './LikeButton'
 import DisLikeButton from './DisLikeButton'
 import AddWishListButton from './AddWishListButton'
+import { Toaster } from 'sonner'
 
 export default function ItemOverview({ slug }: { slug: string }) {
 	const [item, setItem] = useState<Database['public']['Tables']['products']['Row']>()
@@ -97,6 +98,7 @@ export default function ItemOverview({ slug }: { slug: string }) {
 
 						{/* Botón y Likes */}
 						<div className='flex flex-col sm:flex-row sm:items-center gap-5'>
+							{/* TODO: cambiar qr de este modal */}
 							<QRModal>
 								<IconBrandWhatsapp />
 							</QRModal>
@@ -110,8 +112,8 @@ export default function ItemOverview({ slug }: { slug: string }) {
 							</a>
 
 							<div className='flex items-end gap-x-4 divide-mediumGray'>
-								<AddWishListButton />
-								<LikeButton currentLikes={item?.likes} id={item ? item?.id : ''} />
+								<AddWishListButton id={item ? item.id : ''} />
+								<LikeButton currentLikes={item?.likes} id={item ? item.id : ''} />
 								<DisLikeButton
 									currentDislikes={item?.dislikes}
 									id={item ? item?.id : ''}
@@ -160,6 +162,7 @@ export default function ItemOverview({ slug }: { slug: string }) {
 				)}
 				{loading && <Loader />}
 			</div>
+			<Toaster position='top-right' theme='dark' />
 		</>
 	)
 }

@@ -102,7 +102,7 @@ export default function ItemsList() {
 					<button
 						onClick={() => setOrderBy('likes')}
 						className={`text-xs md:text-base ${
-							orderBy === 'created_at' ? 'opacity-100' : 'opacity-50'
+							orderBy === 'likes' ? 'opacity-100' : 'opacity-50'
 						}`}
 					>
 						Más Populares
