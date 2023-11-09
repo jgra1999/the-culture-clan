@@ -11,15 +11,61 @@ if(!id){
 }
 ---
 
-<Layout title='Overview'>
-    <main class="pt-40 min-h-[1000px] lg:pt-56 px-10 md:px-20 mb-20 relative xl:container xl:mx-auto">
-        <!-- <QRModal /> -->
-        <div class="absolute top-24 lg:top-40">
-            <button onclick="history.back()">
-                <LeftArrowIcon />
-            </button>
-        </div>
-        <ItemOverview slug={id} client:load/>
-    </main>
-</Layout>
+    <!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<!-- <ViewTransitions /> -->
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+		<title>The Culture Clan</title>
+	</head>
+	<body>
+        <main class="py-24 min-h-[1000px] px-10 md:px-20 relative xl:container xl:mx-auto">
+            <!-- <QRModal /> -->
+            <div class="absolute top-10 ">
+				<!-- este boton siempre lleva al ultimo link antes de cambiar de pagina -->
+                <!-- <button onclick="history.back()">
+                    <LeftArrowIcon />
+                </button> -->
+				<a href="/tienda">
+					<LeftArrowIcon />
+				</a>
+            </div>
+            <ItemOverview slug={id} client:load/>
+        </main>
+	</body>
+</html>
+<style is:global>
+	html {
+		height: 100%;
+	}
+	
+	body {
+		@apply 
+		bg-[#141414] 
+		text-[#F6F6F6];
+
+		font-family: 'Roboto', sans-serif;
+	}
+
+    .social-icon{
+		@apply stroke-[1.5] opacity-50 hover:opacity-100 w-9 h-9
+	}
+
+	::-webkit-scrollbar {
+		@apply w-2 bg-black;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-zinc-800 rounded;
+	}
+</style> 
+
 
