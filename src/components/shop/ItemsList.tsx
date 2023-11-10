@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../supabase/client'
 import type { Database } from '../../types/supabase'
+/* componentes */
 import ItemCard from './ItemCard'
 import Loader from '../Loader'
-import {
-	IconChevronDown,
-	IconChevronLeft,
-	IconChevronRight
-} from '../icons/ReactIcons'
+import CollectionDropDown from '../shop/CollectionDropDown'
+import { IconChevronLeft, IconChevronRight } from '../icons/ReactIcons'
 
 export default function ItemsList() {
 	const [items, setItems] = useState<
@@ -107,69 +105,8 @@ export default function ItemsList() {
 					>
 						Más Populares
 					</button>
-					{/* Este componente presenta fallas, hacerlo desde cero y ver video de midudev sobre la animacion del hidden en css */}
 					<div>
-						<button
-							id='dropdownToggleButton'
-							data-dropdown-toggle='dropdownToggle'
-							type='button'
-							className='flex items-center justify-between w-full py-2 pl-3 pr-4 opacity-60 hover:opacity-100'
-						>
-							Colección
-							<IconChevronDown />
-						</button>
-						<div
-							id='dropdownToggle'
-							className='z-10 hidden bg-darkGray divide-lightGray rounded-lg shadow w-44'
-						>
-							<ul className='py-2 text-sm' aria-labelledby='dropdownToggleButton'>
-								<li>
-									<button
-										onClick={handleCollectionFilter}
-										className='block px-4 py-2 opacity-50 hover:opacity-100'
-										value=''
-									>
-										Todas
-									</button>
-								</li>
-								<li>
-									<button
-										onClick={handleCollectionFilter}
-										className='block px-4 py-2 opacity-50 hover:opacity-100'
-										value='New Culture'
-									>
-										New Culture
-									</button>
-								</li>
-								<li>
-									<button
-										onClick={handleCollectionFilter}
-										className='block px-4 py-2 opacity-50 hover:opacity-100'
-										value='Rap Culture'
-									>
-										Rap Culture
-									</button>
-								</li>
-								<li>
-									<button
-										onClick={handleCollectionFilter}
-										className='block px-4 py-2 opacity-50 hover:opacity-100'
-										value='Pop Culture'
-									>
-										Pop Culture
-									</button>
-								</li>
-								<li>
-									<button
-										onClick={handleCollectionFilter}
-										className='block px-4 py-2 opacity-50 hover:opacity-100'
-										value='Urban Culture'
-									>
-										Urban Culture
-									</button>
-								</li>
-							</ul>
-						</div>
+						<CollectionDropDown setCollection={handleCollectionFilter} />
 					</div>
 				</div>
 				<div className='hidden lg:flex justify-between gap-x-5'>
