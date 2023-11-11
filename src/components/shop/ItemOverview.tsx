@@ -99,10 +99,7 @@ export default function ItemOverview({ slug }: { slug: string }) {
 						{/* Botón y Likes */}
 						<div className='flex flex-col sm:flex-row sm:items-center gap-5'>
 							{/* TODO: cambiar qr de este modal */}
-							<QRModal>
-								<IconBrandWhatsapp />
-							</QRModal>
-
+							<QRModal />
 							<a
 								href='https://wa.link/phwrwn'
 								className='flex items-center justify-center gap-x-1 border-2 border-white py-3 px-4 rounded text-sm md:text-base opacity-50 hover:opacity-100 max-w-[300px] lg:hidden'

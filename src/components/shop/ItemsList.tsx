@@ -122,7 +122,7 @@ export default function ItemsList() {
 					<button
 						onClick={handleNextButton}
 						className={`p-1.5 flex items-center justify-center border-2 border-white rounded opacity-50 ${
-							items?.length <= 7 ? '' : 'hover:opacity-100'
+							items && items.length <= 7 ? '' : 'hover:opacity-100'
 						}`}
 						disabled={items ? items.length <= 7 : false}
 					>
