@@ -1,16 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { IconBrandWhatsapp, IconX } from '../icons/ReactIcons'
-import qr from '../../assets/Qr-whatsapp.png'
 
 export default function QRModal() {
 	let [isOpen, setIsOpen] = useState(false)
-
-	function closeModal() {
-		setIsOpen(false)
-	}
-
-	const qrImage = qr
 
 	return (
 		<>
