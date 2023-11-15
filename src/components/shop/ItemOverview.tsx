@@ -86,7 +86,7 @@ export default function ItemOverview({ slug }: { slug: string }) {
 
 						{/* tallas */}
 						<div className='space-y-2'>
-							<p className='text-lg'>Tallas</p>
+							<p className='text-lg'>Tallas Disponibles</p>
 							<div className='flex gap-x-5'>
 								<SizeOption size='XS' />
 								<SizeOption size='S' />
@@ -101,7 +101,8 @@ export default function ItemOverview({ slug }: { slug: string }) {
 							{/* TODO: cambiar qr de este modal */}
 							<QRModal />
 							<a
-								href='https://wa.link/phwrwn'
+								href={`https://wa.me/+584244155064/?text=Hola!%20me%20interesa%20la%20franela%20de%20${item?.name}`}
+								target='_blank'
 								className='flex items-center justify-center gap-x-1 border-2 border-white py-3 px-4 rounded text-sm md:text-base opacity-50 hover:opacity-100 max-w-[300px] lg:hidden'
 							>
 								<IconBrandWhatsapp />
