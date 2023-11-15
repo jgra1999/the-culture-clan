@@ -29,6 +29,21 @@ export default function Wishlist() {
 		setCurrentWishlist(items)
 	}
 
+	const handleSendOrder = (currentWishlist: Item[]) => {
+		const items = currentWishlist.map((item) => item.name)
+
+		const total = currentWishlist.reduce(
+			(acumulado, item) => acumulado + item.price,
+			0
+		)
+
+		const WhatsappUrl = `https://wa.me/584244155064?text=Hola!%20Este%20es%20mi%20lista%20de%20deseos:%0A*PEDIDO*:%20${items.join(
+			', '
+		)}%0A*TOTAL%20A%20PAGAR:*%20${total}$`
+
+		window.open(WhatsappUrl)
+	}
+
 	useEffect(() => {
 		getItemsOnWishlist()
 	}, [])
@@ -144,10 +159,6 @@ export default function Wishlist() {
 																			</p>
 																		</div>
 																		<div className='flex flex-1 items-end justify-between text-sm'>
-																			{/* <p className='text-gray-500'>
-																					Qty {product.quantity}
-																				</p> */}
-
 																			<div className='flex'>
 																				<a
 																					href={`/tienda/${item.slug}`}
@@ -181,26 +192,14 @@ export default function Wishlist() {
 													deseos
 												</p>
 												<div className='mt-6'>
-													<a
-														href='#'
-														className='flex items-center justify-center rounded py-3 px-4 text-base border border-white'
+													{/* href='https://wa.me/584244155064?text=*PEDIDO:*%20*franela%20oversized*%0A*TOTAL%20A%20PAGAR:*%20*45$* */}
+													<button
+														onClick={() => handleSendOrder(currentWishlist)}
+														className='flex items-center justify-center rounded py-3 px-4 text-base border border-white w-full'
 													>
 														Realizar Pedido
-													</a>
+													</button>
 												</div>
-												{/* <div className='mt-6 flex justify-center text-center text-sm text-gray-500'>
-														<p>
-															or
-															<button
-																type='button'
-																className='font-medium text-indigo-600 hover:text-indigo-500'
-																onClick={() => setOpen(false)}
-															>
-																Continue Shopping
-																<span aria-hidden='true'> &rarr;</span>
-															</button>
-														</p>
-													</div> */}
 											</div>
 										</div>
 									</Dialog.Panel>
