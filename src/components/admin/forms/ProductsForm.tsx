@@ -211,6 +211,7 @@ export default function ProductsForm({ edit, id }: Props) {
 							className='bg-[#171717] outline-none opacity-50 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
 						/>
 					</div>
+					{/* TODO: Agregae input para ingresar la referencia del producto */}
 					<div className='flex flex-col text-left gap-y-2 md:col-span-2 relative'>
 						<label htmlFor='description' className='text-grayText'>
 							Descripción

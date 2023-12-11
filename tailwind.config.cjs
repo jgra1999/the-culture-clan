@@ -24,7 +24,7 @@ module.exports = {
 				darkGray: '#181818',
 				lightGray: '#D5D5D5',
 				mediumGray: '#363636',
-				grayText: '#5e5e5e'
+				grayText: '#6f6f6f'
 				// ...
 			}
 		}

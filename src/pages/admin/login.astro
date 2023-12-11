@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import LoginForm from "../../components/admin/LoginForm";
+// import LoginForm from "../../components/admin/LoginForm";
 
 const cookie = Astro.request.headers.get('cookie');
 
@@ -21,7 +21,7 @@ if (cookie === 'admin=true') {
 <body>
     <div class="flex flex-col gap-y-4 items-center justify-center text-center h-screen mb-10" >
         <img src="/favicon.png" class="w-32">
-        <LoginForm client:visible />
+        <!-- <LoginForm client:visible /> -->
     </div>
 </body>
 </html>

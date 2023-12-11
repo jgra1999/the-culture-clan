@@ -98,7 +98,6 @@ export default function ItemOverview({ slug }: { slug: string }) {
 
 						{/* Botón y Likes */}
 						<div className='flex flex-col sm:flex-row sm:items-center gap-5'>
-							{/* TODO: cambiar qr de este modal */}
 							<QRModal />
 							<a
 								href={`https://wa.me/+584244155064/?text=Hola!%20me%20interesa%20la%20franela%20de%20${item?.name}`}
