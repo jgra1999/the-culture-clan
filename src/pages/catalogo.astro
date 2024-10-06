@@ -1,0 +1,16 @@
+---
+import Title from '@/components/ui/Title.astro'
+import Layout from '@/layouts/Layout.astro'
+// import ItemsList from '@/components/shop/ItemsList.tsx'
+---
+
+<Layout title='Catálogo'>
+	<main class='min-h-[1000px] pt-10 xl:container'>
+		<div
+			class='flex flex-col pb-10 lg:gap-y-32 items-center border-b-2 border-mediumGray'
+		>
+			<Title title='Todos los productos' subtitle='Revisa nuestras diferentes prendas y compra las que más te gusten' />
+		</div>
+		<!-- <ItemsList client:load /> -->
+	</main>
+</Layout>

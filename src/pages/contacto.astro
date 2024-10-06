@@ -1,0 +1,51 @@
+---
+import InstagramIcon from '@/components/ui/icons/InstagramIcon.astro'
+import Layout from '../layouts/Layout.astro'
+
+import {
+	EnvelopeIcon,
+	MapIcon
+} from '@heroicons/react/24/outline'
+import ContactForm from '@/components/ui/ContactForm.astro'
+import Title from '@/components/ui/Title.astro'
+import { WhatsappIcon } from '@/components/ui/icons/icons'
+---
+
+<Layout title='Contacto'>
+	<main class='grid grid-cols-1 lg:grid-cols-2 gap-5 h-[70vh] mb-20'>
+		<div class='flex flex-col justify-start gap-y-5 p-8'>
+            <Title title='Mantente en Contacto' subtitle='Tu opinión es muy importante, por eso te invitamos a que nos escribas siempre que quieras. Puedes enviarnos un correo electrónico, escribirnos por teléfono o seguirnos en redes sociales. Estaremos encantados de responder a tus consultas, escuchar tus sugerencias, leer tus comentarios o recibir tus felicitaciones.' containerStyles='text-start' />
+
+			<ul class='space-y-3 font-semibold'>
+				<li
+					class='flex gap-x-1 text-zinc-500 text-sm md:text-base items-center'
+				>
+					<MapIcon className='w-5 h-5 md:w-6 md:h-6 stroke-current' />
+					Venezuela | Colombia
+				</li>
+				<li
+					class='flex gap-x-1 text-zinc-500 text-sm md:text-base items-center'
+				>
+					<WhatsappIcon styles='w-5 h-5 md:w-6 md:h-6 stroke-current' />
+					+58 424-4155064
+				</li>
+				<li
+					class='flex gap-x-1 text-zinc-500 text-sm md:text-base items-center'
+				>
+					<InstagramIcon styles='w-5 h-5 md:w-6 md:h-6 stroke-current stroke-2' />
+					@th3cultureclan
+				</li>
+				<li
+					class='flex gap-x-1 text-zinc-500 text-sm md:text-base items-center'
+				>
+					<EnvelopeIcon className='w-5 h-5 md:w-6 md:h-6 stroke-current stroke-2' />
+					info@thecultureclan.com
+				</li>
+			</ul>
+		</div>
+		<div class="bg-[#efefef] rounded-xl p-8">
+            <Title title='Envianos un mensaje' containerStyles='text-start mb-10' />
+            <ContactForm />
+        </div>
+	</main>
+</Layout>

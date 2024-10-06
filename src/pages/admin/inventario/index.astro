@@ -1,0 +1,17 @@
+---
+// export const prerender = false
+
+import AdminLayout from '@/layouts/AdminLayout.astro'
+
+const cookie = Astro.cookies.get('admin')
+
+// if (cookie && cookie.value !== 'true') {
+// 	return Astro.redirect('/admin/login')
+// }
+---
+
+<AdminLayout title='Inventario'>
+	<div class='overflow-x-auto shadow-md sm:rounded-lg my-8'>
+		<!-- <ProductsTable client:load /> -->
+	</div>
+</AdminLayout>
