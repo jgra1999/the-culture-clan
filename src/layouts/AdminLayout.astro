@@ -1,0 +1,86 @@
+---
+import Navbar from '@/components/admin/navigation/Navbar.astro'
+
+interface Props {
+	title: string | undefined
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<!-- <link rel='icon' type='image/svg+xml' href='/icon.svg' /> -->
+		<meta name='generator' content={Astro.generator} />
+
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@100;300;400;500;700;900&display=swap'
+			rel='stylesheet'
+		/>
+		<!-- favicon -->
+		<link
+			rel='apple-touch-icon'
+			sizes='180x180'
+			href='/favicon/apple-touch-icon.png'
+		/>
+		<link
+			rel='android-chrome'
+			sizes='180x180'
+			href='/favicon/android-chrome-512x512.png'
+		/>
+		<link
+			rel='android-chrome'
+			sizes='180x180'
+			href='/favicon/android-chrome-192x192.png'
+		/>
+		<link
+			rel='icon'
+			type='image/png'
+			sizes='32x32'
+			href='/favicon/favicon-32x32.png'
+		/>
+		<link
+			rel='icon'
+			type='image/png'
+			sizes='16x16'
+			href='/favicon/favicon-16x16.png'
+		/>
+		<link rel='manifest' href='/site.webmanifest' />
+		<title>Admin - {title}</title>
+	</head>
+	<body>
+		<Navbar title={title} />
+		<main class='container mx-auto w-11/12 sm:w-3/4 grid grid-cols-1 mt-20 relative'>
+			<slot />
+		</main>
+		<style is:global>
+            @font-face {
+            font-family: 'Montserrat';
+            src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+
+			html {
+				height: 100%;
+			}
+
+			body {
+				color: #3A3A3A;
+				font-family: 'Montserrat', sans-serif;
+			}
+
+			textarea {
+				form-sizing: content;
+			}
+		</style>
+	</body>
+</html>

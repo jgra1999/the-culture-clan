@@ -1,4 +1,7 @@
 ---
+import Footer from '@/components/layouts/Footer.astro';
+import Header from '@/components/navigation/Header.astro';
+
 interface Props {
 	title: string;
 }
@@ -9,15 +12,79 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+
+		<!-- SEO -->
+		<meta
+			name='description'
+			content='Marca de Ropa. ofrecemos una amplia variedad de diseños y estilos para hombres y mujeres.'
+		/>
+		<meta name='robots' content='index, follow' />
+		<link rel='canonical' href='https://thecultureclan.com' />
+
+		<!-- Open Graph -->
+		<meta property='og:type' content='website' />
+		<meta
+			property='og:image'
+			content='https://res.cloudinary.com/df8nnzf8t/image/upload/v1702386655/logo_mywb2f.jpg'
+		/>
+		<meta property='og:url' content='https://thecultureclan.com/' />
+
+		<!-- favicon -->
+		<link
+			rel='android-chrome'
+			sizes='512x512'
+			href='/favicon/android-chrome-512x512.png'
+		/>
+		<link
+			rel='android-chrome'
+			sizes='192x192'
+			href='/favicon/android-chrome-192x192.png'
+		/>
+		<link
+			rel='apple-touch-icon'
+			sizes='180x180'
+			href='/favicon/apple-touch-icon.png'
+		/>
+		<link
+			rel='icon'
+			type='image/png'
+			sizes='32x32'
+			href='/favicon/favicon-32x32.png'
+		/>
+		<link
+			rel='icon'
+			type='image/png'
+			sizes='16x16'
+			href='/favicon/favicon-16x16.png'
+		/>
+		<link rel='manifest' href='/site.webmanifest' />
+
+		<!-- Google tag (gtag.js) -->
+		<script
+			type='text/partytown'
+			async
+			src='https://www.googletagmanager.com/gtag/js?id=G-9XN6FNH6J4'></script>
+		<script type='text/partytown'>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+
+			gtag('config', 'G-9XN6FNH6J4')
+		</script>
+
+		<!-- <meta name='generator' content={Astro.generator} /> -->
+		<title>The Culture Clan - {title}</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<div class="body__container">
+			<slot />
+		</div>
+		<Footer />
 	</body>
 </html>
 <style is:global>
@@ -32,9 +99,25 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
+
+	@font-face {
+		font-family: 'Montserrat';
+		src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Poppins';
+		src: url('/fonts/poppins/Poppins-Bold.ttf') format('ttf');
+		font-display: swap;
+	}
+
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: #ffffff;
+		color: #3A3A3A
 	}
 	code {
 		font-family:
@@ -46,5 +129,22 @@ const { title } = Astro.props;
 			Bitstream Vera Sans Mono,
 			Courier New,
 			monospace;
+	}
+
+	body{
+		font-family: 'Montserrat', sans-serif;
+	}
+
+	body > .body__container {
+		@apply 2xl:container mt-24 lg:mt-40 grid place-items-center px-3 md:px-8 relative;
+		
+	}
+
+	::-webkit-scrollbar {
+		@apply w-2 bg-transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-zinc-300 rounded;
 	}
 </style>
