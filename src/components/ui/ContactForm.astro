@@ -1,0 +1,22 @@
+---
+import ButtonPrimary from "./ButtonPrimary.astro";
+
+interface Props{
+    containerStyles?: string
+}
+
+const {containerStyles} = Astro.props
+---
+
+<form action="" class={`grid grid-cols-1 md:grid-cols-2 gap-4 ${containerStyles}`}>
+    <div>
+        <input type="text" placeholder="Nombre y Apellido" class="bg-[#F3F3F3] text-zinc-500 font-semibold py-3 pl-3 rounded-lg w-full border-2 border-darkGray">
+    </div>
+    <div>
+        <input type="text" placeholder="Asunto" class="bg-[#F3F3F3] text-zinc-500 font-semibold py-3 pl-3 rounded-lg w-full border-2 border-darkGray">
+    </div>
+    <div class="md:col-span-2">
+        <textarea name="message" id="" placeholder="Describenos tu idea"  rows="5" class="bg-[#F3F3F3] text-zinc-500 font-semibold py-3 pl-3 rounded-lg w-full border-2 border-darkGray"></textarea>
+    </div>
+    <ButtonPrimary text='Enviar' link='/' containerStyles='bg-darkGray text-white hover:bg-darkGray/80 active:bg-darkGray/80 max-w-[179px]' />
+</form>

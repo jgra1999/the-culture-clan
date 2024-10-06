@@ -1,0 +1,16 @@
+---
+interface Props{
+    id?: string
+    otherStyles?: string
+}
+
+const {id, otherStyles} = Astro.props
+---
+
+<button class={`${otherStyles}`} >Agregar al Carrito</button>
+
+<style>
+    button{
+        @apply bg-darkGray hover:bg-zinc-200 active:bg-zinc-500 text-white hover:text-darkGray rounded-lg md:rounded-2xl text-lg font-semibold py-3 md:px-10 transition-all duration-500
+    }
+</style>

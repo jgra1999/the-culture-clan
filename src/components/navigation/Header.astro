@@ -1,0 +1,73 @@
+---
+import Logo from "../ui/icons/Logo.astro";
+import SideMenu from "../layouts/SideMenu";
+import SideMenuOptions from "../layouts/SideMenuOptions";
+import TCCIcon from '../ui/icons/TCCIcon.astro'
+
+import { HomeIcon,
+	DevicePhoneMobileIcon,
+	WalletIcon, ShoppingBagIcon, UserCircleIcon } from "@heroicons/react/24/outline";
+
+---
+
+<header class='absolute top-0 w-full lg:pt-5 lg:pr-8'>
+    {/* mobile navbar */}
+	<div class='p-4 flex justify-between items-center lg:hidden'>
+		<div class="flex">
+			<SideMenu client:idle transition:persist>
+				<ul role='list' class='-my-6 space-y-2'>
+					<SideMenuOptions name='Inicio' link='/'>
+						<HomeIcon className='flex-shrink-0 w-6 h-6' />
+					</SideMenuOptions>
+					<SideMenuOptions name='Catálogo' link='/catalogo'>
+						<ShoppingBagIcon className='flex-shrink-0 w-6 h-6' />
+					</SideMenuOptions>
+					<SideMenuOptions name='FAQ' link='/'>
+						<WalletIcon className='flex-shrink-0 w-6 h-6' />
+					</SideMenuOptions>
+					<SideMenuOptions name='Contacto' link='/contacto'>
+						<DevicePhoneMobileIcon className='flex-shrink-0 w-6 h-6' />
+					</SideMenuOptions>
+					{
+						/* <SideMenuOptions name='Iniciar sesión' link='/login'>
+						<Login />
+					</SideMenuOptions> */
+					}
+				</ul>
+			</SideMenu>
+			<a href='/'>
+				<TCCIcon />
+			</a>
+		</div>
+		<div class="flex justify-end items-center gap-x-5">
+            <UserCircleIcon className="w-6 h-6 stroke-2" />
+            <ShoppingBagIcon className="w-6 h-6 stroke-2" />
+        </div>
+	</div>
+    
+    <nav class='bg-transparent hidden md:grid md:grid-cols-3 items-center'>
+        <a href='/'>
+            <Logo styles="h-20 fill-black" />
+        </a>
+
+        <ul class='flex gap-x-[70px] font-semibold'>
+            <li>
+                <a href='/' class='opacity-70 hover:opacity-100'>Inicio</a>
+            </li>
+            <li>
+                <a href='/catalogo' class='opacity-75 hover:opacity-100'>Catálogo</a>
+            </li>
+            <li>
+                <a href='/faqs' class='opacity-70 hover:opacity-100'>FAQ's</a>
+            </li>
+            <li>
+                <a href='/contacto' class='opacity-70 hover:opacity-100'>Contacto</a>
+            </li>
+        </ul>
+
+        <div class="flex justify-end items-center gap-x-5">
+            <UserCircleIcon className="w-6 h-6" />
+            <ShoppingBagIcon className="w-6 h-6" />
+        </div>
+    </nav>
+</header>

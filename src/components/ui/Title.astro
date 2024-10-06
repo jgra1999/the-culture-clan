@@ -1,0 +1,20 @@
+---
+interface Props{
+    title: string
+    subtitle?: string
+    containerStyles?: string
+}
+
+const {title, subtitle, containerStyles = 'text-center'} = Astro.props
+---
+
+<article class={`space-y-2 ${containerStyles}`}>
+    <h2 class="font-bold text-4xl sm:text-5xl">{title}</h2>
+    <p class="font-semibold text-sm sm:text-base text-zinc-500">{subtitle}</p>
+</article>
+
+<style>
+	h2{
+		font-family: 'Poppins', system-ui;
+	}
+</style>

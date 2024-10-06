@@ -1,0 +1,25 @@
+---
+
+interface Props {
+    containerStyles: string
+}
+
+const { containerStyles } = Astro.props;
+---
+
+<section
+  class={`grid
+  items-center
+  px-4
+  text-white
+  w-full
+  rounded-2xl
+  hover:shadow-lg
+  min-h-[300px]
+  relative
+  ${containerStyles}
+  transition
+  duration-300`}>
+		<slot name="first-col"/>	
+		<slot name="second-col"/>	
+</section>

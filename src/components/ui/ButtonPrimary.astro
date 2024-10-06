@@ -1,0 +1,11 @@
+---
+interface Props{
+    text: string
+    link: string
+    containerStyles: string
+}
+
+const {text, link, containerStyles} = Astro.props
+---
+
+<a href={link} class={`text-center rounded-lg md:rounded-2xl md:text-lg font-semibold py-2 px-5 md:py-3 md:px-10 inline-block ${containerStyles} transition-colors duration-300`}>{text}</a>
