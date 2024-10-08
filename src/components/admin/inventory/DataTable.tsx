@@ -1,12 +1,14 @@
-// import { supabase } from '@/supabase/client'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/supabase/client'
+/* icons */
 import { TrashIcon, EyeIcon, PencilIcon } from '@heroicons/react/20/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
-import { useEffect, useState } from 'react'
+
 import { SearchInput } from '../ui/SearchInput'
 
 const headers = ['Productos', 'Colección', 'Likes', 'Precio']
 
-export function ProductsTable() {
+export function InventoryTable() {
 	const [products, setProducts] = useState<any>([])
 	const [Search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
@@ -14,7 +16,7 @@ export function ProductsTable() {
 	const [to, setTo] = useState(4)
 	const ITEMS_PER_PAGE = 4
 
-	/* const fetchProducts = async () => {
+	const fetchProducts = async () => {
 		try {
 			const { data, error } = await supabase
 				.from('inventory')
@@ -36,7 +38,7 @@ export function ProductsTable() {
 			)
 		}
 	}
- */
+
 	const deleteProduct = async (id: string) => {
 		// const { error } = await supabase.from('products').delete().eq('id', id)
 		// if (error) {
@@ -80,13 +82,13 @@ export function ProductsTable() {
 	}
 
 	useEffect(() => {
-		// fetchProducts()
+		fetchProducts()
 	}, [from, to, Search])
 	return (
 		<>
-			<div className='flex flex-col md:flex-row gap-y-5 w-full items-center justify-between mb-10'>
-				<div className='border border-white py-2 w-36 opacity-50 active:opacity-100 text-sm lg:hover:opacity-100 text-center rounded-lg'>
-					<a href='/admin/productos/agregar-producto' className=''>
+			<div className='flex flex-col md:flex-row gap-y-5 w-full items-center justify-between my-10'>
+				<div className='border border-darkGray py-2 w-36 opacity-50 active:opacity-100 text-sm lg:hover:opacity-100 text-center rounded-lg'>
+					<a href='/admin/inventario/agregar-producto' className=''>
 						Agregar Producto
 					</a>
 				</div>
@@ -97,8 +99,8 @@ export function ProductsTable() {
 					/>
 				</div>
 			</div>
-			<table className='w-full text-sm text-left text-grayText'>
-				<thead className='text-xs text-grayText uppercase bg-darkGray'>
+			<table className='w-full text-sm text-left text-grayText shadow-md sm:rounded-lg'>
+				<thead className='text-xs text-grayText uppercase bg-lightGray'>
 					<tr>
 						{headers.map((header, index) => (
 							<th scope='col' className='px-6 py-3' key={index}>
@@ -120,7 +122,7 @@ export function ProductsTable() {
 								>
 									<th
 										scope='row'
-										className='px-6 py-4 font-medium whitespace-nowrap text-white flex gap-x-2 items-center'
+										className='px-6 py-4 font-medium whitespace-nowrap flex gap-x-2 items-center'
 									>
 										<img src={item.image_url_1} className='w-10 h-14' alt='' />
 										<span>{item.name}</span>
@@ -146,9 +148,7 @@ export function ProductsTable() {
 						</>
 					) : (
 						<tr>
-							<td className='text-center text-white pt-10 text-lg'>
-								No hay datos registrados
-							</td>
+							<td className='text-center pt-10 text-lg'>No hay datos registrados</td>
 						</tr>
 					)}
 				</tbody>
