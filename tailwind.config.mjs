@@ -4,8 +4,9 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				darkGray: '#3A3A3A',
 				lightGray: '#F3F3F3',
+				mediumGray: '#737373',
+				darkGray: '#3A3A3A',
 				banner1: '#E5A41B',
 				banner2: '#E61B1B',
 				banner3: '#333847',
