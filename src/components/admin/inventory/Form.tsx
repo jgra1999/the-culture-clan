@@ -20,6 +20,7 @@ export function ProductsForm({ id }: { id?: string }) {
 		collection: '',
 		dollar_price: 0,
 		pesos_price: 0,
+		ref: 0,
 		stock: 0
 	})
 	const [file, setFile] = useState<File | null>(null)
@@ -34,7 +35,7 @@ export function ProductsForm({ id }: { id?: string }) {
 			if (error) console.log(error)
 
 			if (data) {
-				setProduct(data[0])
+				// setProduct(data[0])
 				console.log(data)
 			}
 		}
@@ -55,7 +56,8 @@ export function ProductsForm({ id }: { id?: string }) {
 		e.preventDefault()
 		const imageData = new FormData()
 
-		const { name, collection, dollar_price, pesos_price, image_url } = product
+		const { name, collection, dollar_price, pesos_price, image_url, ref, stock } =
+			product
 
 		if (file) {
 			const formData = new FormData()
@@ -63,25 +65,31 @@ export function ProductsForm({ id }: { id?: string }) {
 			formData.append('upload_preset', preset_key)
 			try {
 				const res = await axios.post(
-					`https://api.cloudinary.com/v1/${cloudName}/upload`,
+					`https://api.cloudinary.com/v1_1/${cloudName}/upload`,
 					formData
 				)
 
+				console.log(res)
+
 				imageData.append('image_url', res.data.secure_url)
-			} catch (error) {}
+			} catch (error) {
+				console.log(error)
+			}
 		}
 
 		const img_url = String(imageData.get('image_url'))
 
 		if (id) {
 			const { data, error } = await supabase
-				.from('products')
+				.from('inventory')
 				.update({
 					collection,
 					name,
 					dollar_price,
 					pesos_price,
-					image_url: imageData.get('image_url') ? img_url : image_url
+					image_url: imageData.get('image_url') ? img_url : image_url,
+					stock,
+					ref
 				})
 				.eq('id', id)
 
@@ -98,14 +106,16 @@ export function ProductsForm({ id }: { id?: string }) {
 					name,
 					dollar_price,
 					pesos_price,
-					image_url: img_url
+					image_url: img_url,
+					stock,
+					ref
 				}
 			])
 			if (error) {
 				toast.custom(<ErrorToast message={error.message} />)
 			} else {
 				toast.custom(<SuccessToast message='Producto agregado' />)
-				window.location.replace('/admin/productos')
+				window.location.replace('/admin/inventario')
 			}
 		}
 	}
@@ -146,18 +156,30 @@ export function ProductsForm({ id }: { id?: string }) {
 							/>
 						</label>
 					</div>
-
 					<div className='flex flex-col gap-y-2 text-left relative'>
-						<label htmlFor='name' className='text-grayText'>
-							Nombre
-						</label>
-						<input
-							type='text'
-							name='name'
-							onChange={handleChange}
-							value={product ? product.name : ''}
-							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
-						/>
+						<div className='flex flex-col gap-y-2 text-left relative'>
+							<input
+								type='hidden'
+								name='name'
+								onChange={handleChange}
+								value={product ? product.name : ''}
+								className=''
+							/>
+						</div>
+					</div>
+					<div className='flex flex-col gap-y-2 text-left relative'>
+						<div className='flex flex-col gap-y-2 text-left relative'>
+							<label htmlFor='name' className='text-grayText'>
+								Nombre
+							</label>
+							<input
+								type='text'
+								name='name'
+								onChange={handleChange}
+								value={product ? product.name : ''}
+								className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
+							/>
+						</div>
 					</div>
 					<div className='flex flex-col gap-y-2 text-left relative'>
 						<label htmlFor='collection' className='text-grayText'>
@@ -179,6 +201,24 @@ export function ProductsForm({ id }: { id?: string }) {
 					</div>
 					<div className='flex flex-col gap-y-2 text-left relative'>
 						<label htmlFor='name' className='text-grayText'>
+							Referencia
+						</label>
+
+						<select
+							id='ref'
+							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2.5 px-3 rounded-lg'
+							name='ref'
+							onChange={handleChange}
+							value={product ? product.ref : ''}
+						>
+							<option value=''>Seleccionar</option>
+							<option value='804308'>804308</option>
+							<option value='804310'>804310</option>
+						</select>
+					</div>
+
+					<div className='flex flex-col gap-y-2 text-left relative'>
+						<label htmlFor='name' className='text-grayText'>
 							Stock
 						</label>
 						<input
@@ -197,7 +237,7 @@ export function ProductsForm({ id }: { id?: string }) {
 						<input
 							type='number'
 							step={0.01}
-							name='price'
+							name='dollar_price'
 							onChange={handleChange}
 							value={product ? product.dollar_price : ''}
 							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
@@ -210,23 +250,11 @@ export function ProductsForm({ id }: { id?: string }) {
 						<input
 							type='number'
 							step={0.01}
-							name='price'
+							name='pesos_price'
 							onChange={handleChange}
-							value={product ? product.dollar_price : ''}
+							value={product ? product.pesos_price : ''}
 							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
 						/>
-					</div>
-					{/* TODO: Agregar input para ingresar la referencia del producto */}
-					<div className='flex flex-col text-left gap-y-2 md:col-span-2 relative'>
-						<label htmlFor='description' className='text-grayText'>
-							Descripción
-						</label>
-						<textarea
-							rows={5}
-							name='description'
-							onChange={handleChange}
-							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg resize-none'
-						></textarea>
 					</div>
 				</div>
 				<SubmitButton text={id ? 'Actualizar Producto' : 'Agregar Producto'} />
