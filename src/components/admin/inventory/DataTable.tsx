@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 import { SearchInput } from '../ui/SearchInput'
 
-const headers = ['Productos', 'Colección', 'Likes', 'Precio']
+const headers = ['Productos', 'Colección', 'Stock', 'Dolares', 'Ref']
 
 export function InventoryTable() {
 	const [products, setProducts] = useState<any>([])
@@ -87,7 +87,7 @@ export function InventoryTable() {
 	return (
 		<>
 			<div className='flex flex-col md:flex-row gap-y-5 w-full items-center justify-between my-10'>
-				<div className='border border-darkGray py-2 w-36 opacity-50 active:opacity-100 text-sm lg:hover:opacity-100 text-center rounded-lg'>
+				<div className='bg-darkGray text-white py-2 w-36  active:opacity-80 text-sm lg:hover:opacity-80 text-center rounded-lg'>
 					<a href='/admin/inventario/agregar-producto' className=''>
 						Agregar Producto
 					</a>
@@ -116,26 +116,24 @@ export function InventoryTable() {
 					{products ? (
 						<>
 							{products.map((item: any) => (
-								<tr
-									key={item.id}
-									className='border-b border-mediumGray bg-[#131313]'
-								>
+								<tr key={item.id} className='border-b border-lightGray '>
 									<th
 										scope='row'
 										className='px-6 py-4 font-medium whitespace-nowrap flex gap-x-2 items-center'
 									>
-										<img src={item.image_url_1} className='w-10 h-14' alt='' />
+										<img src={item.image_url} className='w-10 h-14' alt='' />
 										<span>{item.name}</span>
 									</th>
 									<td className='px-6 py-4'>{item.collection}</td>
-									<td className='px-6 py-4'>{item.likes}</td>
-									<td className='px-6 py-4'>${item.price}</td>
+									<td className='px-6 py-4'>{item.stock}</td>
+									<td className='px-6 py-4'>${item.dollar_price}</td>
+									<td className='px-6 py-4'>{item.ref}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
-											<a href={`/admin/productos/ver-producto/${item.id}`}>
+											<a href={`/admin/inventario/ver-producto/${item.id}`}>
 												<EyeIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>
-											<a href={`/admin/productos/actualizar/${item.id}`}>
+											<a href={`/admin/inventario/actualizar/${item.id}`}>
 												<PencilIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>
 											<button onClick={() => deleteProduct(item.id)}>
