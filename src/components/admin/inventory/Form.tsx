@@ -20,7 +20,7 @@ export function ProductsForm({ id }: { id?: string }) {
 		collection: '',
 		dollar_price: 0,
 		pesos_price: 0,
-		ref: 0,
+		ref: '',
 		stock: 0
 	})
 	const [file, setFile] = useState<File | null>(null)
@@ -35,7 +35,7 @@ export function ProductsForm({ id }: { id?: string }) {
 			if (error) console.log(error)
 
 			if (data) {
-				// setProduct(data[0])
+				setProduct(data[0])
 				console.log(data)
 			}
 		}
@@ -97,7 +97,9 @@ export function ProductsForm({ id }: { id?: string }) {
 				toast.custom(<ErrorToast message={error?.message} />)
 			} else {
 				toast.custom(<SuccessToast message='Producto editado' />)
-				window.location.replace('/admin/productos')
+				setInterval(() => {
+					window.location.replace('/admin/inventario')
+				}, 2000)
 			}
 		} else {
 			const { data, error } = await supabase.from('inventory').insert([
@@ -115,7 +117,9 @@ export function ProductsForm({ id }: { id?: string }) {
 				toast.custom(<ErrorToast message={error.message} />)
 			} else {
 				toast.custom(<SuccessToast message='Producto agregado' />)
-				window.location.replace('/admin/inventario')
+				setInterval(() => {
+					window.location.replace('/admin/inventario')
+				}, 2000)
 			}
 		}
 	}
