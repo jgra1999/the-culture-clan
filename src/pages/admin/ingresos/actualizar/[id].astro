@@ -1,0 +1,26 @@
+---
+export const prerender = false
+
+import GoBackButton from '@/components/ui/GoBackButton.astro'
+import AdminLayout from '@/layouts/AdminLayout.astro'
+import Title from '@/components/ui/Title.astro'
+import { RegisterForm } from '@/components/admin/income/Form'
+
+const { id } = Astro.params
+
+if (!id) {
+	return Astro.redirect('/404')
+}
+---
+
+<AdminLayout title='Actualizar Producto'>
+	<GoBackButton />
+	<div class='flex flex-col items-center'>
+		<Title title='Actualizar Producto' />
+		<div
+			class='flex flex-col gap-y-8 justify-center my-5 divide-mediumGray w-[90%] sm:min-w-0 max-w-[700px] bg-white rounded-lg py-6 px-8'
+		>
+			<RegisterForm client:visible id={id ? id : ''} />
+		</div>
+	</div>
+</AdminLayout>

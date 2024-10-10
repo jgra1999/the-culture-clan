@@ -123,10 +123,7 @@ export function IncomeTable() {
 									<td className='px-6 py-4'>{item.date}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
-											<a href={`/admin/inventario/ver-producto/${item.id}`}>
-												<EyeIcon className='w-5 opacity-70 hover:opacity-100' />
-											</a>
-											<a href={`/admin/inventario/actualizar/${item.id}`}>
+											<a href={`/admin/ingresos/actualizar/${item.id}`}>
 												<PencilIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>
 											<button onClick={() => deleteProduct(item.id)}>
