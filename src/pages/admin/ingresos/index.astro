@@ -1,6 +1,7 @@
 ---
 // export const prerender = false
 
+import { IncomeTable } from '@/components/admin/income/DataTable'
 import AdminLayout from '@/layouts/AdminLayout.astro'
 
 const cookie = Astro.cookies.get('admin')
@@ -11,7 +12,7 @@ const cookie = Astro.cookies.get('admin')
 ---
 
 <AdminLayout title='Ingresos'>
-	<div class='overflow-x-auto shadow-md sm:rounded-lg my-8'>
-		<!-- <ProductsTable client:load /> -->
+	<div class='overflow-x-auto my-8'>
+		<IncomeTable client:load />
 	</div>
 </AdminLayout>
