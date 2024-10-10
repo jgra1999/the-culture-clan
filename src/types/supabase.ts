@@ -37,13 +37,17 @@ export type Database = {
 			income: {
 				Row: {
 					amount: number
+					client_email: string
+					client_name: string
 					created_at: string
 					date: string
 					description: string
 					id: number
 				}
 				Insert: {
-					amount: number
+					amount?: number
+					client_email: string
+					client_name: string
 					created_at?: string
 					date: string
 					description: string
@@ -51,6 +55,8 @@ export type Database = {
 				}
 				Update: {
 					amount?: number
+					client_email?: string
+					client_name?: string
 					created_at?: string
 					date?: string
 					description?: string
