@@ -1,0 +1,20 @@
+---
+export const prerender = false
+
+import GoBackButton from '@/components/ui/GoBackButton.astro'
+import Title from '@/components/ui/Title.astro'
+import { BillsForm } from '@/components/admin/bills/Form'
+import AdminLayout from '@/layouts/AdminLayout.astro'
+---
+
+<AdminLayout title='Agregar Gasto'>
+	<GoBackButton />
+	<div class='flex flex-col items-center'>
+		<Title title='Agregar Gasto' />
+		<div
+			class='flex flex-col gap-y-8 justify-center my-5 divide-mediumGray w-[90%] sm:min-w-0 max-w-[700px] bg-white rounded-lg py-6 px-8'
+		>
+			<BillsForm client:visible />
+		</div>
+	</div>
+</AdminLayout>
