@@ -13,8 +13,8 @@ export function BillsTable() {
 	const [Search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [from, setFrom] = useState(0)
-	const [to, setTo] = useState(4)
-	const ITEMS_PER_PAGE = 4
+	const [to, setTo] = useState(6)
+	const ITEMS_PER_PAGE = 6
 
 	const fetchData = async () => {
 		try {
@@ -124,6 +124,9 @@ export function BillsTable() {
 									<td className='px-6 py-4'>${item.pesos_amount}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
+											<a href={`/admin/gastos/ver-registro/${item.id}`}>
+												<EyeIcon className='w-5 opacity-70 hover:opacity-100' />
+											</a>
 											<a href={`/admin/gastos/actualizar/${item.id}`}>
 												<PencilIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>

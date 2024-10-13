@@ -1,0 +1,24 @@
+---
+export const prerender = false
+
+import GoBackButton from '@/components/ui/GoBackButton.astro'
+import AdminLayout from '@/layouts/AdminLayout.astro'
+import { BillOverview } from '@/components/admin/bills/Overview'
+
+const { id } = Astro.params
+
+if (!id) {
+	return Astro.redirect('/404')
+}
+---
+
+<AdminLayout title='Ver Registro'>
+	<GoBackButton />
+	<div class='flex flex-col items-center'>
+		<div
+			class='flex flex-col gap-y-8 justify-center my-5 divide-mediumGray w-[90%] sm:min-w-0 max-w-[700px] bg-white rounded-lg py-6 px-8'
+		>
+			<BillOverview client:visible id={id} />
+		</div>
+	</div>
+</AdminLayout>

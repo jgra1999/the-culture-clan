@@ -28,7 +28,6 @@ export function BillsForm({ id }: { id?: string }) {
 
 			if (data) {
 				setRegister(data[0])
-				console.log(data)
 			}
 		}
 
@@ -67,7 +66,7 @@ export function BillsForm({ id }: { id?: string }) {
 				toast.custom(<SuccessToast message='Registro editado' />)
 				setInterval(() => {
 					window.location.replace('/admin/gastos')
-				}, 2000)
+				}, 1000)
 			}
 		} else {
 			const { data, error } = await supabase.from('bills').insert([
@@ -82,10 +81,10 @@ export function BillsForm({ id }: { id?: string }) {
 			if (error) {
 				toast.custom(<ErrorToast message={error.message} />)
 			} else {
-				toast.custom(<SuccessToast message='Ingreso registrado' />)
+				toast.custom(<SuccessToast message='Gasto registrado' />)
 				setInterval(() => {
 					window.location.replace('/admin/gastos')
-				}, 2000)
+				}, 1000)
 			}
 		}
 	}
