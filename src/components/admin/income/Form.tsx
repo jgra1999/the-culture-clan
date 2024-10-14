@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import type { Database } from '@/types/supabase'
 
 /* libraries */
 import toast, { Toaster } from 'react-hot-toast'
@@ -16,7 +15,8 @@ export function RegisterForm({ id }: { id?: string }) {
 		client_name: '',
 		client_email: '',
 		description: '',
-		amount: 0,
+		dollar_amount: 0,
+		pesos_amount: 0,
 		date: ''
 	})
 
@@ -28,7 +28,6 @@ export function RegisterForm({ id }: { id?: string }) {
 
 			if (data) {
 				setRegister(data[0])
-				console.log(data)
 			}
 		}
 
@@ -48,7 +47,14 @@ export function RegisterForm({ id }: { id?: string }) {
 		e.preventDefault()
 		const imageData = new FormData()
 
-		const { client_name, client_email, description, amount, date } = register
+		const {
+			client_name,
+			client_email,
+			description,
+			dollar_amount,
+			pesos_amount,
+			date
+		} = register
 
 		if (id) {
 			const { data, error } = await supabase
@@ -57,7 +63,8 @@ export function RegisterForm({ id }: { id?: string }) {
 					client_name,
 					client_email,
 					description,
-					amount,
+					dollar_amount,
+					pesos_amount: Math.round(register.dollar_amount * 3800),
 					date
 				})
 				.eq('id', id)
@@ -76,7 +83,8 @@ export function RegisterForm({ id }: { id?: string }) {
 					client_name,
 					client_email,
 					description,
-					amount,
+					dollar_amount,
+					pesos_amount: Math.round(register.dollar_amount * 3800),
 					date
 				}
 			])
@@ -123,18 +131,33 @@ export function RegisterForm({ id }: { id?: string }) {
 					</div>
 
 					<div className='flex flex-col gap-y-2 text-left relative'>
-						<label htmlFor='amount' className='text-grayText'>
+						<label htmlFor='dollar_amount' className='text-grayText'>
+							Cantidad (Dolares)
+						</label>
+						<input
+							type='number'
+							step={0.01}
+							name='dollar_amount'
+							onChange={handleChange}
+							value={register ? register.dollar_amount : ''}
+							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
+						/>
+					</div>
+
+					<div className='flex flex-col gap-y-2 text-left relative'>
+						<label htmlFor='pesos_amount' className='text-grayText'>
 							Cantidad (Pesos)
 						</label>
 						<input
 							type='number'
 							step={0.01}
-							name='amount'
+							name='pesos_amount'
 							onChange={handleChange}
-							value={register ? register.amount : ''}
+							value={register ? Math.round(register.dollar_amount * 3800) : ''}
 							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
 						/>
 					</div>
+
 					<div className='flex flex-col gap-y-2 text-left relative'>
 						<label htmlFor='date' className='text-grayText'>
 							Fecha
@@ -160,7 +183,7 @@ export function RegisterForm({ id }: { id?: string }) {
 						></textarea>
 					</div>
 				</div>
-				<SubmitButton text={id ? 'Actualizar Producto' : 'Agregar Producto'} />
+				<SubmitButton text={id ? 'Actualizar Registro' : 'Agregar Registro'} />
 			</form>
 			<Toaster />
 		</>

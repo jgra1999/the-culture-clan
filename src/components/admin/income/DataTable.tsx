@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 import { SearchInput } from '../ui/SearchInput'
 
-const headers = ['Cliente', 'Email', 'Descripción', 'Cantidad', 'Fecha']
+const headers = ['Cliente', 'Descripción', 'Dolares', 'Pesos', 'Fecha']
 
 export function IncomeTable() {
 	const [data, setData] = useState<any>([])
@@ -117,12 +117,17 @@ export function IncomeTable() {
 							{data.map((item: any) => (
 								<tr key={item.id} className='border-b border-mediumGray '>
 									<th className='px-6 py-4'>{item.client_name}</th>
-									<td className='px-6 py-4'>{item.client_email}</td>
-									<td className='px-6 py-4'>{item.description}</td>
-									<td className='px-6 py-4'>${item.amount}</td>
+									<td className='px-6 py-4 '>
+										<p className='max-w-96 line-clamp-1'>{item.description}</p>
+									</td>
+									<td className='px-6 py-4'>${item.dollar_amount}</td>
+									<td className='px-6 py-4'>${item.pesos_amount}</td>
 									<td className='px-6 py-4'>{item.date}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
+											<a href={`/admin/ingresos/ver-registro/${item.id}`}>
+												<EyeIcon className='w-5 opacity-70 hover:opacity-100' />
+											</a>
 											<a href={`/admin/ingresos/actualizar/${item.id}`}>
 												<PencilIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>
