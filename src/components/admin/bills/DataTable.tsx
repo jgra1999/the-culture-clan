@@ -18,10 +18,10 @@ export function BillsTable() {
 
 	const fetchData = async () => {
 		try {
-			console.log('try')
 			const { data, error } = await supabase
 				.from('bills')
 				.select('*')
+				.order('id', { ascending: false })
 				.range(from, to)
 
 			if (error) console.log(error)

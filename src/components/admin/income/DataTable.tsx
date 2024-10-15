@@ -21,6 +21,7 @@ export function IncomeTable() {
 			const { data, error } = await supabase
 				.from('income')
 				.select('*')
+				.order('id', { ascending: false })
 				.ilike('client_name', `%${Search}%`)
 				.range(from, to)
 
