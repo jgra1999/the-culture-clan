@@ -5,6 +5,10 @@ import { TrashIcon, EyeIcon, PencilIcon } from '@heroicons/react/20/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 import { SearchInput } from '../ui/SearchInput'
+/* toasts */
+import toast, { Toaster } from 'react-hot-toast'
+import ErrorToast from '@/components/ui/toasts/ErrorToast'
+import SuccessToast from '@/components/ui/toasts/SuccessToast'
 
 const headers = ['Fecha', 'Descripción', 'Dolares', 'Pesos']
 
@@ -41,12 +45,24 @@ export function BillsTable() {
 	}
 
 	const deleteProduct = async (id: string) => {
-		// const { error } = await supabase.from('products').delete().eq('id', id)
-		// if (error) {
-		// 	toast(<ErrorToast message='No se pudo eliminar el producto' />)
-		// } else {
-		// 	toast(<SuccessToast message='Producto eliminado correctamente' />)
-		// }
+		const { error } = await supabase.from('bills').delete().eq('id', id)
+		if (error) {
+			toast.custom(<ErrorToast message='No se pudo eliminar el producto' />)
+		} else {
+			toast.custom(<SuccessToast message='Producto eliminado correctamente' />)
+			setInterval(() => {
+				window.location.reload()
+			}, 1000)
+		}
+	}
+
+	/* TODO: mudar esto a una funcion global */
+
+	const moneyFormatter = (amount: number) => {
+		const formatter = new Intl.NumberFormat('es-ES')
+		const formattedTotal = formatter.format(amount)
+
+		return formattedTotal
 	}
 
 	/* Pagination Next and Prev button */
@@ -121,7 +137,7 @@ export function BillsTable() {
 									<th className='px-6 py-4'>{item.date}</th>
 									<td className='px-6 py-4'>{item.description}</td>
 									<td className='px-6 py-4'>${item.dollar_amount}</td>
-									<td className='px-6 py-4'>${item.pesos_amount}</td>
+									<td className='px-6 py-4'>${moneyFormatter(item.pesos_amount)}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
 											<a href={`/admin/gastos/ver-registro/${item.id}`}>
@@ -164,6 +180,7 @@ export function BillsTable() {
 					<ChevronRightIcon className='w-5' />
 				</button>
 			</div>
+			<Toaster />
 		</>
 	)
 }

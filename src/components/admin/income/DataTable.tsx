@@ -5,6 +5,10 @@ import { TrashIcon, EyeIcon, PencilIcon } from '@heroicons/react/20/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 import { SearchInput } from '../ui/SearchInput'
+/* toasts */
+import toast, { Toaster } from 'react-hot-toast'
+import ErrorToast from '@/components/ui/toasts/ErrorToast'
+import SuccessToast from '@/components/ui/toasts/SuccessToast'
 
 const headers = ['Cliente', 'Descripción', 'Dolares', 'Pesos', 'Fecha']
 
@@ -40,12 +44,15 @@ export function IncomeTable() {
 	}
 
 	const deleteProduct = async (id: string) => {
-		// const { error } = await supabase.from('products').delete().eq('id', id)
-		// if (error) {
-		// 	toast(<ErrorToast message='No se pudo eliminar el producto' />)
-		// } else {
-		// 	toast(<SuccessToast message='Producto eliminado correctamente' />)
-		// }
+		const { error } = await supabase.from('income').delete().eq('id', id)
+		if (error) {
+			toast.custom(<ErrorToast message='No se pudo eliminar el producto' />)
+		} else {
+			toast.custom(<SuccessToast message='Producto eliminado correctamente' />)
+			setInterval(() => {
+				window.location.reload()
+			}, 1000)
+		}
 	}
 
 	/* Pagination Next and Prev button */
@@ -166,6 +173,7 @@ export function IncomeTable() {
 					<ChevronRightIcon className='w-5' />
 				</button>
 			</div>
+			<Toaster />
 		</>
 	)
 }
