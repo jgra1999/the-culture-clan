@@ -9,7 +9,7 @@ export function SearchInput({ text, handleSearch }: Props) {
 			<input
 				type='text'
 				placeholder={text}
-				className='bg-transparent min-w-[500px] border border-darkGray py-2 px-3 text-sm opacity-50 focus:opacity-100 outline-none rounded-lg'
+				className='bg-transparent min-w-[500px] border border-darkGray py-2 px-3 text-sm text-darkGray opacity-80 focus:opacity-100 outline-none rounded-lg'
 				onChange={(e) => handleSearch(e.target.value)}
 			/>
 		</div>
