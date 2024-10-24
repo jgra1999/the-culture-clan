@@ -2,7 +2,7 @@ type Props = {
 	title: string
 	growth?: number
 	tableUrl: string
-	stats: number
+	stats: number | string
 }
 
 export function StatsCard({ title, growth = 0, tableUrl, stats }: Props) {
@@ -25,7 +25,7 @@ export function StatsCard({ title, growth = 0, tableUrl, stats }: Props) {
 			<div className='flex flex-col gap-y-5'>
 				<span className='text-5xl'>{stats}</span>
 				<a
-					className='text-white text-sm opacity-50 hover:opacity-100'
+					className='text-darkGray text-sm opacity-50 hover:opacity-100'
 					href={tableUrl}
 				>
 					Ver tabla
