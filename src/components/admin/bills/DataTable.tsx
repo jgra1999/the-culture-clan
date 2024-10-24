@@ -44,7 +44,7 @@ export function BillsTable() {
 		}
 	}
 
-	const deleteProduct = async (id: string) => {
+	const deleteRegister = async (id: string) => {
 		const { error } = await supabase.from('bills').delete().eq('id', id)
 		if (error) {
 			toast.custom(<ErrorToast message='No se pudo eliminar el producto' />)
@@ -146,7 +146,7 @@ export function BillsTable() {
 											<a href={`/admin/gastos/actualizar/${item.id}`}>
 												<PencilIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>
-											<button onClick={() => deleteProduct(item.id)}>
+											<button onClick={() => deleteRegister(item.id)}>
 												<TrashIcon className='w-5 opacity-70 hover:opacity-100' />
 											</button>
 										</div>
