@@ -63,8 +63,8 @@ export function RegisterForm({ id }: { id?: string }) {
 					client_name,
 					client_email,
 					description,
-					dollar_amount,
-					pesos_amount: Math.round(register.dollar_amount * 3800),
+					dollar_amount: Math.round(register.pesos_amount / 3800),
+					pesos_amount,
 					date
 				})
 				.eq('id', id)
@@ -75,7 +75,7 @@ export function RegisterForm({ id }: { id?: string }) {
 				toast.custom(<SuccessToast message='Registro editado' />)
 				setInterval(() => {
 					window.location.replace('/admin/ingresos')
-				}, 2000)
+				}, 1000)
 			}
 		} else {
 			const { data, error } = await supabase.from('income').insert([
@@ -83,8 +83,8 @@ export function RegisterForm({ id }: { id?: string }) {
 					client_name,
 					client_email,
 					description,
-					dollar_amount,
-					pesos_amount: Math.round(register.dollar_amount * 3800),
+					dollar_amount: Math.round(register.pesos_amount / 3800),
+					pesos_amount,
 					date
 				}
 			])
@@ -131,20 +131,6 @@ export function RegisterForm({ id }: { id?: string }) {
 					</div>
 
 					<div className='flex flex-col gap-y-2 text-left relative'>
-						<label htmlFor='dollar_amount' className='text-grayText'>
-							Cantidad (Dolares)
-						</label>
-						<input
-							type='number'
-							step={0.01}
-							name='dollar_amount'
-							onChange={handleChange}
-							value={register ? register.dollar_amount : ''}
-							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
-						/>
-					</div>
-
-					<div className='flex flex-col gap-y-2 text-left relative'>
 						<label htmlFor='pesos_amount' className='text-grayText'>
 							Cantidad (Pesos)
 						</label>
@@ -153,7 +139,21 @@ export function RegisterForm({ id }: { id?: string }) {
 							step={0.01}
 							name='pesos_amount'
 							onChange={handleChange}
-							value={register ? Math.round(register.dollar_amount * 3800) : ''}
+							value={register ? register.pesos_amount : ''}
+							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
+						/>
+					</div>
+
+					<div className='flex flex-col gap-y-2 text-left relative'>
+						<label htmlFor='dollar_amount' className='text-grayText'>
+							Cantidad (Dolares)
+						</label>
+						<input
+							type='number'
+							step={0.01}
+							name='dollar_amount'
+							onChange={handleChange}
+							value={register ? Math.round(register.pesos_amount / 3800) : ''}
 							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
 						/>
 					</div>
