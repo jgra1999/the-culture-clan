@@ -45,7 +45,6 @@ export function RegisterForm({ id }: { id?: string }) {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		const imageData = new FormData()
 
 		const {
 			client_name,

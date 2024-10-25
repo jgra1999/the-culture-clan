@@ -1,13 +1,20 @@
 import Loader from '@/components/ui/Loader'
 import { supabase } from '@/supabase/client'
 import type { billRegister } from '@/types'
-import { PaperClipIcon } from '@heroicons/react/20/solid'
 import { useEffect, useState } from 'react'
+
+type Options = {
+	year: 'numeric'
+	month: 'long'
+	day: 'numeric'
+	hour: 'numeric'
+	minute: 'numeric'
+	second: 'numeric'
+}
 
 export function BillOverview({ id }: { id: string }) {
 	const [register, setRegister] = useState<billRegister>()
 	const [createdAt, setCreatedAt] = useState('')
-	const [pesosFormatted, setPesosFormatted] = useState()
 
 	const getRegister = async () => {
 		try {
@@ -27,7 +34,7 @@ export function BillOverview({ id }: { id: string }) {
 	const dateFormatter = (date: string) => {
 		const fecha = new Date(date)
 
-		const options = {
+		const formatterOptions: Options = {
 			year: 'numeric',
 			month: 'long',
 			day: 'numeric',
@@ -35,7 +42,7 @@ export function BillOverview({ id }: { id: string }) {
 			minute: 'numeric',
 			second: 'numeric'
 		}
-		const formatter = new Intl.DateTimeFormat('es-ES', options)
+		const formatter = new Intl.DateTimeFormat('es-ES', formatterOptions)
 		return formatter.format(fecha)
 	}
 

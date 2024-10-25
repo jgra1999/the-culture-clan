@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import type { Database } from '@/types/supabase'
 
 /* libraries */
 import toast, { Toaster } from 'react-hot-toast'
