@@ -9,6 +9,7 @@ import { SearchInput } from '../ui/SearchInput'
 import toast, { Toaster } from 'react-hot-toast'
 import ErrorToast from '@/components/ui/toasts/ErrorToast'
 import SuccessToast from '@/components/ui/toasts/SuccessToast'
+import { pesosFormatter } from '@/utils/pesos-formatter'
 
 const headers = ['Fecha', 'Descripción', 'Dolares', 'Pesos']
 
@@ -54,15 +55,6 @@ export function BillsTable() {
 				window.location.reload()
 			}, 1000)
 		}
-	}
-
-	/* TODO: mudar esto a una funcion global */
-
-	const moneyFormatter = (amount: number) => {
-		const formatter = new Intl.NumberFormat('es-ES')
-		const formattedTotal = formatter.format(amount)
-
-		return formattedTotal
 	}
 
 	/* Pagination Next and Prev button */
@@ -137,7 +129,7 @@ export function BillsTable() {
 									<th className='px-6 py-4'>{item.date}</th>
 									<td className='px-6 py-4'>{item.description}</td>
 									<td className='px-6 py-4'>${item.dollar_amount}</td>
-									<td className='px-6 py-4'>${moneyFormatter(item.pesos_amount)}</td>
+									<td className='px-6 py-4'>${pesosFormatter(item.pesos_amount)}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
 											<a href={`/admin/gastos/ver-registro/${item.id}`}>

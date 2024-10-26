@@ -9,6 +9,7 @@ import { SearchInput } from '../ui/SearchInput'
 import toast, { Toaster } from 'react-hot-toast'
 import ErrorToast from '@/components/ui/toasts/ErrorToast'
 import SuccessToast from '@/components/ui/toasts/SuccessToast'
+import { pesosFormatter } from '@/utils/pesos-formatter'
 
 const headers = ['Cliente', 'Descripción', 'Dolares', 'Pesos', 'Fecha']
 
@@ -129,7 +130,7 @@ export function IncomeTable() {
 										<p className='max-w-96 line-clamp-1'>{item.description}</p>
 									</td>
 									<td className='px-6 py-4'>${item.dollar_amount}</td>
-									<td className='px-6 py-4'>${item.pesos_amount}</td>
+									<td className='px-6 py-4'>${pesosFormatter(item.pesos_amount)}</td>
 									<td className='px-6 py-4'>{item.date}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>

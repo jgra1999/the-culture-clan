@@ -1,19 +1,13 @@
 import { supabase } from '@/supabase/client'
 import { StatsCard } from './StatsCard'
 import { useEffect, useState } from 'react'
+import { pesosFormatter } from '@/utils/pesos-formatter'
 
 export default function StatsContainer() {
 	const [currentMoney, setCurrentMoney] = useState(0)
 	const [currentIncomes, setCurrentIncomes] = useState(0)
 	const [currentBills, setCurrentBills] = useState(0)
 	const [currentStock, setCurrentStock] = useState(0)
-
-	const moneyFormatter = (amount: number) => {
-		const formatter = new Intl.NumberFormat('es-ES')
-		const formattedTotal = formatter.format(amount)
-
-		return formattedTotal
-	}
 
 	const fetchIncomes = async () => {
 		try {
@@ -75,17 +69,17 @@ export default function StatsContainer() {
 		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
 			<StatsCard
 				title='Fondos'
-				stats={moneyFormatter(currentMoney - currentBills)}
+				stats={pesosFormatter(currentMoney - currentBills)}
 				tableUrl='/admin/ingresos'
 			/>
 			<StatsCard
 				title='Ingresos'
-				stats={moneyFormatter(currentIncomes)}
+				stats={pesosFormatter(currentIncomes)}
 				tableUrl='/admin/ingresos'
 			/>
 			<StatsCard
 				title='Gastos'
-				stats={moneyFormatter(currentBills)}
+				stats={pesosFormatter(currentBills)}
 				tableUrl='/admin/ingresos'
 			/>
 
