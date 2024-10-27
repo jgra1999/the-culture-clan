@@ -5,6 +5,9 @@ import { TrashIcon, EyeIcon, PencilIcon } from '@heroicons/react/20/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 import { SearchInput } from '../ui/SearchInput'
+import toast, { Toaster } from 'react-hot-toast'
+import ErrorToast from '@/components/ui/toasts/ErrorToast'
+import SuccessToast from '@/components/ui/toasts/SuccessToast'
 
 const headers = ['Productos', 'Colección', 'Stock', 'Dolares', 'Ref']
 
@@ -21,6 +24,7 @@ export function InventoryTable() {
 			const { data, error } = await supabase
 				.from('inventory')
 				.select('*')
+				.order('id', { ascending: false })
 				.ilike('name', `%${Search}%`)
 				.range(from, to)
 			console.log('🚀 ~ fetchData ~ data:', data)
@@ -40,12 +44,15 @@ export function InventoryTable() {
 	}
 
 	const deleteProduct = async (id: string) => {
-		// const { error } = await supabase.from('products').delete().eq('id', id)
-		// if (error) {
-		// 	toast(<ErrorToast message='No se pudo eliminar el producto' />)
-		// } else {
-		// 	toast(<SuccessToast message='Producto eliminado correctamente' />)
-		// }
+		const { error } = await supabase.from('inventory').delete().eq('id', id)
+		if (error) {
+			toast.custom(<ErrorToast message='No se pudo eliminar el producto' />)
+		} else {
+			toast.custom(<SuccessToast message='Producto eliminado correctamente' />)
+			setInterval(() => {
+				window.location.reload()
+			}, 1000)
+		}
 	}
 
 	/* Pagination Next and Prev button */
@@ -170,6 +177,7 @@ export function InventoryTable() {
 					<ChevronRightIcon className='w-5' />
 				</button>
 			</div>
+			<Toaster />
 		</>
 	)
 }
