@@ -11,7 +11,7 @@ export default function StatsContainer() {
 
 	const fetchIncomes = async () => {
 		try {
-			const { data, error } = await supabase.from('income').select('pesos_amount')
+			const { data, error } = await supabase.from('incomes').select('pesos_amount')
 			if (error) throw error
 
 			if (data) {
@@ -69,17 +69,17 @@ export default function StatsContainer() {
 		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
 			<StatsCard
 				title='Fondos'
-				stats={pesosFormatter(currentMoney - currentBills)}
+				stats={`${pesosFormatter(currentMoney - currentBills)} COP`}
 				tableUrl='/admin/ingresos'
 			/>
 			<StatsCard
 				title='Ingresos'
-				stats={pesosFormatter(currentIncomes)}
+				stats={`${pesosFormatter(currentIncomes)} COP`}
 				tableUrl='/admin/ingresos'
 			/>
 			<StatsCard
 				title='Gastos'
-				stats={pesosFormatter(currentBills)}
+				stats={`${pesosFormatter(currentBills)} COP`}
 				tableUrl='/admin/ingresos'
 			/>
 
