@@ -18,13 +18,13 @@ export function IncomeTable() {
 	const [Search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [from, setFrom] = useState(0)
-	const [to, setTo] = useState(4)
-	const ITEMS_PER_PAGE = 4
+	const [to, setTo] = useState(8)
+	const ITEMS_PER_PAGE = 8
 
 	const fetchData = async () => {
 		try {
 			const { data, error } = await supabase
-				.from('income')
+				.from('incomes')
 				.select('*')
 				.order('id', { ascending: false })
 				.ilike('client_name', `%${Search}%`)
@@ -45,7 +45,7 @@ export function IncomeTable() {
 	}
 
 	const deleteRegister = async (id: string) => {
-		const { error } = await supabase.from('income').delete().eq('id', id)
+		const { error } = await supabase.from('incomes').delete().eq('id', id)
 		if (error) {
 			toast.custom(<ErrorToast message='No se pudo eliminar el producto' />)
 		} else {
@@ -94,12 +94,13 @@ export function IncomeTable() {
 	}, [from, to, Search])
 	return (
 		<>
-			<div className='flex flex-col md:flex-row gap-y-5 w-full items-center justify-between my-10'>
-				<div className='bg-darkGray text-white py-2 w-36  active:opacity-80 text-sm lg:hover:opacity-80 text-center rounded-lg'>
-					<a href='/admin/ingresos/agregar-registro' className=''>
-						Agregar Registro
-					</a>
-				</div>
+			<div className='flex flex-col md:flex-row gap-y-5 w-full md:items-center justify-between my-10'>
+				<a
+					href='/admin/ingresos/agregar-registro'
+					className='bg-darkGray text-white py-2 w-36 active:opacity-80 text-sm lg:hover:opacity-80 text-center rounded-lg'
+				>
+					Agregar Registro
+				</a>
 				<div>
 					<SearchInput
 						text='Ingresa el nombre de la franela...'
