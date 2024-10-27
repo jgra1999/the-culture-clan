@@ -98,7 +98,7 @@ export function ProductsForm({ id }: { id?: string }) {
 				toast.custom(<SuccessToast message='Producto editado' />)
 				setInterval(() => {
 					window.location.replace('/admin/inventario')
-				}, 2000)
+				}, 1000)
 			}
 		} else {
 			const { data, error } = await supabase.from('inventory').insert([
@@ -118,7 +118,7 @@ export function ProductsForm({ id }: { id?: string }) {
 				toast.custom(<SuccessToast message='Producto agregado' />)
 				setInterval(() => {
 					window.location.replace('/admin/inventario')
-				}, 2000)
+				}, 1000)
 			}
 		}
 	}
