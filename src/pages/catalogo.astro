@@ -1,7 +1,7 @@
 ---
 import Title from '@/components/ui/Title.astro'
 import Layout from '@/layouts/Layout.astro'
-// import ItemsList from '@/components/shop/ItemsList.tsx'
+import { ItemsList } from '@/components/catalogue/ItemsList.tsx'
 ---
 
 <Layout title='Catálogo'>
@@ -9,8 +9,11 @@ import Layout from '@/layouts/Layout.astro'
 		<div
 			class='flex flex-col pb-10 lg:gap-y-32 items-center border-b-2 border-mediumGray'
 		>
-			<Title title='Todos los productos' subtitle='Revisa nuestras diferentes prendas y compra las que más te gusten' />
+			<Title
+				title='Todos los productos'
+				subtitle='Revisa nuestras diferentes prendas y compra las que más te gusten'
+			/>
 		</div>
-		<!-- <ItemsList client:load /> -->
+		<ItemsList client:load />
 	</main>
 </Layout>
