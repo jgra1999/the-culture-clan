@@ -46,14 +46,7 @@ export function RegisterForm({ id }: { id?: string }) {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
-		const {
-			client_name,
-			client_email,
-			description,
-			dollar_amount,
-			pesos_amount,
-			date
-		} = register
+		const { client_name, client_email, description, pesos_amount, date } = register
 
 		if (id) {
 			const { data, error } = await supabase
@@ -62,7 +55,7 @@ export function RegisterForm({ id }: { id?: string }) {
 					client_name,
 					client_email,
 					description,
-					dollar_amount: Math.round(register.pesos_amount / 3800),
+					dollar_amount: Math.round(register.pesos_amount / 4000),
 					pesos_amount,
 					date
 				})
@@ -82,7 +75,7 @@ export function RegisterForm({ id }: { id?: string }) {
 					client_name,
 					client_email,
 					description,
-					dollar_amount: Math.round(register.pesos_amount / 3800),
+					dollar_amount: Math.round(register.pesos_amount / 4000),
 					pesos_amount,
 					date
 				}
@@ -152,7 +145,7 @@ export function RegisterForm({ id }: { id?: string }) {
 							step={0.01}
 							name='dollar_amount'
 							onChange={handleChange}
-							value={register ? Math.round(register.pesos_amount / 3800) : ''}
+							value={register ? Math.round(register.pesos_amount / 4000) : ''}
 							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
 						/>
 					</div>
