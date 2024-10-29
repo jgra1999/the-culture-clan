@@ -35,12 +35,12 @@ export function ProductsForm({ id }: { id?: string }) {
 
 			if (data) {
 				setProduct(data[0])
-				console.log(data)
 			}
 		}
 
 		useEffect(() => {
 			getProductData()
+			console.log(import.meta.env.VITE_CLOUDINARY_CLOUD_NAME)
 		}, [])
 	}
 

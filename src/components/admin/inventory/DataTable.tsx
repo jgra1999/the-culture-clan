@@ -27,7 +27,6 @@ export function InventoryTable() {
 				.order('id', { ascending: false })
 				.ilike('name', `%${Search}%`)
 				.range(from, to)
-			console.log('🚀 ~ fetchData ~ data:', data)
 
 			if (error) console.log(error)
 			setProducts(data)
