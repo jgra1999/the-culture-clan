@@ -1,6 +1,7 @@
 ---
 import SideMenu from '@/components/layouts/SideMenu'
 import SideMenuOptions from '@/components/layouts/SideMenuOptions'
+import { TShirtIcon, DtfIcon } from '@/components/ui/icons/icons'
 import {
 	BanknotesIcon,
 	CurrencyDollarIcon,
@@ -46,6 +47,16 @@ const { title } = Astro.props
 				</SideMenuOptions>
 				<SideMenuOptions name='Gastos' link='/admin/gastos' otherStyles='text-2xl'>
 					<CurrencyDollarIcon className='flex-shrink-0 w-6 h-6' />
+				</SideMenuOptions>
+				<SideMenuOptions
+					name='Franelas'
+					link='/admin/franelas'
+					otherStyles='text-2xl'
+				>
+					<TShirtIcon styles='flex-shrink-0 w-6 h-6' />
+				</SideMenuOptions>
+				<SideMenuOptions name='DTFS' link='/admin/dtfs' otherStyles='text-2xl'>
+					<DtfIcon styles='flex-shrink-0 w-6 h-6' />
 				</SideMenuOptions>
 				{
 					/* <SideMenuOptions name='Iniciar sesión' link='/login'>

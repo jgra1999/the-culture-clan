@@ -66,6 +66,24 @@ export const ColombiaFlagIcon = () => (
 	</svg>
 )
 
+export const TShirtIcon = ({ styles }: { styles: string }) => (
+	<svg xmlns='http://www.w3.org/2000/svg' className={styles} viewBox='0 0 32 32'>
+		<path
+			fill='currentColor'
+			d='M20.1 4.04a4.58 4.58 0 0 1-4.24 2.86a4.58 4.58 0 0 1-4.24-2.86L1.238 8.44l2.92 6.884l3.21-1.36V28h17.098V14.015l3.093 1.312l2.92-6.884z'
+		/>
+	</svg>
+)
+
+export const DtfIcon = ({ styles }: { styles: string }) => (
+	<svg xmlns='http://www.w3.org/2000/svg' className={styles} viewBox='0 0 24 24'>
+		<path
+			fill='currentColor'
+			d='M3 19q-.825 0-1.412-.587T1 17V7q0-.825.588-1.412T3 5h10q.825 0 1.413.588T15 7v10q0 .825-.587 1.413T13 19zm1-4h8l-2.6-3.5L7.5 14l-1.4-1.85zm13 4V5h2v14zm4 0V5h2v14z'
+		/>
+	</svg>
+)
+
 export const USDFlagIcon = () => (
 	<svg xmlns='http://www.w3.org/2000/svg' className='w-5 h-5' viewBox='0 0 72 72'>
 		<path fill='#fff' d='M5 17h62v38H5z' />
