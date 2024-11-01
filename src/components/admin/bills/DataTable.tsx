@@ -129,7 +129,9 @@ export function BillsTable() {
 									<th className='px-6 py-4'>{item.date}</th>
 									<td className='px-6 py-4'>{item.description}</td>
 									<td className='px-6 py-4'>${item.dollar_amount}</td>
-									<td className='px-6 py-4'>${pesosFormatter(item.pesos_amount)}</td>
+									<td className='px-6 py-4'>
+										{pesosFormatter(item.pesos_amount)} COP
+									</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
 											<a href={`/admin/gastos/ver-registro/${item.id}`}>

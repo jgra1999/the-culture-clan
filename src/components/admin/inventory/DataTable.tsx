@@ -8,6 +8,7 @@ import { SearchInput } from '../ui/SearchInput'
 import toast, { Toaster } from 'react-hot-toast'
 import ErrorToast from '@/components/ui/toasts/ErrorToast'
 import SuccessToast from '@/components/ui/toasts/SuccessToast'
+import { pesosFormatter } from '@/utils/pesos-formatter'
 
 const headers = ['Productos', 'Colección', 'Stock', 'Dolares', 'Ref']
 
@@ -131,7 +132,9 @@ export function InventoryTable() {
 										<span>{item.name}</span>
 									</th>
 									<td className='px-6 py-4'>{item.collection}</td>
-									<td className='px-6 py-4'>{item.stock}</td>
+									<td className='px-6 py-4'>
+										{pesosFormatter(item.pesos_price)} COP
+									</td>
 									<td className='px-6 py-4'>${item.dollar_price}</td>
 									<td className='px-6 py-4'>{item.ref}</td>
 									<td className='px-6 py-4'>

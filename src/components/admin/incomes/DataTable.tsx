@@ -131,7 +131,9 @@ export function IncomeTable() {
 										<p className='max-w-96 line-clamp-1'>{item.description}</p>
 									</td>
 									<td className='px-6 py-4'>${item.dollar_amount}</td>
-									<td className='px-6 py-4'>${pesosFormatter(item.pesos_amount)}</td>
+									<td className='px-6 py-4'>
+										{pesosFormatter(item.pesos_amount)} COP
+									</td>
 									<td className='px-6 py-4'>{item.date}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
