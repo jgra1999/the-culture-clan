@@ -10,15 +10,15 @@ import ErrorToast from '@/components/ui/toasts/ErrorToast'
 import SuccessToast from '@/components/ui/toasts/SuccessToast'
 import { pesosFormatter } from '@/utils/pesos-formatter'
 
-const headers = ['Productos', 'Colección', 'Stock', 'Dolares', 'Ref']
+const headers = ['Productos', 'Colección', 'Pesos', 'Dolares', 'Ref']
 
 export function InventoryTable() {
 	const [products, setProducts] = useState<any>([])
 	const [Search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [from, setFrom] = useState(0)
-	const [to, setTo] = useState(4)
-	const ITEMS_PER_PAGE = 4
+	const [to, setTo] = useState(6)
+	const ITEMS_PER_PAGE = 6
 
 	const fetchProducts = async () => {
 		try {

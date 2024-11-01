@@ -45,7 +45,7 @@ export default function StatsContainer() {
 		}
 	}
 
-	const fetchInventoryData = async () => {
+	/* 	const fetchInventoryData = async () => {
 		const { data: stock, error } = await supabase.from('inventory').select('stock')
 
 		if (error) throw error
@@ -57,12 +57,12 @@ export default function StatsContainer() {
 
 			setCurrentStock(total)
 		}
-	}
+	} */
 
 	useEffect(() => {
 		fetchIncomes()
 		fetchBills()
-		fetchInventoryData()
+		// fetchInventoryData()
 	}, [])
 
 	return (
@@ -83,7 +83,7 @@ export default function StatsContainer() {
 				tableUrl='/admin/ingresos'
 			/>
 
-			<StatsCard title='Stock' stats={currentStock} tableUrl='/admin/ingresos' />
+			{/* <StatsCard title='Stock' stats={currentStock} tableUrl='/admin/ingresos' /> */}
 		</div>
 	)
 }

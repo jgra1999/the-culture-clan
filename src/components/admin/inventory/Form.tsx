@@ -20,7 +20,7 @@ export function ProductsForm({ id }: { id?: string }) {
 		dollar_price: 0,
 		pesos_price: 0,
 		ref: '',
-		stock: 0
+		popularity: 0
 	})
 	const [file, setFile] = useState<File | null>(null)
 
@@ -55,8 +55,15 @@ export function ProductsForm({ id }: { id?: string }) {
 		e.preventDefault()
 		const imageData = new FormData()
 
-		const { name, collection, dollar_price, pesos_price, image_url, ref, stock } =
-			product
+		const {
+			name,
+			collection,
+			dollar_price,
+			pesos_price,
+			image_url,
+			ref,
+			popularity
+		} = product
 
 		if (file) {
 			const formData = new FormData()
@@ -87,7 +94,7 @@ export function ProductsForm({ id }: { id?: string }) {
 					dollar_price,
 					pesos_price,
 					image_url: imageData.get('image_url') ? img_url : image_url,
-					stock,
+					popularity,
 					ref
 				})
 				.eq('id', id)
@@ -108,7 +115,7 @@ export function ProductsForm({ id }: { id?: string }) {
 					dollar_price,
 					pesos_price,
 					image_url: img_url,
-					stock,
+					popularity,
 					ref
 				}
 			])
@@ -221,14 +228,14 @@ export function ProductsForm({ id }: { id?: string }) {
 					</div>
 
 					<div className='flex flex-col gap-y-2 text-left relative'>
-						<label htmlFor='name' className='text-grayText'>
-							Stock
+						<label htmlFor='popularity' className='text-grayText'>
+							Popularidad
 						</label>
 						<input
 							type='number'
-							name='stock'
+							name='popularity'
 							onChange={handleChange}
-							value={product ? product.stock : ''}
+							value={product ? product.popularity : ''}
 							className='bg-lightGray outline-none opacity-75 focus:opacity-100 border border-mediumGray py-2 px-3 rounded-lg'
 						/>
 					</div>

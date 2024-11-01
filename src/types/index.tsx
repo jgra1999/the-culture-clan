@@ -7,6 +7,18 @@ interface oversized {
 	insert: Database['public']['Tables']['inventory']['Insert']
 }
 
+export interface Products {
+	collection: string
+	created_at: string
+	dollar_price: number
+	id: string
+	image_url: string
+	name: string
+	pesos_price: number
+	ref: string
+	popularity: number
+}
+
 export interface billRegister {
 	id: number
 	title: string
