@@ -47,9 +47,9 @@ export default function CollectionDropDown({
 						<button
 							className='opacity-70 hover:opacity-100'
 							onClick={setCollection}
-							value='Music Culture'
+							value='Artist Culture'
 						>
-							Music Culture
+							Artist Culture
 						</button>
 					</Menu.Item>
 					<Menu.Item>
@@ -59,6 +59,15 @@ export default function CollectionDropDown({
 							value='Fit Culture'
 						>
 							Fit Culture
+						</button>
+					</Menu.Item>
+					<Menu.Item>
+						<button
+							className='opacity-70 hover:opacity-100'
+							onClick={setCollection}
+							value='Padel Culture'
+						>
+							Padel Culture
 						</button>
 					</Menu.Item>
 				</Menu.Items>

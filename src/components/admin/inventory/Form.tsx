@@ -204,7 +204,7 @@ export function ProductsForm({ id }: { id?: string }) {
 						>
 							<option value=''>Seleccionar</option>
 							<option value='New Culture'>New Culture</option>
-							<option value='Music Culture'>Music Culture</option>
+							<option value='Artist Culture'>Artist Culture</option>
 							<option value='Fit Culture'>Fit Culture</option>
 							<option value='Padel Culture'>Padel Culture</option>
 						</select>
