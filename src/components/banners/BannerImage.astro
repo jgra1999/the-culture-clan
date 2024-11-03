@@ -1,25 +1,37 @@
 ---
-interface Props{
-    firstTitle: string
-    secondTitle: string
-    subtitle: string
-    image: string
-    imageAlt: string
-    imageOtherStyles: string
+interface Props {
+	firstTitle: string
+	secondTitle: string
+	subtitle: string
+	image: string
+	imageAlt: string
+	imageOtherStyles: string
 }
 
-const {firstTitle, secondTitle, subtitle,  image,  imageAlt, imageOtherStyles} = Astro.props
-
+const { firstTitle, secondTitle, subtitle, image, imageAlt, imageOtherStyles } =
+	Astro.props
 ---
 
-<div class="flex flex-col items-center md:items-start md:mb-10">
-    <img src={image} class={`w-72 lg:w-96 2xl:w-[460px] absolute -top-24 md:top-1/2 md:-translate-y-1/2 ${imageOtherStyles}`} alt={imageAlt}>
-        <div class="text-center md:text-left hidden md:block">
-            <span class="font-semibold text-sm">{subtitle}</span>
-            <h2 class="font-extrabold text-4xl md:text-5xl lg:text-7xl 2xl:text-[90px] uppercase">{firstTitle}</h2>
-        </div>
-        
-        <div class="text-center md:text-left hidden md:block z-10">
-                <h2 class="font-extrabold text-4xl md:text-5xl lg:text-7xl 2xl:text-[90px] uppercase ">{secondTitle}</h2>
-        </div>
+<div class='flex flex-col items-center md:items-start md:mb-10'>
+	<img
+		src={image}
+		class={`w-72 lg:w-96 2xl:w-[460px] absolute -top-24 md:top-1/2 md:-translate-y-1/2 ${imageOtherStyles}`}
+		alt={imageAlt}
+	/>
+	<div class='text-center md:text-left hidden md:block'>
+		<span class='font-semibold text-sm'>{subtitle}</span>
+		<h2
+			class='font-extrabold text-4xl md:text-5xl lg:text-7xl 2xl:text-[90px] uppercase'
+		>
+			{firstTitle}
+		</h2>
+	</div>
+
+	<div class='text-center md:text-left hidden md:block z-10'>
+		<h2
+			class='font-extrabold text-4xl md:text-5xl lg:text-7xl 2xl:text-[90px] uppercase'
+		>
+			{secondTitle}
+		</h2>
+	</div>
 </div>

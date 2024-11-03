@@ -1,95 +1,185 @@
 ---
-import BannerContainer from '@/components/banners/BannerContainer.astro';
-import Layout from '../layouts/Layout.astro';
-import ButtonPrimary from '@/components/ui/ButtonPrimary.astro';
-import Title from '@/components/ui/Title.astro';
-import Card from '@/components/products/Card.astro';
-import BannerInfo from '@/components/banners/BannerInfo.astro';
-import BannerImage from '@/components/banners/BannerImage.astro';
-import ContactForm from '@/components/ui/ContactForm.astro';
+import BannerContainer from '@/components/banners/BannerContainer.astro'
+import Layout from '../layouts/Layout.astro'
+import ButtonPrimary from '@/components/ui/ButtonPrimary.astro'
+import Title from '@/components/ui/Title.astro'
+import Card from '@/components/products/Card.astro'
+import BannerInfo from '@/components/banners/BannerInfo.astro'
+import BannerImage from '@/components/banners/BannerImage.astro'
+import ContactForm from '@/components/ui/ContactForm.astro'
+import { Carousel } from '@/components/catalogue/Carousel'
 ---
 
-<Layout title="Inicio">
+<Layout title='Inicio'>
 	<main>
-		<BannerContainer containerStyles='grid-cols-2 bg-banner1 hover:shadow-banner1/60 sm:p-8'>
-			<div slot="first-col" class="space-y-5">
-				<div class="flex flex-col">
-					<h3 class="font-bold text-sm md:text-lg lg:text-3xl text-darkGray">Nueva Colección</h3>
-					<h2 class="font-extrabold text-white text-4xl sm:text-6xl lg:text-[100px] xl:text-[140px] leading-none uppercase">Fitness Culture</h2>
+		<BannerContainer
+			containerStyles='grid-cols-2 bg-banner1 hover:shadow-banner1/60 sm:p-8'
+		>
+			<div slot='first-col' class='space-y-5'>
+				<div class='flex flex-col'>
+					<h3 class='font-bold text-sm md:text-lg lg:text-3xl text-darkGray'>
+						Nueva Colección
+					</h3>
+					<h2
+						class='font-extrabold text-white text-4xl sm:text-6xl lg:text-[100px] xl:text-[140px] leading-none uppercase'
+					>
+						Fitness Culture
+					</h2>
 				</div>
-				<ButtonPrimary text='Ver Tienda' link='/' containerStyles='bg-white text-banner1 hover:bg-darkGray hover:text-white active:text-white' />
+				<ButtonPrimary
+					text='Ver Tienda'
+					link='/'
+					containerStyles='bg-white text-banner1 hover:bg-darkGray hover:text-white active:text-white'
+				/>
 			</div>
-			<div slot="second-col">
-				<img src="./img/fit-banner-img.webp" class="w-64 sm:w-full sm:mb-10 absolute sm:static top-1/2 -translate-y-1/2 -right-3 sm:top-0 sm:right-0 sm:translate-y-0" alt="Imagen de Franelas Linea Fitness" loading="lazy" />
-				<div class="hidden sm:flex flex-col items-end w-full text-right">
-					<h3 class="text-sm lg:text-lg font-bold">Descripción:</h3>
-					<p class="text-white text-xs lg:text-base font-semibold text-pretty max-w-80 ">Oversize con cuello RIB, compuesta de 150g y 100% algodón, con estampados DTF </p>
+			<div slot='second-col'>
+				<img
+					src='./img/fit-banner-img.webp'
+					class='w-64 sm:w-full sm:mb-10 absolute sm:static top-1/2 -translate-y-1/2 -right-3 sm:top-0 sm:right-0 sm:translate-y-0'
+					alt='Imagen de Franelas Linea Fitness'
+					loading='lazy'
+				/>
+				<div class='hidden sm:flex flex-col items-end w-full text-right'>
+					<h3 class='text-sm lg:text-lg font-bold'>Descripción:</h3>
+					<p
+						class='text-white text-xs lg:text-base font-semibold text-pretty max-w-80'
+					>
+						Oversize con cuello RIB, compuesta de 150g y 100% algodón, con estampados
+						DTF
+					</p>
 				</div>
 			</div>
 		</BannerContainer>
 
-		<section class="text-center mt-24">
-			<Title title='Franelas Populares' subtitle='Conoce nuestras oversize mas vendidas' />
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12 gap-8">
-				<Card name='Ronnie Coleman' />
-				<Card name='Ronnie Coleman' />
-				<Card name='Ronnie Coleman' />
-			</div>
+		<section class='text-center mt-24'>
+			<Title
+				title='Franelas Populares'
+				subtitle='Conoce nuestras oversize mas vendidas'
+			/>
+			<Carousel orderBy='popularity' client:load />
 		</section>
 
 		<section>
-			<BannerContainer containerStyles='grid-cols-1 md:grid-cols-2 bg-banner2 hover:shadow-banner2/60 mt-40 pt-44 pb-10 md:p-4 lg:p-8 lg:min-h-[400px] 2xl:min-h-[500px]'>
-			<div slot="first-col">
-				<BannerImage firstTitle='lana' secondTitle='del rey' subtitle='Tela 200g' image='/img/lana-del-rey.webp' imageAlt='Franela Oversize inspirada en Lana del Rey' imageOtherStyles='md:left-24 lg:left-40 2xl:left-52'/>
-			</div>
-			<div class="flex flex-col items-center md:items-start z-10 md:pl-20 xl:pl-0" slot="second-col">
-				<BannerInfo title='Artistas' subtitle='Colección Destacada' description='Nuestra coleccion consiste en diseños llamativos sobre algunos de los mejores grupos, cantantes y musicos del momento y la historia.' />
-				
-				<ButtonPrimary text='Ver Tienda' link='/' containerStyles='bg-white text-banner2 hover:bg-darkGray hover:text-white active:text-white mt-4' />
-			</div>
-		</BannerContainer>
+			<BannerContainer
+				containerStyles='grid-cols-1 md:grid-cols-2 bg-banner2 hover:shadow-banner2/60 mt-40 pt-44 pb-10 md:p-4 lg:p-8 lg:min-h-[400px] 2xl:min-h-[500px]'
+			>
+				<div slot='first-col'>
+					<BannerImage
+						firstTitle='lana'
+						secondTitle='del rey'
+						subtitle='Tela 200g'
+						image='/img/lana-del-rey.webp'
+						imageAlt='Franela Oversize inspirada en Lana del Rey'
+						imageOtherStyles='md:left-24 lg:left-40 2xl:left-52'
+					/>
+				</div>
+				<div
+					class='flex flex-col items-center md:items-start z-10 md:pl-20 xl:pl-0'
+					slot='second-col'
+				>
+					<BannerInfo
+						title='Artistas'
+						subtitle='Colección Destacada'
+						description='Nuestra coleccion consiste en diseños llamativos sobre algunos de los mejores grupos, cantantes y musicos del momento y la historia.'
+					/>
+
+					<ButtonPrimary
+						text='Ver Tienda'
+						link='/'
+						containerStyles='bg-white text-banner2 hover:bg-darkGray hover:text-white active:text-white mt-4'
+					/>
+				</div>
+			</BannerContainer>
 		</section>
 
-		<section class="text-center mt-24">
-			<Title title='Agregadas Recientemente' subtitle='No te pierdas nuestras prendas mas nuevas' />
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12 gap-8">
-				<Card name='Ronnie Coleman' />
-				<Card name='Ronnie Coleman' />
-				<Card name='Ronnie Coleman' />
-			</div>
+		<section class='text-center mt-24'>
+			<Title
+				title='Agregadas Recientemente'
+				subtitle='No te pierdas nuestras prendas mas nuevas'
+			/>
+			<Carousel orderBy='created_at' client:load />
 		</section>
 
 		<section>
-			<BannerContainer containerStyles='grid-cols-1 md:grid-cols-2 bg-banner3 hover:shadow-banner3/60 mt-40 pt-44 pb-10 md:p-4 lg:p-8 lg:min-h-[400px] 2xl:min-h-[500px]'>
-				<div class="flex flex-col items-center md:items-start z-10 md:pl-20 xl:pl-0 order-2 mt-10 md:mt-0" slot="first-col">
-					<BannerInfo title='Tela Lavada' subtitle='Prendas Nuevas' description='Nuestra coleccion consiste en diseños llamativos sobre algunos de los mejores grupos, cantantes y musicos del momento y la historia.' />
-					
-					<ButtonPrimary text='Ver Tienda' link='/' containerStyles='bg-white text-banner3 hover:bg-darkGray hover:text-white active:text-white mt-4' />
+			<BannerContainer
+				containerStyles='grid-cols-1 md:grid-cols-2 bg-banner3 hover:shadow-banner3/60 mt-40 pt-44 pb-10 md:p-4 lg:pl-40 lg:p-8 lg:min-h-[400px] 2xl:min-h-[500px]'
+			>
+				<div
+					class='flex flex-col items-center md:items-start z-10 md:pl-20 xl:pl-0 order-2 mt-10 md:mt-0'
+					slot='first-col'
+				>
+					<BannerInfo
+						title='Tela Lavada'
+						subtitle='Prendas Nuevas'
+						description='Oversize sometidas a un proceso de lavado único que les otorga un aspecto decolorado y desgastado, dandole gran personalidad.'
+					/>
+
+					<ButtonPrimary
+						text='Ver Tienda'
+						link='/'
+						containerStyles='bg-white text-banner3 hover:bg-darkGray hover:text-white active:text-white mt-4'
+					/>
 				</div>
-				<div class='order-1' slot="second-col">
-					<BannerImage firstTitle='Acid' secondTitle='Wash' subtitle='Tela 200g' image='/img/Acid-Wash-1.webp' imageAlt='Franela Oversize inspirada en Lana del Rey' imageOtherStyles='md:right-24 lg:right-28' />
+				<div class='order-1' slot='second-col'>
+					<BannerImage
+						firstTitle='Acid'
+						secondTitle='Wash'
+						subtitle='Tela 200g'
+						image='/img/Acid-Wash-1.webp'
+						imageAlt='Franela Oversize inspirada en Lana del Rey'
+						imageOtherStyles='md:right-24 lg:right-28'
+					/>
 				</div>
-		</BannerContainer>
-		</section>
-		
-		<section>
-			<BannerContainer containerStyles='grid-cols-1 md:grid-cols-2 bg-banner4 hover:shadow-banner4/60 mt-36 md:mt-20 pt-44 pb-10 md:p-4 lg:p-8 lg:min-h-[400px] 2xl:min-h-[500px]'>
-				<div slot="first-col">
-					<BannerImage firstTitle='Box' secondTitle='Cut' subtitle='Tela 150g & 200g' image='/img/cbum.png' imageAlt='Franela Oversize inspirada en Lana del Rey' imageOtherStyles='md:left-24 lg:left-40 2xl:left-52' />
-				</div>
-				<div class="flex flex-col items-center md:items-start z-10 md:pl-20 xl:pl-0" slot="second-col">
-					<BannerInfo title='Corte Box' subtitle='Prendas Nuevas' description='Nuestra coleccion consiste en diseños llamativos sobre algunos de los mejores grupos, cantantes y musicos del momento y la historia.' />
-					
-					<ButtonPrimary text='Ver Tienda' link='/' containerStyles='bg-white text-banner4 hover:bg-darkGray hover:text-white active:text-white mt-4' />
-				</div>
-		</BannerContainer>
+			</BannerContainer>
 		</section>
 
-		<section class="text-center mt-24">
-			<Title title='Diseños Personalizados' subtitle='Si tienes alguna idea o te gustaría tener una franela con un diseño que tengas en mente, nosotros lo haremos por ti' />
-			<div class="w-full flex flex-col items-center max-w-[1000px] mx-auto">
-				<ContactForm containerStyles='mb-20 mt-5 md:mt-10 min-w-full'/>
+		<section>
+			<BannerContainer
+				containerStyles='grid-cols-1 md:grid-cols-2 bg-banner4 hover:shadow-banner4/60 mt-36 md:mt-20 pt-44 pb-10 md:p-4 lg:p-8 lg:min-h-[400px] 2xl:min-h-[500px]'
+			>
+				<div slot='first-col'>
+					<BannerImage
+						firstTitle='Boxy'
+						secondTitle='Cut'
+						subtitle='Tela 150g & 200g'
+						image='/img/cbum.png'
+						imageAlt='Franela Oversize inspirada en Lana del Rey'
+						imageOtherStyles='md:left-24 lg:left-40 2xl:left-52'
+					/>
+				</div>
+				<div
+					class='flex flex-col items-center md:items-start z-10 md:pl-20 xl:pl-0'
+					slot='second-col'
+				>
+					<BannerInfo
+						title='Corte Box'
+						subtitle='Prendas Nuevas'
+						description='Las franelas boxy estan diseñadas para quienes buscan un look urbano y relajado.'
+					/>
+
+					<ButtonPrimary
+						text='Ver Tienda'
+						link='/'
+						containerStyles='bg-white text-banner4 hover:bg-darkGray hover:text-white active:text-white mt-4'
+					/>
+				</div>
+			</BannerContainer>
+		</section>
+
+		<section class='text-center mt-24'>
+			<Title
+				title='Diseños Personalizados'
+				subtitle='Si tienes alguna idea o te gustaría tener una franela con un diseño que tengas en mente, nosotros lo haremos por ti'
+			/>
+			<div class='w-full flex flex-col items-center max-w-[1000px] mx-auto'>
+				<ContactForm containerStyles='mb-20 mt-5 md:mt-10 min-w-full' />
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<style is:inline>
+	.swiper-pagination-bullet-active {
+		background: #000 !important;
+	}
+</style>
