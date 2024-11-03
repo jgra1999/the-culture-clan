@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import OrderByDropDown from './filters/OrderByDropDown'
 import CollectionDropDown from './filters/CollectionDropDown'
-import ItemCard from './ItemCard'
+import { ItemCard } from './ItemCard'
 import Loader from '../ui/Loader'
 // import CurrencyDropDown from './filters/CurrencyDropDown'
 

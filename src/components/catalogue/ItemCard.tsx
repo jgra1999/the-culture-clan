@@ -7,9 +7,9 @@ interface Props {
 	image_url: string
 }
 
-export default function ItemCard({ name, price, collection, image_url }: Props) {
+export function ItemCard({ name, price, collection, image_url }: Props) {
 	return (
-		<div className='flex flex-col gap-y-4 group'>
+		<div className='flex flex-col gap-y-4 group mb-12'>
 			<img src={image_url} className='rounded-2xl w-full' alt='' loading='lazy' />
 			<div className='text-left'>
 				<div className='flex justify-between items-center font-bold text-lg relative'>
