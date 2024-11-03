@@ -1,23 +1,25 @@
 ---
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
-import { WhatsappIcon } from "../ui/icons/icons";
-import InstagramIcon from "../ui/icons/InstagramIcon.astro";
-import Logo from "../ui/icons/Logo.astro";
-import TiktokIcon from "../ui/icons/TiktokIcon.astro";
+import { EnvelopeIcon } from '@heroicons/react/24/outline'
+import { WhatsappIcon } from '../ui/icons/icons'
+import InstagramIcon from '../ui/icons/InstagramIcon.astro'
+import Logo from '../ui/icons/Logo.astro'
+import TiktokIcon from '../ui/icons/TiktokIcon.astro'
 import FooterLink from './FooterLink.astro'
-
 ---
 
-<footer class='flex flex-col gap-y-10 lg:gap-y-20 bg-[#1d1d1d] py-20 px-5 xl:px-40 text-white bottom-0 w-full'>
+<footer
+	class='flex flex-col gap-y-10 lg:gap-y-20 bg-[#1d1d1d] py-20 px-5 xl:px-40 text-white bottom-0 w-full'
+>
 	{/* Footer screen >= lg */}
 	<div class='hidden lg:grid lg:grid-cols-4 mt-auto'>
-		<Logo styles="fill-white" />
+		<Logo styles='fill-white' />
 		<div>
 			<h3 class='font-bold mb-2'>MENU</h3>
 			<ul class='space-y-2 text-sm'>
-				<FooterLink url='/' text='Home' />
-				<FooterLink url='/tienda' text='Colecciones' />
-				<FooterLink url='#' text='Sobre Nosotros' />
+				<FooterLink url='/' text='Inicio' />
+				<FooterLink url='/catalogo' text='Catálogo' />
+				<FooterLink url='/faqs' text='FAQS' />
+				<FooterLink url='/contacto' text='Contacto' />
 			</ul>
 		</div>
 		<div>
@@ -44,7 +46,7 @@ import FooterLink from './FooterLink.astro'
 
 	{/* Footer screen <a= lg */}
 	<div class='grid grid-cols-1 lg:hidden gap-y-10'>
-		<Logo styles="fill-white" />
+		<Logo styles='fill-white' />
 		<div
 			class='flex flex-col divide-y-[1px] divide-mediumGray text-lg font-bold text-'
 		>
