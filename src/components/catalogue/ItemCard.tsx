@@ -15,9 +15,8 @@ export function ItemCard({ name, price, collection, image_url }: Props) {
 				<div className='flex justify-between items-center font-bold text-lg relative'>
 					<h4>{name}</h4>
 					<div>
-						<span className='group-hover:opacity-0 transition-opacity duration-300'>
-							{price}
-						</span>
+						{/* className='group-hover:opacity-0 transition-opacity duration-300' */}
+						<span>{price}</span>
 						{/* <AddToCartButton otherStyles='absolute min-w-[250px] right-0 top-0 opacity-0 group-hover:opacity-100 '/> */}
 					</div>
 				</div>
