@@ -49,7 +49,7 @@ export function Carousel({ orderBy }: { orderBy: string }) {
 			<Swiper
 				spaceBetween={32}
 				slidesPerView={3}
-				centeredSlides={true}
+				// centeredSlides={true}
 				pagination={{ clickable: true }}
 				modules={[Pagination, Autoplay]}
 				autoplay={{
