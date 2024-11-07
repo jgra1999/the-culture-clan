@@ -1,0 +1,10 @@
+---
+import { ShirtsTable } from '@/components/admin/shirts/DataTable'
+import AdminLayout from '../../../layouts/AdminLayout.astro'
+---
+
+<AdminLayout title='Inventario de franelas'>
+	<div class='overflow-x-auto my-8'>
+		<ShirtsTable client:load />
+	</div>
+</AdminLayout>

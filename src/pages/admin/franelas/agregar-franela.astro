@@ -1,0 +1,20 @@
+---
+// export const prerender = false
+
+import GoBackButton from '@/components/ui/GoBackButton.astro'
+import Title from '@/components/ui/Title.astro'
+import { ShirtForm } from '@/components/admin/shirts/Form'
+import AdminLayout from '@/layouts/AdminLayout.astro'
+---
+
+<AdminLayout title='Agregar Franela'>
+	<GoBackButton />
+	<div class='flex flex-col items-center'>
+		<Title title='Agregar Franela' />
+		<div
+			class='flex flex-col gap-y-8 justify-center my-5 divide-mediumGray w-[90%] sm:min-w-0 max-w-[700px] bg-white rounded-lg py-6 px-8'
+		>
+			<ShirtForm client:visible />
+		</div>
+	</div>
+</AdminLayout>
