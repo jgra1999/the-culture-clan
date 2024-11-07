@@ -17,7 +17,7 @@ export default function SideMenuOptions({
 		<li>
 			<a href={link} className={`flex items-start p-2 ${otherStyles}`}>
 				{children}
-				<span className='ml-3'>{name}</span>
+				<span className='ml-3 font-medium'>{name}</span>
 			</a>
 		</li>
 	)
