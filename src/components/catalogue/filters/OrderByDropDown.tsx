@@ -39,7 +39,7 @@ export default function OrderByDropDown({
 							<button
 								className='opacity-70 hover:opacity-100'
 								onClick={setOrderBy}
-								value='likes'
+								value='popularity'
 							>
 								Más Populares
 							</button>

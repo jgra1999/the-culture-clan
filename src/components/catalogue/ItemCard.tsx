@@ -9,7 +9,7 @@ interface Props {
 
 export function ItemCard({ name, price, collection, image_url }: Props) {
 	return (
-		<div className='flex flex-col gap-y-4 group mb-12'>
+		<div className='flex flex-col gap-y-4 group mb-12 p-1 md:p-0'>
 			<img src={image_url} className='rounded-2xl w-full' alt='' loading='lazy' />
 			<div className='text-left'>
 				<div className='flex justify-between items-center font-bold text-lg relative'>

@@ -92,7 +92,7 @@ export function ItemsList() {
 	return (
 		<>
 			<div className='flex justify-between items-center mt-5 '>
-				<div className='text-lightGray flex justify-between sm:justify-normal items-center w-full text-sm font-medium gap-x-4'>
+				<div className='text-lightGray flex justify-normal items-center w-full text-sm font-medium gap-x-4'>
 					<OrderByDropDown setOrderBy={handleOrderByFilter} />
 					<div>
 						<CollectionDropDown setCollection={handleCollectionFilter} />
