@@ -2,11 +2,6 @@ import type { Database } from './supabase'
 
 // type oversized = Database['public']['Tables']['inventory']
 
-interface oversized {
-	row: Database['public']['Tables']['inventory']['Row']
-	insert: Database['public']['Tables']['inventory']['Insert']
-}
-
 export interface Products {
 	collection: string
 	created_at: string
@@ -17,6 +12,15 @@ export interface Products {
 	pesos_price: number
 	ref: string
 	popularity: number
+}
+
+export interface Shirt {
+	id: string
+	color: string
+	size: string
+	ref: number
+	stock: number
+	created_at?: string
 }
 
 export interface billRegister {
