@@ -27,7 +27,6 @@ export function Carousel({ orderBy }: { orderBy: string }) {
 
 			const { data, error } = await query
 
-			console.log(data)
 			setItems(data)
 		} catch (error) {
 			console.log(error)
@@ -48,8 +47,17 @@ export function Carousel({ orderBy }: { orderBy: string }) {
 		<div className='mt-12 max-w-[95vw]'>
 			<Swiper
 				spaceBetween={32}
-				slidesPerView={3}
-				// centeredSlides={true}
+				slidesPerView={1}
+				breakpoints={{
+					768: {
+						slidesPerView: 2,
+						spaceBetween: 40
+					},
+					1024: {
+						slidesPerView: 3,
+						spaceBetween: 50
+					}
+				}}
 				pagination={{ clickable: true }}
 				modules={[Pagination, Autoplay]}
 				autoplay={{
