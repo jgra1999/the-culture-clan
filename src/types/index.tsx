@@ -23,6 +23,14 @@ export interface Shirt {
 	created_at?: string
 }
 
+export interface DTF {
+	id: string
+	design_name: string
+	collection: string
+	stock: number
+	created_at?: string
+}
+
 export interface billRegister {
 	id: number
 	title: string

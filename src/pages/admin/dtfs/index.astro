@@ -1,0 +1,10 @@
+---
+import { DTFSTable } from '@/components/admin/dtfs/DataTable'
+import AdminLayout from '../../../layouts/AdminLayout.astro'
+---
+
+<AdminLayout title='Inventario de DTF'>
+	<div class='overflow-x-auto my-8'>
+		<DTFSTable client:load />
+	</div>
+</AdminLayout>
