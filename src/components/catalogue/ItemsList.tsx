@@ -8,9 +8,10 @@ import { ItemCard } from './ItemCard'
 import Loader from '../ui/Loader'
 // import CurrencyDropDown from './filters/CurrencyDropDown'
 
-export function ItemsList() {
+export function ItemsList({ params }: { params?: string }) {
 	const [items, setItems] = useState<Products[] | null>()
 	const [loading, setLoading] = useState(false)
+	let [urlParam, setUrlParam] = useState('')
 
 	/* filters */
 	const [collection, setCollection] = useState('')
@@ -48,7 +49,24 @@ export function ItemsList() {
 	}
 
 	const handleCollectionFilter = (e: any) => {
+		setCollection('')
 		setCollection(e.target.value)
+
+		setFrom(0)
+		setTo(7)
+		setPage(1)
+	}
+
+	const handleUrlParam = () => {
+		if (params) {
+			if (!urlParam) {
+				console.log('no hay urlParam')
+				setUrlParam(params)
+				setCollection(params)
+			} else {
+				console.log('No entra')
+			}
+		}
 	}
 
 	/* pagination handlers */
@@ -86,6 +104,8 @@ export function ItemsList() {
 	}
 
 	useEffect(() => {
+		handleUrlParam()
+
 		fetchItems()
 	}, [collection, from, orderBy])
 

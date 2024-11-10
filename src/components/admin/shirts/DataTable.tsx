@@ -132,10 +132,7 @@ export function ShirtsTable() {
 									<td className='px-6 py-4'>{item.stock}</td>
 									<td className='px-6 py-4'>
 										<div className='flex gap-x-2 justify-end'>
-											<a href={`/admin/gastos/ver-registro/${item.id}`}>
-												<EyeIcon className='w-5 opacity-70 hover:opacity-100' />
-											</a>
-											<a href={`/admin/gastos/actualizar/${item.id}`}>
+											<a href={`/admin/franelas/actualizar/${item.id}`}>
 												<PencilIcon className='w-5 opacity-70 hover:opacity-100' />
 											</a>
 											<button onClick={() => deleteRegister(item.id)}>
