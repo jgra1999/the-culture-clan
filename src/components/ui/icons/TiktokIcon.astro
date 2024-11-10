@@ -1,5 +1,13 @@
+---
+type Props = {
+	styles: string
+}
+
+const { styles } = Astro.props
+---
+
 <svg
-	class='social-icon'
+	class={styles}
 	viewBox='0 0 24 24'
 	stroke='currentColor'
 	stroke='currentColor'
