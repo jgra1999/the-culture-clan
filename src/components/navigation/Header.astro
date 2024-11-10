@@ -11,6 +11,9 @@ import {
 	ShoppingBagIcon,
 	UserCircleIcon
 } from '@heroicons/react/24/outline'
+import InstagramIcon from '../ui/icons/InstagramIcon.astro'
+import TiktokIcon from '../ui/icons/TiktokIcon.astro'
+import { WhatsappIcon } from '../ui/icons/icons'
 ---
 
 <header class='absolute top-0 w-full lg:pt-5 lg:pr-8'>
@@ -43,7 +46,7 @@ import {
 			</a>
 		</div>
 		<div class='flex justify-end items-center gap-x-5'>
-			<UserCircleIcon className='w-6 h-6 stroke-2' />
+			<InstagramIcon styles='w-6 h-6 stroke-2' />
 			<ShoppingBagIcon className='w-6 h-6 stroke-2' />
 		</div>
 	</div>
@@ -69,8 +72,23 @@ import {
 		</ul>
 
 		<div class='flex justify-end items-center gap-x-5'>
-			<UserCircleIcon className='w-6 h-6' />
-			<ShoppingBagIcon className='w-6 h-6' />
+			<a
+				href='https://instagram.com/th3cultureclan?igshid=NGVhN2U2NjQ0Yg=='
+				target='_blank'
+				class='hover:text-[#833AB4]'
+			>
+				<InstagramIcon styles='stroke-current w-6 h-6 stroke-2' />
+			</a>
+			<a
+				href='https://www.tiktok.com/@th3cultureclan?_t=8rGeeDptV7n&_r=1'
+				target='_blank'
+				class='hover:text-[#E10098]'
+			>
+				<TiktokIcon styles='stroke-current w-6 h-6 stroke-2' />
+			</a>
+			<a href='https://wa.link/p3qnlf' target='_blank' class='hover:text-[#25D366]'>
+				<WhatsappIcon styles='stroke-current w-6 h-6 stroke-2' />
+			</a>
 		</div>
 	</nav>
 </header>
